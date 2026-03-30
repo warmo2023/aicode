@@ -1,0 +1,1767 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Claude Code 最佳实践与使用技巧完全指南（2025版）| 官方邮箱 gaccode@163.com 订阅后
+    </title>
+    <meta name="description" content="2025年最全面的 Claude Code 最佳实践指南：深入解析 CLAUDE.md 配置、权限管理、上下文优化、工作流技巧和高级功能。学会这些技巧,让 Claude Code 发挥最大效能。国内用户可通过 GACCode 稳定使用。">
+    <meta name="keywords" content="Claude Code 最佳实践,Claude Code 使用技巧,CLAUDE.md 配置,Claude Code 权限管理,Claude Code 工作流,AI 编程技巧,GACCode,Claude Code 2025">
+    <meta name="author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Claude Code 最佳实践与使用技巧完全指南（2025版）">
+    <meta property="og:description" content="从 CLAUDE.md 配置到高级工作流,掌握 Claude Code 的所有核心技巧">
+    <meta property="og:url" content="https://GACCode/post/claude-code-best-practices-usage-tips">
+    <meta property="og:site_name" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2025-11-15T10:00:00+08:00">
+    <meta property="article:modified_time" content="2025-11-15T10:00:00+08:00">
+    <meta property="article:author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="article:section" content="使用教程">
+    <meta property="article:tag" content="Claude Code">
+    <meta property="article:tag" content="最佳实践">
+    <meta property="article:tag" content="使用技巧">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Code 最佳实践与使用技巧完全指南（2025版）">
+    <meta name="twitter:description" content="深入解析 CLAUDE.md、权限管理、工作流优化等核心技巧">
+    <meta name="msvalidate.01" content="7F5A4F41F59B7840336A1530F6D3474E">
+
+    <link rel="icon" href="https://GACCode/img/logo.webp">
+    <link rel="canonical" href="https://GACCode/post/claude-code-best-practices-usage-tips">
+
+    <!-- <script
+      defer
+      src="https://umami.xinhuo.dev/script.js"
+      data-website-id="aa83f7b8-15cd-4ed3-9f16-8efa73548ed0"
+    ></script> -->
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Claude Code 最佳实践与使用技巧完全指南（2025版）",
+        "description": "2025年最全面的 Claude Code 最佳实践指南,涵盖 CLAUDE.md 配置、权限管理、上下文优化和高级工作流技巧",
+        "author": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://GACCode/img/logo.webp"
+          }
+        },
+        "datePublished": "2025-11-15T10:00:00+08:00",
+        "dateModified": "2025-11-15T10:00:00+08:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://GACCode/post/claude-code-best-practices-usage-tips"
+        }
+      }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="static/js/js.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#64748b",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+      .code-block {
+        background-color: #1e293b;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0;
+        overflow-x: auto;
+      }
+      .code-block code {
+        color: #e2e8f0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+      }
+      .highlight-box {
+        border-left: 4px solid #3b82f6;
+        background: linear-gradient(to right, #eff6ff, #ffffff);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">GAC</span>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-800">
+                GACCode 订阅购买
+              </div>
+            </div>
+          </a>
+          <div class="hidden lg:flex items-center space-x-1">
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                产品服务
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="index.html#products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐价格</a>
+                  <a href="gaccode-package-comparison.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐对比</a>
+                  <a href="gaccode-product-introduction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">产品介绍</a>
+                </div>
+              </div>
+            </div>
+            <a href="share.html" class="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group">
+              <span class="relative z-10">免费体验</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto py-8 px-4">
+      <!-- Breadcrumb -->
+      <nav class="text-sm breadcrumbs mb-8">
+        <div class="flex items-center text-gray-500">
+          <a href="index.html" class="hover:text-blue-600 transition-colors">首页</a>
+          <span class="mx-2">/</span>
+          <a href="posts.html" class="hover:text-blue-600 transition-colors">技术文章</a>
+          <span class="mx-2">/</span>
+          <span class="text-gray-800">Claude Code 最佳实践与使用技巧</span>
+        </div>
+      </nav>
+
+      <!-- Article -->
+      <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <!-- Article Header -->
+        <div class="p-8 border-b border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">使用教程</span>
+            <span class="text-gray-500 text-sm mx-3">•</span>
+            <time class="text-gray-500 text-sm" datetime="2025-11-15T10:00:00+08:00">2025-11-15</time>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+            Claude Code 最佳实践与使用技巧完全指南（2025版）
+          </h1>
+
+          <p class="text-xl text-gray-600 leading-relaxed">
+            Claude Code 作为 2025 年最强大的 AI 编程工具,拥有 30
+            小时自主编码能力和 200k tokens
+            上下文窗口。但工具再强大,不会用也是白搭。本文基于 Anthropic
+            官方最佳实践和资深开发者经验,深入解析 CLAUDE.md
+            配置、权限管理、上下文优化、工作流技巧等核心要点,帮你把 Claude Code
+            的效能发挥到极致。国内用户可通过 GACCode 稳定使用 Claude Code
+            的所有最新功能。
+          </p>
+
+          <div class="flex items-center mt-6 pt-6 border-t border-gray-100">
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold text-sm">GAC</span>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-gray-900">官方邮箱 gaccode@163.com 订阅后</p>
+                <p class="text-sm text-gray-500">专业技术团队</p>
+              </div>
+            </div>
+            <div class="ml-auto text-sm text-gray-500">
+              <span>约 25 分钟阅读</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="p-8 bg-gray-50 border-b border-gray-200">
+          <h2 class="text-lg font-semibold text-gray-900 mb-4">文章目录</h2>
+          <nav class="space-y-2">
+            <a href="#claude-md-configuration" class="block text-blue-600 hover:text-blue-800 transition-colors">1. CLAUDE.md 配置最佳实践</a>
+            <a href="#permission-management" class="block text-blue-600 hover:text-blue-800 transition-colors">2. 权限管理与安全配置</a>
+            <a href="#context-management" class="block text-blue-600 hover:text-blue-800 transition-colors">3. 上下文管理与优化</a>
+            <a href="#workflow-techniques" class="block text-blue-600 hover:text-blue-800 transition-colors">4. 高效工作流技巧</a>
+            <a href="#advanced-features" class="block text-blue-600 hover:text-blue-800 transition-colors">5. 高级功能与深度思考</a>
+            <a href="#custom-commands" class="block text-blue-600 hover:text-blue-800 transition-colors">6. 自定义命令与自动化</a>
+            <a href="#china-solution" class="block text-blue-600 hover:text-blue-800 transition-colors">7. 国内稳定使用方案</a>
+          </nav>
+        </div>
+
+        <!-- Article Content -->
+        <div class="prose prose-lg max-w-none p-8">
+          <!-- Section 1: CLAUDE.md Configuration -->
+          <section id="claude-md-configuration" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              1. CLAUDE.md 配置最佳实践
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              CLAUDE.md 是 Claude Code
+              的核心配置文件,它会在每次对话开始时自动加载到上下文中。用好这个文件,相当于给
+              Claude 配了一个项目说明书,能大幅提升代码生成的准确性和一致性。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              什么是 CLAUDE.md?
+            </h3>
+
+            <div class="bg-blue-50 rounded-lg p-6 mb-6">
+              <p class="text-blue-900 mb-4">
+                <strong>CLAUDE.md</strong> 是一个特殊文件,Claude Code
+                启动时会自动读取并加入上下文。它的作用类似于项目的"使用说明书",可以包含:
+              </p>
+              <ul class="space-y-2 text-blue-800 ml-4">
+                <li>
+                  • <strong>常用命令和脚本</strong> - 项目特有的 npm
+                  脚本、构建命令、测试命令
+                </li>
+                <li>
+                  • <strong>核心文件与函数</strong> - 关键模块的位置和功能说明
+                </li>
+                <li>
+                  • <strong>代码风格指南</strong> -
+                  团队约定的命名规范、文件组织方式
+                </li>
+                <li>
+                  • <strong>测试说明</strong> - 如何运行测试、测试覆盖率要求
+                </li>
+                <li>
+                  • <strong>项目特殊约定</strong> - 数据库连接方式、API
+                  调用规范等
+                </li>
+                <li>
+                  • <strong>开发环境配置</strong> - Node.js
+                  版本、依赖安装注意事项
+                </li>
+              </ul>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              CLAUDE.md 的放置位置
+            </h3>
+
+            <p class="text-gray-700 mb-4">
+              CLAUDE.md 支持多层级放置,优先级从高到低:
+            </p>
+
+            <div class="space-y-4 mb-6">
+              <div class="border-l-4 border-purple-500 pl-4 bg-purple-50 p-4 rounded-r-lg">
+                <h4 class="font-semibold text-purple-900 mb-2">
+                  1. 项目根目录
+                </h4>
+                <div class="code-block">
+                  <code>
+                    your-project/<br>
+                    ├── CLAUDE.md # 团队共享,提交到 Git<br>
+                    ├── CLAUDE.local.md # 个人配置,加入 .gitignore<br>
+                    └── src/
+                  </code>
+                </div>
+                <p class="text-sm text-purple-800 mt-2">
+                  <strong>CLAUDE.md</strong>:
+                  适合团队共享的配置,如代码规范、项目结构说明<br>
+                  <strong>CLAUDE.local.md</strong>: 个人偏好配置,不提交到 Git
+                </p>
+              </div>
+
+              <div class="border-l-4 border-blue-500 pl-4 bg-blue-50 p-4 rounded-r-lg">
+                <h4 class="font-semibold text-blue-900 mb-2">
+                  2. 父目录(Monorepo)
+                </h4>
+                <div class="code-block">
+                  <code>
+                    monorepo/<br>
+                    ├── CLAUDE.md # 整个 Monorepo 的通用配置<br>
+                    ├── apps/<br>
+                    │ └── web/<br>
+                    │ └── CLAUDE.md # web 应用的专属配置<br>
+                    └── packages/<br>
+                    └── ui/<br>
+                    └── CLAUDE.md # UI 包的专属配置
+                  </code>
+                </div>
+                <p class="text-sm text-blue-800 mt-2">
+                  Monorepo 场景下,可以在根目录放通用规范,在子项目放具体配置
+                </p>
+              </div>
+
+              <div class="border-l-4 border-green-500 pl-4 bg-green-50 p-4 rounded-r-lg">
+                <h4 class="font-semibold text-green-900 mb-2">3. 用户主目录</h4>
+                <div class="code-block">
+                  <code>
+                    ~/.claude/<br>
+                    └── CLAUDE.md # 全局个人配置
+                  </code>
+                </div>
+                <p class="text-sm text-green-800 mt-2">
+                  适合放通用的个人偏好,如代码风格、常用快捷命令,对所有项目生效
+                </p>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              CLAUDE.md 内容示例
+            </h3>
+
+            <div class="code-block mb-6">
+              <code>
+                # 项目概述<br>
+                本项目是一个基于 Next.js 14 的企业级 SaaS 应用。<br><br>
+
+                ## 技术栈<br>
+                - Next.js 14 (App Router)<br>
+                - TypeScript 5.3<br>
+                - Tailwind CSS 3.4<br>
+                - Prisma ORM<br>
+                - PostgreSQL 16<br><br>
+
+                ## 代码风格<br>
+                - 使用 ESLint + Prettier 进行代码格式化<br>
+                - 组件文件使用 PascalCase 命名,如 `UserProfile.tsx`<br>
+                - 工具函数使用 camelCase 命名<br>
+                - 优先使用函数式组件和 Hooks<br>
+                - 每个组件必须有对应的单元测试<br><br>
+
+                ## 常用命令<br>
+                ```bash<br>
+                npm run dev # 启动开发服务器<br>
+                npm run build # 生产环境构建<br>
+                npm run test # 运行所有测试<br>
+                npm run test:watch # 监听模式运行测试<br>
+                npm run lint # 运行 ESLint<br>
+                npm run format # 格式化所有代码<br>
+                ```<br><br>
+
+                ## 核心目录结构<br>
+                ```<br>
+                src/<br>
+                ├── app/ # Next.js App Router 页面<br>
+                ├── components/ # 可复用组件<br>
+                ├── lib/ # 工具函数和配置<br>
+                ├── hooks/ # 自定义 Hooks<br>
+                ├── types/ # TypeScript 类型定义<br>
+                └── prisma/ # 数据库 Schema 和迁移<br>
+                ```<br><br>
+
+                ## 重要约定<br>
+                1. 所有 API 路由必须有错误处理和日志记录<br>
+                2. 数据库查询必须使用 Prisma,禁止原始 SQL<br>
+                3. 敏感信息(API Key)存放在 .env.local,不提交到 Git<br>
+                4. 组件 props 必须定义 TypeScript 接口<br>
+                5. 提交前必须通过 `npm run lint` 和 `npm run test`<br><br>
+
+                ## 测试要求<br>
+                - 单元测试使用 Jest + React Testing Library<br>
+                - 测试文件命名为 `ComponentName.test.tsx`<br>
+                - 目标测试覆盖率: 80%以上<br><br>
+
+                ## 注意事项<br>
+                - Node.js 版本必须 >= 18.17<br>
+                - 首次运行需要执行 `npx prisma generate` 生成 Prisma Client<br>
+                - 开发环境使用 SQLite,生产环境使用 PostgreSQL
+              </code>
+            </div>
+
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-6 mb-6">
+              <h4 class="font-semibold text-amber-900 mb-2">
+                💡 快速生成 CLAUDE.md
+              </h4>
+              <p class="text-amber-800 mb-3">
+                Claude Code 提供了 <code>/init</code> 命令,可以自动生成基础的
+                CLAUDE.md 文件:
+              </p>
+              <div class="code-block">
+                <code>
+                  # 在项目根目录运行<br>
+                  claude<br><br>
+
+                  # 然后输入命令<br>
+                  /init
+                </code>
+              </div>
+              <p class="text-sm text-amber-800 mt-3">
+                Claude
+                会分析你的项目结构,自动生成包含技术栈、目录结构、package.json
+                脚本等信息的 CLAUDE.md
+                文件。你只需要在此基础上补充团队规范和特殊约定即可。
+              </p>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              CLAUDE.md 编写技巧
+            </h3>
+
+            <div class="space-y-4">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <h4 class="font-semibold text-gray-900 mb-2">
+                  ✅ 应该包含的内容
+                </h4>
+                <ul class="text-sm text-gray-700 space-y-2 ml-4">
+                  <li>
+                    • <strong>项目特定信息</strong>: Claude
+                    无法自动推断的约定和规范
+                  </li>
+                  <li>• <strong>常见错误警示</strong>: 容易踩的坑和注意事项</li>
+                  <li>• <strong>快捷命令</strong>: 提高开发效率的脚本和别名</li>
+                  <li>
+                    • <strong>架构模式</strong>: 项目采用的设计模式和最佳实践
+                  </li>
+                  <li>• <strong>环境依赖</strong>: 特定版本要求和配置说明</li>
+                </ul>
+              </div>
+
+              <div class="bg-gray-50 rounded-lg p-4">
+                <h4 class="font-semibold text-gray-900 mb-2">
+                  ❌ 不应该包含的内容
+                </h4>
+                <ul class="text-sm text-gray-700 space-y-2 ml-4">
+                  <li>
+                    • <strong>通用知识</strong>: React、TypeScript
+                    等基础概念,Claude 已经知道
+                  </li>
+                  <li>
+                    • <strong>过时信息</strong>: 不再维护的功能或已弃用的做法
+                  </li>
+                  <li>
+                    • <strong>冗余描述</strong>: package.json
+                    已有的依赖列表无需重复
+                  </li>
+                  <li>
+                    • <strong>敏感信息</strong>: API Key、密码等,应该使用 .env
+                    文件
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 2: Permission Management -->
+          <section id="permission-management" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              2. 权限管理与安全配置
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Code 默认采用保守的权限策略:读取文件自动允许,但写入、执行
+              bash
+              命令需要手动确认。虽然这保证了安全性,但频繁确认会影响效率。合理配置权限规则,能在安全和效率之间找到平衡。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              权限系统工作原理
+            </h3>
+
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-6">
+              <h4 class="text-lg font-semibold text-blue-900 mb-4">
+                三种权限规则类型
+              </h4>
+              <div class="space-y-4">
+                <div class="bg-white rounded-lg p-4">
+                  <div class="flex items-center mb-2">
+                    <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center text-white font-bold mr-3">
+                      ✓
+                    </div>
+                    <h5 class="font-semibold text-gray-900">
+                      allow (允许规则)
+                    </h5>
+                  </div>
+                  <p class="text-sm text-gray-700">
+                    允许 Claude Code
+                    自动使用指定工具,无需手动确认。适合安全且高频的操作,如读取项目文件、运行测试命令等。
+                  </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-4">
+                  <div class="flex items-center mb-2">
+                    <div class="w-8 h-8 bg-yellow-600 rounded-lg flex items-center justify-center text-white font-bold mr-3">
+                      ?
+                    </div>
+                    <h5 class="font-semibold text-gray-900">ask (询问规则)</h5>
+                  </div>
+                  <p class="text-sm text-gray-700">
+                    使用工具前询问用户确认,优先级高于
+                    allow。适合需要谨慎处理的操作,如修改配置文件、执行数据库迁移等。
+                  </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-4">
+                  <div class="flex items-center mb-2">
+                    <div class="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center text-white font-bold mr-3">
+                      ✕
+                    </div>
+                    <h5 class="font-semibold text-gray-900">deny (拒绝规则)</h5>
+                  </div>
+                  <p class="text-sm text-gray-700">
+                    完全禁止 Claude Code
+                    使用指定工具,优先级最高。适合保护敏感文件,如
+                    .env、credentials.json、私钥文件等。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              配置文件位置
+            </h3>
+
+            <p class="text-gray-700 mb-4">
+              权限配置保存在 <code>.claude/settings.json</code> 文件中:
+            </p>
+
+            <div class="code-block mb-6">
+              <code>
+                # 项目级配置<br>
+                your-project/.claude/settings.json<br><br>
+
+                # 用户级全局配置<br>
+                ~/.claude/settings.json<br><br>
+
+                # Windows 用户<br>
+                C:\Users\用户名\.claude\settings.json
+              </code>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              实用权限配置示例
+            </h3>
+
+            <div class="space-y-6">
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  1. 保护敏感文件
+                </h4>
+                <div class="code-block">
+                  <code>
+                    {<br>
+                    "permissions": {<br>
+                    "deny": [<br>
+                    "Read(./.env)",<br>
+                    "Read(./.env.*)",<br>
+                    "Read(./secrets/**)",<br>
+                    "Read(./config/credentials.json)",<br>
+                    "Read(~/.ssh/**)",<br>
+                    "Write(./.env)",<br>
+                    "Write(./package.json)" // 防止误修改依赖<br>
+                    ]<br>
+                    }<br>
+                    }
+                  </code>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  2. 自动批准常用命令
+                </h4>
+                <div class="code-block">
+                  <code>
+                    {<br>
+                    "permissions": {<br>
+                    "allow": [<br>
+                    "Bash(npm run test)",<br>
+                    "Bash(npm run lint)",<br>
+                    "Bash(npm run build)",<br>
+                    "Bash(git status)",<br>
+                    "Bash(git diff)",<br>
+                    "Read(./src/**)",<br>
+                    "Read(./tests/**)"<br>
+                    ]<br>
+                    }<br>
+                    }
+                  </code>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  3. 完整配置示例
+                </h4>
+                <div class="code-block">
+                  <code>
+                    {<br>
+                    "permissions": {<br>
+                    "deny": [<br>
+                    "Read(./.env*)",<br>
+                    "Read(./secrets/**)",<br>
+                    "Write(./.env*)",<br>
+                    "Bash(rm -rf *)",<br>
+                    "Bash(sudo *)"<br>
+                    ],<br>
+                    "allow": [<br>
+                    "Read(./src/**)",<br>
+                    "Read(./tests/**)",<br>
+                    "Write(./src/**)",<br>
+                    "Write(./tests/**)",<br>
+                    "Bash(npm run test)",<br>
+                    "Bash(npm run lint)",<br>
+                    "Bash(git status)",<br>
+                    "Bash(git diff)"<br>
+                    ],<br>
+                    "ask": [<br>
+                    "Write(./package.json)",<br>
+                    "Bash(npm install *)",<br>
+                    "Bash(git commit *)",<br>
+                    "Bash(npx prisma migrate *)"<br>
+                    ]<br>
+                    }<br>
+                    }
+                  </code>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 my-6">
+              <h4 class="font-semibold text-red-900 mb-2">
+                ⚠️ 跳过权限确认的风险
+              </h4>
+              <p class="text-red-800 mb-3">
+                使用
+                <code>claude --dangerously-skip-permissions</code>
+                可以跳过所有权限确认,实现完全自动化。但这存在严重的安全风险:
+              </p>
+              <ul class="space-y-2 text-red-800 ml-4">
+                <li>• Claude 可能误删重要文件</li>
+                <li>• 可能执行危险的 bash 命令(如 rm -rf)</li>
+                <li>• 敏感文件可能被修改或泄露</li>
+              </ul>
+              <p class="text-red-800 mt-3">
+                <strong>建议</strong>: 仅在完全信任的私有项目中使用,并配合 Git
+                版本控制随时回滚。生产环境和公司项目<strong>绝不使用</strong>此选项。
+              </p>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              使用 /permissions 命令管理权限
+            </h3>
+
+            <p class="text-gray-700 mb-4">
+              Claude Code 提供了交互式的权限管理界面:
+            </p>
+
+            <div class="code-block mb-6">
+              <code>
+                # 在 Claude Code 会话中输入<br>
+                /permissions<br><br>
+
+                # 会显示:<br>
+                # - 所有已配置的权限规则<br>
+                # - 规则来源(项目 / 用户配置)<br>
+                # - 可以通过 UI 添加、修改、删除规则
+              </code>
+            </div>
+          </section>
+
+          <!-- Section 3: Context Management -->
+          <section id="context-management" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              3. 上下文管理与优化
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              虽然 Claude Code 拥有 200k tokens
+              的超大上下文窗口,但上下文累积过多仍然会影响响应速度和准确性。掌握上下文管理技巧,是高效使用
+              Claude Code 的关键。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              为什么需要管理上下文?
+            </h3>
+
+            <div class="bg-yellow-50 rounded-lg p-6 mb-6">
+              <ul class="space-y-2 text-yellow-900 ml-4">
+                <li>
+                  • <strong>响应变慢</strong>: 上下文越长,Claude 处理时间越久
+                </li>
+                <li>
+                  • <strong>精度下降</strong>:
+                  无关历史信息可能干扰当前任务的判断
+                </li>
+                <li>
+                  • <strong>成本增加</strong>: 更多 tokens
+                  消耗意味着更快达到使用限额
+                </li>
+                <li>
+                  • <strong>混淆风险</strong>: 旧任务的代码可能与新任务冲突
+                </li>
+              </ul>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              核心上下文管理命令
+            </h3>
+
+            <div class="space-y-6">
+              <div class="border-l-4 border-blue-500 pl-4 bg-blue-50 p-4 rounded-r-lg">
+                <h4 class="font-semibold text-blue-900 mb-2">
+                  /clear - 清空上下文
+                </h4>
+                <p class="text-sm text-blue-800 mb-3">
+                  删除所有历史对话和代码,但<strong>保留 CLAUDE.md</strong>
+                  的内容。适合开始全新任务时使用。
+                </p>
+                <div class="code-block">
+                  <code>
+                    # 使用场景<br>
+                    /clear # 清空历史,开始新任务<br><br>
+
+                    # 最佳实践: 每次切换任务时执行<br>
+                    # 例如: 写完一个功能 → /clear → 开始下一个功能
+                  </code>
+                </div>
+              </div>
+
+              <div class="border-l-4 border-purple-500 pl-4 bg-purple-50 p-4 rounded-r-lg">
+                <h4 class="font-semibold text-purple-900 mb-2">
+                  /compact - 压缩上下文
+                </h4>
+                <p class="text-sm text-purple-800 mb-3">
+                  保留对话摘要,删除详细内容,大幅减少 token
+                  占用。适合想保留任务历史但不需要完整细节的情况。
+                </p>
+                <div class="code-block">
+                  <code>
+                    # 使用场景<br>
+                    /compact # 压缩历史对话,保留摘要<br><br>
+
+                    # 对比:<br>
+                    # /clear: 完全删除历史,轻装上阵<br>
+                    # /compact: 保留任务脉络,减少 token
+                  </code>
+                </div>
+              </div>
+
+              <div class="border-l-4 border-green-500 pl-4 bg-green-50 p-4 rounded-r-lg">
+                <h4 class="font-semibold text-green-900 mb-2">
+                  快捷键: Escape - 中断操作
+                </h4>
+                <p class="text-sm text-green-800 mb-3">
+                  在 Claude 执行任务时按
+                  <code>Esc</code> 可立即中断,保留上下文并允许你重新指导方向。
+                </p>
+                <div class="code-block">
+                  <code>
+                    # 使用场景<br>
+                    # 1. Claude 理解错误,正在做无关的事 → 按 Esc 中断<br>
+                    # 2. 想补充更多指令 → 按 Esc,然后输入新指令<br>
+                    # 3. 发现更好的方案 → 按 Esc,调整方向<br><br>
+
+                    # 双击 Esc: 回退到历史某个节点,重新选择路径
+                  </code>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              上下文管理最佳实践
+            </h3>
+
+            <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-6 mb-6">
+              <h4 class="font-semibold text-gray-900 mb-4">
+                1. 养成定期清理习惯
+              </h4>
+              <ul class="space-y-2 text-gray-700 ml-4">
+                <li>• <strong>每次切换任务前</strong>: 执行 /clear</li>
+                <li>
+                  • <strong>长时间开发后</strong>: 每 1-2 小时执行 /compact
+                </li>
+                <li>• <strong>发现响应变慢时</strong>: 立即 /clear 重新开始</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-4">
+                2. 拆分大任务为小任务
+              </h4>
+              <p class="text-gray-700 mb-3">
+                与其让 Claude 一次性完成复杂功能,不如拆分成多个小步骤:
+              </p>
+              <div class="code-block">
+                <code>
+                  ❌ 不好的做法:<br>
+                  "帮我实现用户认证、权限管理、日志记录和邮件通知功能"<br><br>
+
+                  ✅ 推荐做法:<br>
+                  1. "先实现用户注册和登录" → 完成后 /clear<br>
+                  2. "添加基于角色的权限控制" → 完成后 /clear<br>
+                  3. "集成日志记录中间件" → 完成后 /clear<br>
+                  4. "实现邮件通知服务" → 完成后 /clear
+                </code>
+              </div>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-4">
+                3. 使用明确的任务描述
+              </h4>
+              <p class="text-gray-700 mb-3">
+                清晰的任务描述能让 Claude 更快理解意图,减少无效对话:
+              </p>
+              <div class="code-block">
+                <code>
+                  ❌ 模糊描述:<br>
+                  "优化一下这个组件"<br><br>
+
+                  ✅ 明确描述:<br>
+                  "优化 UserProfile 组件:<br>
+                  1. 提取重复的样式到 Tailwind 类<br>
+                  2. 使用 useMemo 缓存计算结果<br>
+                  3. 懒加载头像图片<br>
+                  4. 添加加载状态和错误处理"
+                </code>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 4: Workflow Techniques -->
+          <section id="workflow-techniques" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              4. 高效工作流技巧
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Code
+              的强大在于其自主性,但如何引导它高效工作,是一门艺术。以下是经过实战验证的工作流技巧。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              核心原则: 先计划,再执行
+            </h3>
+
+            <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 mb-6">
+              <h4 class="font-semibold text-purple-900 mb-3">
+                为什么要先让 Claude 制定计划?
+              </h4>
+              <p class="text-purple-800 mb-4">
+                让 Claude
+                直接动手写代码,容易出现方向偏差、遗漏边缘情况、代码结构混乱等问题。要求它先输出计划,你可以:
+              </p>
+              <ul class="space-y-2 text-purple-800 ml-4">
+                <li>• 提前发现理解偏差,及时纠正</li>
+                <li>• 评估技术方案的合理性</li>
+                <li>• 补充遗漏的需求和边缘情况</li>
+                <li>• 了解实现步骤,做到心中有数</li>
+              </ul>
+            </div>
+
+            <h4 class="font-semibold text-gray-900 mb-3">推荐工作流</h4>
+
+            <div class="space-y-4 mb-6">
+              <div class="flex items-start">
+                <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-4 flex-shrink-0">
+                  1
+                </div>
+                <div class="flex-1">
+                  <h5 class="font-semibold text-gray-900 mb-2">
+                    描述任务,要求制定计划
+                  </h5>
+                  <div class="code-block">
+                    <code>
+                      "我需要实现一个用户评论功能,包括发表评论、回复评论、点赞和举报。<br>
+                      请先制定详细的实现计划,包括:<br>
+                      1. 数据库 Schema 设计<br>
+                      2. API 端点设计<br>
+                      3. 前端组件结构<br>
+                      4. 需要考虑的边缘情况<br><br>
+
+                      <strong>在我确认计划后再开始编码。</strong>"
+                    </code>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-4 flex-shrink-0">
+                  2
+                </div>
+                <div class="flex-1">
+                  <h5 class="font-semibold text-gray-900 mb-2">
+                    审查计划,提出调整
+                  </h5>
+                  <div class="code-block">
+                    <code>
+                      "计划整体不错,但有几点需要调整:<br>
+                      1. Schema 中需要加上 isDeleted 字段支持软删除<br>
+                      2. API 需要添加分页和排序功能<br>
+                      3. 前端组件要支持无限滚动加载<br><br>
+
+                      请更新计划,然后开始实现。"
+                    </code>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-4 flex-shrink-0">
+                  3
+                </div>
+                <div class="flex-1">
+                  <h5 class="font-semibold text-gray-900 mb-2">
+                    Claude 自主执行,使用 TODO 跟踪进度
+                  </h5>
+                  <p class="text-gray-700 mb-2">
+                    Claude Code 内置了 TODO 列表功能,会自动创建和更新任务清单:
+                  </p>
+                  <div class="code-block">
+                    <code>
+                      # Claude 自动生成的 TODO 列表<br>
+                      [x] 创建评论数据库 Schema<br>
+                      [x] 实现评论 API - POST /api/comments<br>
+                      [>] 实现前端评论表单组件 # 正在进行<br>
+                      [ ] 添加单元测试<br>
+                      [ ] 集成到用户界面
+                    </code>
+                  </div>
+                  <p class="text-sm text-gray-600 mt-2">
+                    按 <code>Esc</code> 可以随时中断,查看进度或调整方向
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-4 flex-shrink-0">
+                  4
+                </div>
+                <div class="flex-1">
+                  <h5 class="font-semibold text-gray-900 mb-2">执行测试验证</h5>
+                  <div class="code-block">
+                    <code>
+                      "请运行以下测试确保功能正常:<br>
+                      1. npm run test<br>
+                      2. npm run lint<br>
+                      3. 手动测试: 创建评论、回复、点赞、举报<br><br>
+
+                      如果测试失败,请自动调试并修复。"
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              测试驱动开发(TDD)最佳实践
+            </h3>
+
+            <div class="bg-teal-50 rounded-lg p-6 mb-6">
+              <p class="text-teal-900 mb-4">
+                Claude Code 非常适合 TDD
+                工作流。让它先写测试,再实现功能,能大幅提升代码质量:
+              </p>
+              <div class="code-block">
+                <code>
+                  "使用 TDD 方式实现用户登录功能:<br>
+                  1. 先编写测试用例:<br>
+                  - 正确的用户名和密码应该登录成功<br>
+                  - 错误的密码应该返回 401<br>
+                  - 不存在的用户应该返回 404<br>
+                  - 缺少必填字段应该返回 400<br>
+                  2. 运行测试,确保失败(Red)<br>
+                  3. 实现最小化代码使测试通过(Green)<br>
+                  4. 重构代码,保持测试通过(Refactor)<br><br>
+
+                  每完成一个测试用例,都要运行 npm run test 验证。"
+                </code>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Git 工作流集成
+            </h3>
+
+            <div class="space-y-4">
+              <p class="text-gray-700">
+                Claude Code 可以自动执行 Git 操作,但建议保持人工审查:
+              </p>
+
+              <div class="code-block">
+                <code>
+                  # 推荐做法: 每完成一个功能模块就提交<br>
+                  "完成评论功能后,请:<br>
+                  1. 运行 git status 检查修改的文件<br>
+                  2. 生成一条清晰的 commit message<br>
+                  3. 不要自动提交,把 git add 和 commit 命令告诉我,我手动执行"<br><br>
+
+                  # 或者让 Claude 提交,但要求详细说明<br>
+                  "提交代码前,请先告诉我:<br>
+                  1. 修改了哪些文件<br>
+                  2. 主要改动内容<br>
+                  3. 建议的 commit message<br>
+                  我确认后你再执行 git commit"
+                </code>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5: Advanced Features -->
+          <section id="advanced-features" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              5. 高级功能与深度思考
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Code
+              内置了一些强大的高级功能,合理使用能解决更复杂的编程挑战。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Extended Thinking(深度思考模式)
+            </h3>
+
+            <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-6 mb-6">
+              <h4 class="font-semibold text-purple-900 mb-3">
+                什么是深度思考?
+              </h4>
+              <p class="text-purple-800 mb-4">
+                当任务特别复杂时,Claude
+                可以进入"深度思考"模式,分配更多计算资源进行推理。这类似于人类遇到难题时会花更多时间思考。
+              </p>
+
+              <h4 class="font-semibold text-purple-900 mb-3">
+                如何激活深度思考?
+              </h4>
+              <p class="text-purple-800 mb-3">
+                在提示词中使用"think"相关词汇,Claude 会自动调整思考深度:
+              </p>
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white rounded-lg p-4">
+                  <h5 class="font-semibold text-gray-900 mb-2">思考级别</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• <code>think</code> - 基础深度思考</li>
+                    <li>• <code>think hard</code> - 中等深度</li>
+                    <li>• <code>think harder</code> - 高深度</li>
+                    <li>• <code>ultrathink</code> - 最高深度</li>
+                  </ul>
+                </div>
+
+                <div class="bg-white rounded-lg p-4">
+                  <h5 class="font-semibold text-gray-900 mb-2">适用场景</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• 复杂算法设计</li>
+                    <li>• 架构重构方案</li>
+                    <li>• 性能优化策略</li>
+                    <li>• 安全漏洞分析</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block mb-6">
+              <code>
+                # 使用示例<br>
+                "这是一个复杂的分布式锁实现问题,涉及 Redis、Lua
+                脚本和并发控制。<br>
+                请 <strong>think harder</strong> 后给出最优方案,需要考虑:<br>
+                1. 死锁预防<br>
+                2. 锁超时处理<br>
+                3. 主从切换时的一致性<br>
+                4. 性能优化"<br><br>
+
+                # Claude 会进入深度思考模式,输出更详细的分析和方案
+              </code>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Checkpoint(检查点功能)
+            </h3>
+
+            <div class="bg-blue-50 rounded-lg p-6 mb-6">
+              <h4 class="font-semibold text-blue-900 mb-3">什么是检查点?</h4>
+              <p class="text-blue-800 mb-4">
+                检查点允许你在关键节点保存项目状态,如果后续出现问题,可以回滚到检查点重新开始,而不是从头再来。
+              </p>
+
+              <h4 class="font-semibold text-blue-900 mb-3">使用场景</h4>
+              <ul class="space-y-2 text-blue-800 ml-4">
+                <li>
+                  • <strong>尝试性重构</strong>:
+                  不确定方案是否可行,先打个检查点再试
+                </li>
+                <li>
+                  • <strong>多方案对比</strong>: 实现方案
+                  A,不满意就回滚,尝试方案 B
+                </li>
+                <li>
+                  • <strong>风险操作</strong>: 大规模删除或修改前,先保存检查点
+                </li>
+              </ul>
+            </div>
+
+            <div class="code-block mb-6">
+              <code>
+                # 使用示例<br>
+                "在开始重构数据库层之前,请创建一个检查点。<br>
+                如果重构后测试失败,我们可以回滚重新思考。"<br><br>
+
+                # Claude 会记住当前状态<br>
+                # 如果需要回滚:<br>
+                "回滚到重构前的检查点,我们换一种方案"
+              </code>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Memory Tools(记忆工具)
+            </h3>
+
+            <div class="bg-green-50 rounded-lg p-6 mb-6">
+              <h4 class="font-semibold text-green-900 mb-3">跨会话记忆</h4>
+              <p class="text-green-800 mb-4">
+                Claude Code
+                可以在不同会话之间记住项目偏好、历史决策和解决方案,避免重复回答同样的问题。
+              </p>
+
+              <h4 class="font-semibold text-green-900 mb-3">记忆的内容</h4>
+              <ul class="space-y-2 text-green-800 ml-4">
+                <li>• 你的编码偏好(如函数式 vs 面向对象)</li>
+                <li>• 项目特定的技术决策</li>
+                <li>• 过去遇到的问题和解决方法</li>
+                <li>• 你的工作流习惯</li>
+              </ul>
+            </div>
+
+            <div class="code-block mb-6">
+              <code>
+                # 第一次会话<br>
+                你: "我更喜欢使用函数式编程风格,优先使用 map/filter/reduce"<br>
+                Claude:
+                "好的,我会记住这个偏好,后续生成代码时会遵循函数式风格"<br><br>
+
+                # 下次会话,Claude 会自动应用这个偏好<br>
+                # 无需再次说明
+              </code>
+            </div>
+          </section>
+
+          <!-- Section 6: Custom Commands -->
+          <section id="custom-commands" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              6. 自定义命令与自动化
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Code
+              支持自定义命令,你可以把常用的操作流程封装成命令,一键触发,大幅提升效率。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              自定义命令目录结构
+            </h3>
+
+            <div class="code-block mb-6">
+              <code>
+                # 用户级命令(所有项目通用)<br>
+                ~/.claude/commands/<br>
+                ├── review.md # /user:review<br>
+                ├── refactor.md # /user:refactor<br>
+                └── optimize.md # /user:optimize<br><br>
+
+                # 项目级命令(仅当前项目)<br>
+                your-project/.claude/commands/<br>
+                ├── test.md # /project:test<br>
+                ├── deploy.md # /project:deploy<br>
+                └── migrate.md # /project:migrate
+              </code>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              自定义命令示例
+            </h3>
+
+            <div class="space-y-6">
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  示例 1: 代码审查命令
+                </h4>
+                <p class="text-gray-700 mb-2">
+                  文件: <code>~/.claude/commands/review.md</code>
+                </p>
+                <div class="code-block">
+                  <code>
+                    请对当前更改的代码进行全面审查,检查以下方面:<br><br>
+
+                    1. **代码质量**<br>
+                    - 是否遵循项目代码风格<br>
+                    - 变量命名是否清晰<br>
+                    - 函数是否符合单一职责原则<br><br>
+
+                    2. **潜在 Bug**<br>
+                    - 边缘情况处理<br>
+                    - 错误处理是否完善<br>
+                    - 空值/undefined 检查<br><br>
+
+                    3. **性能优化**<br>
+                    - 是否存在不必要的重复计算<br>
+                    - 数据库查询是否优化<br>
+                    - 是否可以使用缓存<br><br>
+
+                    4. **安全性**<br>
+                    - 输入验证<br>
+                    - SQL 注入风险<br>
+                    - XSS 攻击防护<br><br>
+
+                    5. **测试覆盖**<br>
+                    - 是否有对应的单元测试<br>
+                    - 测试用例是否覆盖主要场景<br><br>
+
+                    请给出具体的改进建议和修改后的代码。
+                  </code>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                  使用方法: <code>/user:review</code>
+                </p>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  示例 2: 自动化测试命令
+                </h4>
+                <p class="text-gray-700 mb-2">
+                  文件: <code>.claude/commands/test.md</code>
+                </p>
+                <div class="code-block">
+                  <code>
+                    执行完整的测试流程:<br><br>
+
+                    1. 运行单元测试<br>
+                    ```bash<br>
+                    npm run test<br>
+                    ```<br><br>
+
+                    2. 运行 ESLint<br>
+                    ```bash<br>
+                    npm run lint<br>
+                    ```<br><br>
+
+                    3. 检查测试覆盖率<br>
+                    ```bash<br>
+                    npm run test:coverage<br>
+                    ```<br><br>
+
+                    4. 如果有测试失败:<br>
+                    - 分析失败原因<br>
+                    - 自动修复可修复的问题<br>
+                    - 报告无法自动修复的问题<br><br>
+
+                    5. 生成测试报告摘要
+                  </code>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                  使用方法: <code>/project:test</code>
+                </p>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  示例 3: 性能优化命令
+                </h4>
+                <p class="text-gray-700 mb-2">
+                  文件: <code>~/.claude/commands/optimize.md</code>
+                </p>
+                <div class="code-block">
+                  <code>
+                    分析并优化当前文件的性能:<br><br>
+
+                    1. **识别性能瓶颈**<br>
+                    - 检查不必要的重复渲染(React)<br>
+                    - 查找 O(n²) 或更高复杂度的算法<br>
+                    - 定位大对象的深拷贝操作<br><br>
+
+                    2. **优化建议**<br>
+                    - 使用 useMemo/useCallback 缓存计算结果<br>
+                    - 优化循环和递归<br>
+                    - 使用懒加载和代码分割<br>
+                    - 数据库查询优化(添加索引、减少 JOIN)<br><br>
+
+                    3. **实施优化**<br>
+                    - 应用优化后的代码<br>
+                    - 保持功能不变<br>
+                    - 添加性能测试用例<br><br>
+
+                    4. **对比报告**<br>
+                    - 优化前后的性能对比<br>
+                    - 预期性能提升百分比
+                  </code>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                  使用方法: <code>/user:optimize</code>
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-6 my-6">
+              <h4 class="font-semibold text-amber-900 mb-2">
+                💡 自定义命令最佳实践
+              </h4>
+              <ul class="space-y-2 text-amber-800 ml-4">
+                <li>
+                  • <strong>用户级命令</strong>: 放通用的、跨项目的操作(如
+                  review、refactor)
+                </li>
+                <li>
+                  • <strong>项目级命令</strong>: 放项目特定的流程(如
+                  deploy、migrate)
+                </li>
+                <li>
+                  • <strong>命名清晰</strong>: 使用动词开头,如
+                  review、test、deploy
+                </li>
+                <li>
+                  • <strong>结构化提示词</strong>: 使用 Markdown
+                  格式,包含明确的步骤和要求
+                </li>
+                <li>
+                  • <strong>版本控制</strong>: 项目级命令提交到 Git,团队共享
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Section 7: China Solution -->
+          <section id="china-solution" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              7. 国内稳定使用方案
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              掌握了 Claude Code
+              的所有技巧,却因为网络限制、支付障碍、账户风险而无法使用?<strong>GACCode</strong>
+              为国内开发者提供了完美的解决方案。
+            </p>
+
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 mb-6">
+              <h3 class="font-semibold text-red-900 mb-3">
+                🚨 国内用户面临的核心问题
+              </h3>
+              <ul class="space-y-2 text-red-800">
+                <li>
+                  <strong>网络限制</strong>: Claude
+                  官方服务在国内无法直接访问,需要稳定的科学上网工具
+                </li>
+                <li>
+                  <strong>支付障碍</strong>:
+                  仅支持国际信用卡,国内银行卡和支付宝/微信无法使用
+                </li>
+                <li>
+                  <strong>账户降额风险</strong>: 官方对异常 IP
+                  和使用模式有严格检测,容易导致账户额度降低或封号
+                </li>
+                <li>
+                  <strong>服务不稳定</strong>: 即使通过 VPN
+                  访问,也经常遇到连接超时、响应缓慢等问题
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 my-8">
+              <h3 class="text-2xl font-bold text-blue-900 mb-6 text-center">
+                💎 GACCode：国内开发者的最佳选择
+              </h3>
+
+              <p class="text-blue-800 mb-6 text-center text-lg">
+                专为国内开发者打造的 Claude Code 稳定中转服务<br>
+                <strong>无需科学上网,即买即用,完整支持所有最新功能</strong>
+              </p>
+
+              <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white rounded-lg p-6 text-center">
+                  <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-bold text-gray-900 mb-2">国内直连</h4>
+                  <p class="text-sm text-gray-700">
+                    无需科学上网<br>
+                    稳定快速响应
+                  </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 text-center">
+                  <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-bold text-gray-900 mb-2">支付便捷</h4>
+                  <p class="text-sm text-gray-700">
+                    支持微信/支付宝<br>
+                    无需国际信用卡
+                  </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 text-center">
+                  <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-bold text-gray-900 mb-2">账户稳定</h4>
+                  <p class="text-sm text-gray-700">
+                    避免降额封号<br>
+                    长期稳定保障
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg p-6 mb-6">
+                <h4 class="text-lg font-bold text-gray-900 mb-4">核心优势</h4>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <ul class="space-y-2 text-gray-700">
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span><strong>完整功能支持:</strong>Claude Sonnet 4.5
+                          所有新功能全面可用</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span><strong>MCP 集成:</strong>完全支持 Claude Code 的 MCP
+                          工具生态</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span><strong>即买即用:</strong>购买后立即激活,无需等待审核</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <ul class="space-y-2 text-gray-700">
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span><strong>企业级稳定性:</strong>99.9%
+                          服务可用性保障</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span><strong>专业技术支持:</strong>7x24
+                          小时中文客服响应</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span><strong>灵活套餐:</strong>从日卡到企业定制,满足不同需求</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-6 text-white">
+                <h4 class="text-xl font-bold mb-4 text-center">
+                  快速开始三步骤
+                </h4>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-white text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+                      1
+                    </div>
+                    <p class="font-semibold mb-2">购买兑换码</p>
+                    <p class="text-sm opacity-90">
+                      访问
+                      <a href="index.html" class="underline">GACCode</a><br>
+                      联系客服微信 <strong>caicats</strong>
+                    </p>
+                  </div>
+
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-white text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+                      2
+                    </div>
+                    <p class="font-semibold mb-2">激活兑换码</p>
+                    <p class="text-sm opacity-90">
+                      前往
+                      <a href="https://gaccode.com/signup?ref=19EOB4I5" class="underline">gaccode.com</a><br>
+                      输入兑换码完成激活
+                    </p>
+                  </div>
+
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-white text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+                      3
+                    </div>
+                    <p class="font-semibold mb-2">开始使用</p>
+                    <p class="text-sm opacity-90">
+                      安装 Claude Code<br>
+                      使用 GACCode 账号登录
+                    </p>
+                  </div>
+                </div>
+
+                <div class="mt-6 flex flex-wrap justify-center gap-3">
+                  <a href="index.html#products" class="inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-lg hover:bg-gray-100 font-semibold transition-all duration-200">
+                    查看套餐详情
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="share.html" class="inline-flex items-center px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold transition-all duration-200">
+                    免费体验
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-teal-50 border-l-4 border-teal-500 p-6 my-6">
+              <h4 class="font-semibold text-teal-900 mb-2">
+                💡 为什么选择 GACCode?
+              </h4>
+              <p class="text-teal-800 mb-3">
+                相比官方直接订阅或其他科学上网方案,通过 GACCode 可以获得:
+              </p>
+              <ul class="space-y-2 text-teal-800 ml-4">
+                <li>
+                  •
+                  <strong>更稳定的服务:</strong>专业团队维护,避免官方账户政策变动和降额风险
+                </li>
+                <li>
+                  •
+                  <strong>更灵活的支付:</strong>支持微信、支付宝等国内主流支付方式,无需国际信用卡
+                </li>
+                <li>
+                  • <strong>更快的响应:</strong>国内优化线路,响应速度提升
+                  30%-50%
+                </li>
+                <li>
+                  • <strong>更好的支持:</strong>中文客服团队,7x24
+                  小时快速解决使用问题
+                </li>
+                <li>
+                  •
+                  <strong>企业级保障:</strong>支持发票、合同签约,满足企业采购和报销需求
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Conclusion -->
+          <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">总结</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Code
+              的强大不仅在于其技术能力,更在于你如何使用它。掌握本文介绍的最佳实践——从
+              CLAUDE.md
+              配置到权限管理,从上下文优化到工作流技巧,从深度思考到自定义命令——你将把
+              Claude Code 的效能发挥到极致。
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              记住这些核心原则:
+            </p>
+            <ul class="space-y-2 text-gray-700 ml-6 mb-4">
+              <li>
+                • <strong>配置先行</strong>: 写好 CLAUDE.md,让 Claude
+                理解项目规范
+              </li>
+              <li>• <strong>安全第一</strong>: 合理设置权限,保护敏感文件</li>
+              <li>
+                • <strong>上下文清理</strong>: 定期使用 /clear 和
+                /compact,保持高效
+              </li>
+              <li>
+                • <strong>计划后行动</strong>: 先让 Claude 制定计划,确认后再执行
+              </li>
+              <li>
+                • <strong>善用高级功能</strong>: Extended
+                Thinking、Checkpoint、Memory Tools 解决复杂问题
+              </li>
+              <li>
+                • <strong>自动化流程</strong>: 封装常用操作为自定义命令,提升效率
+              </li>
+            </ul>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              对于国内开发者,<strong>GACCode</strong>
+              解决了所有访问障碍,让你无需科学上网、无需国际信用卡,即可稳定使用
+              Claude Code 的所有最新功能。立即访问
+              <a href="index.html" class="text-blue-600 hover:underline font-semibold">GACCode</a>,体验 AI 编程的全部威力!
+            </p>
+          </section>
+        </div>
+
+        <!-- Author Info & CTA -->
+        <div class="p-8 bg-gray-50 border-t border-gray-200">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold">GAC</span>
+              </div>
+              <div class="ml-4">
+                <h3 class="font-semibold text-gray-900">官方邮箱 gaccode@163.com 订阅后</h3>
+                <p class="text-sm text-gray-600">专业的 Claude Code 技术团队</p>
+              </div>
+            </div>
+            <a href="index.html#products" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors">
+              立即购买
+            </a>
+          </div>
+          <p class="text-gray-700">
+            如果这篇文章对您有帮助,欢迎分享给更多需要的开发者。有任何问题或需求,欢迎联系客服微信
+            <strong>caicats</strong> 或访问
+            <a href="index.html" class="text-blue-600 hover:underline">GACCode</a>
+            了解更多。
+          </p>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="p-8 border-t border-gray-200">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">相关文章推荐</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <a href="claude-code-comprehensive-guide.html" class="group block p-4 border border-gray-200 rounded-lg hover:border-blue-500 transition-all">
+              <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 mb-2">
+                Claude Code 完全使用指南：从安装到精通
+              </h4>
+              <p class="text-sm text-gray-600">
+                最全面的 Claude Code 使用教程,涵盖安装、MCP 集成和高级技巧
+              </p>
+            </a>
+            <a href="why-claude-code-beats-cursor-copilot-windsurf.html" class="group block p-4 border border-gray-200 rounded-lg hover:border-blue-500 transition-all">
+              <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 mb-2">
+                Claude Code 完胜 Cursor、Copilot、Windsurf？2025 最全对比实测
+              </h4>
+              <p class="text-sm text-gray-600">
+                深度对比四大 AI 编程工具的代码质量、自主能力和成本效益
+              </p>
+            </a>
+            <a href="claude-sonnet-4-5-comprehensive-guide.html" class="group block p-4 border border-gray-200 rounded-lg hover:border-blue-500 transition-all">
+              <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 mb-2">
+                Claude Sonnet 4.5 全面解读：30小时自主编码,编程新王降临
+              </h4>
+              <p class="text-sm text-gray-600">
+                深度解析 Claude Sonnet 4.5 的革命性功能和性能表现
+              </p>
+            </a>
+            <a href="gaccode-package-comparison.html" class="group block p-4 border border-gray-200 rounded-lg hover:border-blue-500 transition-all">
+              <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 mb-2">
+                GACCode 套餐对比与选择指南
+              </h4>
+              <p class="text-sm text-gray-600">
+                详细对比各套餐差异,帮助您选择最合适的方案
+              </p>
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold">GAC</span>
+              </div>
+              <span class="text-xl font-bold">官方邮箱 gaccode@163.com 订阅后</span>
+            </div>
+            <p class="text-gray-400">
+              专业的 GACCode 技术团队,为开发者提供安全、便捷、稳定的 Claude Code
+              服务。
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="index.html#products" class="hover:text-white transition-colors">日卡套餐</a>
+              </li>
+              <li>
+                <a href="index.html#products" class="hover:text-white transition-colors">月卡套餐</a>
+              </li>
+              <li>
+                <a href="index.html#products" class="hover:text-white transition-colors">企业定制</a>
+              </li>
+              <li>
+                <a href="share.html" class="hover:text-white transition-colors">免费体验</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">技术资源</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="posts.html" class="hover:text-white transition-colors">技术文章</a>
+              </li>
+              <li>
+                <a href="what-is-gaccode.html" class="hover:text-white transition-colors">什么是GACCode</a>
+              </li>
+              <li>
+                <a href="gaccode-faq.html" class="hover:text-white transition-colors">常见问题</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="index.html#contact" class="hover:text-white transition-colors">客服支持</a>
+              </li>
+              <li>
+                <a href="about.html" class="hover:text-white transition-colors">关于我们</a>
+              </li>
+          </ul></div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 官方邮箱 gaccode@163.com 订阅后. 保留所有权利。</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+  <script defer src="static/js/v8c78df7c7c0f484497ecbca7046644da1771523124516.js" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0609a436c77044e68b7153f24036675e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

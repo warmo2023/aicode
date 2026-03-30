@@ -1,0 +1,850 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Claude Code 代码审查与批量文件处理新手教程：从入门到实战（2025版）| 官方邮箱 gaccode@163.com 订阅后
+    </title>
+    <meta name="description" content="基于 Anthropic 官方文档和 SmartScope 权威教程，详解 Claude Code 的代码自动审查和批量文件处理功能。涵盖 security-review 命令、GitHub Actions 集成、并行处理等实战技巧，帮助新手快速上手 AI 代码审查工具。">
+    <meta name="keywords" content="Claude Code代码审查,Claude Code批量处理,security-review命令,自动化代码审查,批量文件编辑,GitHub Actions集成,代码安全扫描,AI代码审查工具,GACCode,并行处理,Hooks自动化">
+    <meta name="author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Claude Code 代码审查与批量文件处理新手教程：从入门到实战（2025版）">
+    <meta property="og:description" content="基于权威文档详解 Claude Code 代码审查和批量处理功能，包含实战案例和最佳实践。">
+    <meta property="og:url" content="https://GACCode/post/claude-code-review-batch-processing-tutorial">
+    <meta property="og:site_name" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2025-01-02T10:00:00+08:00">
+    <meta property="article:modified_time" content="2025-01-02T10:00:00+08:00">
+    <meta property="article:author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="article:section" content="技术教程">
+    <meta property="article:tag" content="Claude Code">
+    <meta property="article:tag" content="代码审查">
+    <meta property="article:tag" content="批量处理">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Code 代码审查与批量文件处理新手教程（2025版）">
+    <meta name="twitter:description" content="基于权威文档详解 Claude Code 代码审查和批量处理功能，包含实战案例和最佳实践。">
+    <meta name="msvalidate.01" content="7F5A4F41F59B7840336A1530F6D3474E">
+    <link rel="icon" href="https://GACCode/img/logo.webp">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://GACCode/post/claude-code-review-batch-processing-tutorial">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Claude Code 代码审查与批量文件处理新手教程：从入门到实战（2025版）",
+        "description": "基于 Anthropic 官方文档和 SmartScope 权威教程，详解 Claude Code 的代码自动审查和批量文件处理功能。",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://GACCode/img/claude-code-review-batch-processing.webp",
+          "width": 1200,
+          "height": 630
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "url": "https://GACCode"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://GACCode/img/logo.webp"
+          }
+        },
+        "datePublished": "2025-01-02T10:00:00+08:00",
+        "dateModified": "2025-01-02T10:00:00+08:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://GACCode/post/claude-code-review-batch-processing-tutorial"
+        }
+      }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="static/js/js.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#64748b",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- 右侧分享挂件 -->
+    <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 space-y-3">
+      <div class="group relative">
+        <button onclick="openWechatModal()" class="w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+          <svg t="1754325230831" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1687" width="128" height="128">
+            <path d="M337.387283 341.82659c-17.757225 0-35.514451 11.83815-35.514451 29.595375s17.757225 29.595376 35.514451 29.595376 29.595376-11.83815 29.595376-29.595376c0-18.49711-11.83815-29.595376-29.595376-29.595375zM577.849711 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763zM501.641618 401.017341c17.757225 0 29.595376-12.578035 29.595376-29.595376 0-17.757225-11.83815-29.595376-29.595376-29.595375s-35.514451 11.83815-35.51445 29.595375 17.757225 29.595376 35.51445 29.595376zM706.589595 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763z" fill="#28C445" p-id="1688"></path>
+            <path d="M510.520231 2.959538C228.624277 2.959538 0 231.583815 0 513.479769s228.624277 510.520231 510.520231 510.520231 510.520231-228.624277 510.520231-510.520231-228.624277-510.520231-510.520231-510.520231zM413.595376 644.439306c-29.595376 0-53.271676-5.919075-81.387284-12.578034l-81.387283 41.433526 22.936416-71.768786c-58.450867-41.433526-93.965318-95.445087-93.965317-159.815029 0-113.202312 105.803468-201.988439 233.803468-201.98844 114.682081 0 216.046243 71.028902 236.023121 166.473989-7.398844-0.739884-14.797688-1.479769-22.196532-1.479769-110.982659 1.479769-198.289017 85.086705-198.289017 188.67052 0 17.017341 2.959538 33.294798 7.398844 49.572255-7.398844 0.739884-15.537572 1.479769-22.936416 1.479768z m346.265896 82.867052l17.757225 59.190752-63.630058-35.514451c-22.936416 5.919075-46.612717 11.83815-70.289017 11.83815-111.722543 0-199.768786-76.947977-199.768786-172.393063-0.739884-94.705202 87.306358-171.653179 198.289017-171.65318 105.803468 0 199.028902 77.687861 199.028902 172.393064 0 53.271676-34.774566 100.624277-81.387283 136.138728z" fill="#28C445" p-id="1689"></path>
+          </svg>
+        </button>
+        <div class="absolute right-14 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-80 text-white px-4 py-3 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div class="text-center">
+            <div class="mb-2">客服微信</div>
+            <img src="static/picture/qrcode_new2.webp" class="w-32 rounded mx-auto" alt="微信二维码">
+          </div>
+          <div class="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-black bg-opacity-80 rotate-45"></div>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">GAC</span>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-800">
+                GACCode 订阅购买
+              </div>
+            </div>
+          </a>
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <!-- 产品服务 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                产品服务
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="index.html#products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐价格</a>
+                  <a href="about.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">关于我们</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 使用教程 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                使用教程
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="posts.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">全部文章</a>
+                  <a href="index.html#faq" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">常见问题</a>
+                </div>
+              </div>
+            </div>
+
+            <a href="share.html" class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200">合伙推广</a>
+            <a href="free.html" class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200">免费使用</a>
+            <a href="index.html#contact" class="ml-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-200">立即购买</a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-3">
+          <div class="flex flex-col space-y-2">
+            <a href="index.html#products" class="px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">套餐价格</a>
+            <a href="posts.html" class="px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">使用教程</a>
+            <a href="about.html" class="px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">关于我们</a>
+            <a href="index.html#faq" class="px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">常见问题</a>
+            <a href="share.html" class="px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">合伙推广</a>
+            <a href="free.html" class="px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">免费使用</a>
+            <a href="index.html#contact" class="px-3 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg text-center">立即购买</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12 max-w-4xl">
+      <!-- Breadcrumb -->
+      <nav class="mb-8 text-sm text-gray-600">
+        <a href="index.html" class="hover:text-blue-600">首页</a>
+        <span class="mx-2">/</span>
+        <a href="posts.html" class="hover:text-blue-600">文章</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-900">Claude Code 代码审查与批量文件处理新手教程</span>
+      </nav>
+
+      <!-- Article Header -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-8 md:p-12">
+          <div class="mb-6">
+            <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-50 rounded-full mb-4">
+              技术教程
+            </span>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Claude Code 代码审查与批量文件处理新手教程：从入门到实战（2025版）
+            </h1>
+            <div class="flex items-center text-sm text-gray-600 space-x-4">
+              <span>发布时间：2025-01-02</span>
+              <span>•</span>
+              <span>阅读时间：约 12 分钟</span>
+            </div>
+          </div>
+
+        <!-- Table of Contents -->
+        <div class="p-8 bg-gray-50 border-b border-gray-200">
+          <h2 class="text-lg font-semibold text-gray-900 mb-4">文章目录</h2>
+          <nav class="space-y-2">
+            <a href="#intro" class="block text-blue-600 hover:text-blue-800 transition-colors">为什么需要自动化代码审查和批量处理</a>
+            <a href="#security-review" class="block text-blue-600 hover:text-blue-800 transition-colors">一、代码审查功能详解：/security-review 命令</a>
+            <a href="#github-actions" class="block text-blue-600 hover:text-blue-800 transition-colors">二、GitHub Actions 自动化集成</a>
+            <a href="#batch-processing" class="block text-blue-600 hover:text-blue-800 transition-colors">三、批量文件处理基础</a>
+            <a href="#advanced-batch" class="block text-blue-600 hover:text-blue-800 transition-colors">四、高级批量处理技术</a>
+            <a href="#real-scenarios" class="block text-blue-600 hover:text-blue-800 transition-colors">五、实战场景演练</a>
+            <a href="#best-practices" class="block text-blue-600 hover:text-blue-800 transition-colors">六、最佳实践和注意事项</a>
+            <a href="#enterprise" class="block text-blue-600 hover:text-blue-800 transition-colors">七、企业级应用</a>
+            <a href="#conclusion" class="block text-blue-600 hover:text-blue-800 transition-colors">总结</a>
+            <a href="#resources" class="block text-blue-600 hover:text-blue-800 transition-colors">参考资源</a>
+          </nav>
+        </div>
+
+          <!-- Article Content -->
+          <div class="prose prose-lg max-w-none p-8">
+            <h2 id="intro" class="text-2xl font-bold text-gray-900 mb-6 mt-8">为什么需要自动化代码审查和批量处理</h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              随着 AI 辅助编程工具的普及，代码生成速度大幅提升，但同时也带来了新的安全挑战。Anthropic 在 2025 年 8 月的报告中指出，AI 生成的代码漏洞数量正在激增，包括 SQL 注入、跨站脚本攻击（XSS）、身份验证缺陷等常见安全问题。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              手动代码审查耗时耗力，难以覆盖所有潜在风险。而 Claude Code 推出的自动化代码审查和批量文件处理功能，恰好解决了这一痛点。根据 Graphite 的案例研究，使用 Claude 进行代码审查可以<strong>将审查速度提升 40 倍</strong>。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              对于需要稳定、长期使用 Claude Code 的开发者，建议通过 <a href="index.html" target="_blank" rel="noopener">GACCode</a> 等可靠的第三方服务商订阅，可以避免官方账户政策变动（如降额、封号）带来的影响，同时支持更灵活的支付方式。
+            </p>
+
+            <h2 id="security-review" class="text-2xl font-bold text-gray-900 mb-6 mt-8">一、代码审查功能详解：/security-review 命令</h2>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">1.1 核心功能</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Code 在 2025 年 8 月推出了 <code>/security-review</code> 命令，这是一个终端直接运行的安全扫描工具。开发者只需在终端输入 10 个字符的命令，就能启动 AI 智能体对代码进行全面的安全审查。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>可检测的漏洞类型包括：</strong></p>
+            <ul class="list-disc list-inside space-y-2 ml-6">
+              <li><strong>SQL 注入</strong>：检测未参数化的数据库查询</li>
+              <li><strong>跨站脚本攻击（XSS）</strong>：识别未转义的用户输入</li>
+              <li><strong>身份验证缺陷</strong>：发现弱密码策略、会话管理问题</li>
+              <li><strong>不安全的数据处理</strong>：检测敏感数据泄露风险</li>
+              <li><strong>依赖项漏洞</strong>：扫描过时或存在已知漏洞的第三方库</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">1.2 基本使用方法</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>步骤 1：在项目根目录运行命令</strong></p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>claude /security-review</code></pre>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>步骤 2：Claude Code 自动扫描代码</strong></p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              命令执行后，Claude 会自动遍历项目文件，识别潜在的安全问题，并在终端中生成详细报告。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>步骤 3：查看并修复问题</strong></p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              扫描完成后，你可以直接询问 Claude："帮我自动修复这些安全问题"，Claude 会根据最佳实践自动重写代码，并解释每处修改的原因。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">1.3 真实案例：发现 DNS Rebinding 漏洞</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Anthropic 团队在内部使用 <code>/security-review</code> 时，曾发现一个严重的远程代码执行漏洞。该漏洞可通过 DNS rebinding 攻击触发，在代码合并到主分支前被成功拦截。
+            </p>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
+              <p class="text-blue-900 font-semibold">💡 最佳实践建议</p>
+              <p class="text-blue-800 mt-2">
+                将 <code>/security-review</code> 集成到 Git 的 pre-commit 钩子中，确保每次提交前自动运行安全扫描。这能在"内部开发循环"阶段就发现问题，修复成本最低。
+              </p>
+            </div>
+
+            <h2 id="github-actions" class="text-2xl font-bold text-gray-900 mb-6 mt-8">二、GitHub Actions 自动化集成</h2>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">2.1 为什么需要 CI/CD 集成</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              手动运行 <code>/security-review</code> 虽然方便,但容易遗忘。通过 GitHub Actions 自动化，可以确保每个 Pull Request 都经过基线安全审查，避免漏洞进入生产环境。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">2.2 配置步骤</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>步骤 1：安装 Claude Code GitHub Action</strong></p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              访问 <a href="https://github.com/anthropics/claude-code-action" target="_blank" rel="noopener">GitHub 官方仓库</a>，按照文档安装 Action。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>步骤 2：创建工作流文件</strong></p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">在项目中创建 <code>.github/workflows/security-review.yml</code>：</p>
+
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>name: Claude Security Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  security-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: anthropics/claude-code-action@v1
+        with:
+          command: /security-review
+          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          post-comments: true</code></pre>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>步骤 3：配置 API 密钥</strong></p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              在 GitHub 仓库设置中添加 <code>ANTHROPIC_API_KEY</code> 环境变量。如果使用 <a href="index.html" target="_blank" rel="noopener">GACCode</a> 订阅服务，可以获取稳定的企业级 API 密钥，避免官方 API 限流问题。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">2.3 自动化审查效果</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              配置完成后，每次提交 Pull Request 时，Claude Code 会自动：
+            </p>
+            <ul class="list-disc list-inside space-y-2 ml-6">
+              <li>扫描新增和修改的代码</li>
+              <li>在 PR 中以行内评论形式标注安全问题</li>
+              <li>提供修复建议和代码示例</li>
+              <li>生成安全审查摘要报告</li>
+            </ul>
+
+            <h2 id="batch-processing" class="text-2xl font-bold text-gray-900 mb-6 mt-8">三、批量文件处理基础</h2>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">3.1 基本批量命令</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Code 支持通过 <code>--batch-files</code> 标志批量处理多个文件。这在代码重构、格式统一、批量审查等场景下非常实用。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>示例 1：批量检查 JavaScript 文件的 ESLint 合规性</strong></p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>claude --batch-files src/*.js "检查所有 JavaScript 文件是否符合 ESLint 规范"</code></pre>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>示例 2：批量添加文件头注释</strong></p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>claude --batch-files src/**/*.py "为所有 Python 文件添加 MIT 许可证头部注释"</code></pre>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">3.2 管道操作与日志分析</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Code 支持 Unix 管道操作，可以直接处理日志文件、标准输出等。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>示例：分析错误日志</strong></p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>cat error.log | claude -p "总结日志中的关键错误，并按严重程度排序"</code></pre>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>示例：处理 Git Diff 输出</strong></p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>git diff main | claude -p "分析本次代码变更的潜在风险"</code></pre>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">3.3 JSON 输出格式化</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              使用 <code>--output-format json</code> 可以将结果输出为 JSON 格式，方便后续自动化处理或集成到 CI/CD 管道。
+            </p>
+
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>claude -p "检查代码安全问题" --output-format json --max-turns 3 > security_report.json</code></pre>
+
+            <h2 id="advanced-batch" class="text-2xl font-bold text-gray-900 mb-6 mt-8">四、高级批量处理技术</h2>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">4.1 并行处理：GNU Parallel 集成</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              对于大型项目，串行处理文件效率较低。通过 GNU Parallel 可以实现并发处理，显著提升速度。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>安装 GNU Parallel</strong>（macOS）：</p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>brew install parallel</code></pre>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>并行处理示例：</strong></p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>find src -name "*.py" | parallel -j 4 'claude -p "优化此文件的代码质量" {} > optimized/{}'</code></pre>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              上述命令会使用 4 个并行任务同时处理 Python 文件，处理后的结果保存到 <code>optimized/</code> 目录。
+            </p>
+
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 my-6">
+              <p class="text-yellow-900 font-semibold">⚠️ 注意事项</p>
+              <p class="text-yellow-800 mt-2">
+                并行处理会消耗更多 API 配额。如果使用官方订阅，可能会遇到速率限制。<a href="index.html" target="_blank" rel="noopener">GACCode</a> 提供更高的并发配额和更快的响应速度，适合企业级批量处理需求。
+              </p>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">4.2 Hooks 自动化：Pre/Post 处理</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              SmartScope 教程中介绍了通过 Hooks 机制实现文件处理的自动化。Hooks 可以在文件编辑前后自动执行指定操作。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>应用场景：</strong></p>
+            <ul class="list-disc list-inside space-y-2 ml-6">
+              <li><strong>Pre-edit Hook</strong>：编辑前备份文件、运行语法检查</li>
+              <li><strong>Post-edit Hook</strong>：编辑后自动格式化（如 Black、Prettier）、运行单元测试</li>
+            </ul>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>Python 文件自动格式化示例：</strong></p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code># 在 .claude/hooks/post-edit.sh 中配置
+#!/bin/bash
+if [[ $FILE_PATH == *.py ]]; then
+  black $FILE_PATH
+  echo "已使用 Black 格式化 $FILE_PATH"
+fi</code></pre>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">4.3 非交互模式配置</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              批量处理时，不希望 Claude 每次都询问确认。使用 <code>--auto-approve</code> 和 <code>--batch</code> 模式可以实现完全自动化。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>完全自动化批量审查：</strong></p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>claude -p "审查代码安全问题" \
+  --auto-approve \
+  --batch \
+  --output-format json \
+  --allowedTools Read,Grep,Glob \
+  --max-turns 3 > security_report.json</code></pre>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>参数说明：</strong></p>
+            <ul class="list-disc list-inside space-y-2 ml-6">
+              <li><code>--auto-approve</code>：自动批准所有工具执行</li>
+              <li><code>--batch</code>：非交互批量模式</li>
+              <li><code>--allowedTools</code>：限制允许使用的工具（安全考虑）</li>
+              <li><code>--max-turns 3</code>：限制最大交互轮次，避免无限循环</li>
+            </ul>
+
+            <h2 id="real-scenarios" class="text-2xl font-bold text-gray-900 mb-6 mt-8">五、实战场景演练</h2>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">场景 1：批量 ESLint 合规性检查</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>任务</strong>：检查项目中所有 JavaScript 文件是否符合 ESLint 规范，并生成报告。</p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>命令</strong>：</p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>claude --batch-files "src/**/*.js" \
+  -p "检查每个文件的 ESLint 违规项，列出文件路径和具体问题" \
+  --output-format json > eslint_report.json</code></pre>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">场景 2：多文件安全扫描</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>任务</strong>：扫描 API 路由文件，检测 SQL 注入和身份验证漏洞。</p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>命令</strong>：</p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>claude --batch-files "routes/**/*.js" \
+  -p "检测 SQL 注入、身份验证缺陷、未验证的用户输入" \
+  --auto-approve \
+  --output-format json > api_security_scan.json</code></pre>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">场景 3：Python 文件格式化</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>任务</strong>：批量格式化 Python 文件，确保符合 PEP 8 规范。</p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>命令</strong>：</p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>find src -name "*.py" | parallel -j 4 \
+  'claude -p "将此文件格式化为符合 PEP 8 规范的代码，保存到原文件" {}'</code></pre>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">场景 4：自动化代码质量报告生成</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>任务</strong>：生成项目整体代码质量报告，包括复杂度分析、重复代码检测、潜在 Bug。</p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>命令</strong>：</p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>claude -p "分析项目代码质量，包括：
+1. 圈复杂度高的函数（>10）
+2. 重复代码片段
+3. 潜在的性能瓶颈
+4. 代码可维护性评分
+
+生成 Markdown 格式报告" \
+  --batch \
+  --output-format json > code_quality_report.json</code></pre>
+
+            <h2 id="best-practices" class="text-2xl font-bold text-gray-900 mb-6 mt-8">六、最佳实践和注意事项</h2>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">6.1 批量大小优化</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              根据 SmartScope 的建议，批量处理时应根据资源情况调整批次大小：
+            </p>
+
+            <ul class="list-disc list-inside space-y-2 ml-6">
+              <li><strong>小型项目（&lt;100 文件）</strong>：可一次性处理所有文件</li>
+              <li><strong>中型项目（100-500 文件）</strong>：建议分批处理，每批 50-100 个文件</li>
+              <li><strong>大型项目（&gt;500 文件）</strong>：使用并行处理，每批 20-30 个文件</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">6.2 超时配置</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              为避免长时间挂起，建议设置合理的超时时间：
+            </p>
+
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>timeout 300 claude --batch-files "src/*.js" -p "代码审查"</code></pre>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">上述命令设置 5 分钟超时（300 秒），超时后自动终止。</p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">6.3 错误重试机制</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              批量处理时可能遇到网络波动或 API 限流，建议实现重试逻辑：
+            </p>
+
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>#!/bin/bash
+MAX_RETRIES=3
+for file in src/*.py; do
+  for i in $(seq 1 $MAX_RETRIES); do
+    claude -p "处理文件" $file && break
+    echo "重试 $i/$MAX_RETRIES..."
+    sleep 5
+  done
+done</code></pre>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">6.4 资源监控</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              大规模批量处理会消耗大量 API 配额。建议：
+            </p>
+
+            <ul class="list-disc list-inside space-y-2 ml-6">
+              <li>使用 <code>--max-turns</code> 限制交互轮次，降低 Token 消耗</li>
+              <li>使用 <code>--allowedTools</code> 限制工具范围，提高处理速度</li>
+              <li>监控 API 使用量，避免超额</li>
+            </ul>
+
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 my-6">
+              <p class="text-green-900 font-semibold">✅ 推荐方案</p>
+              <p class="text-green-800 mt-2">
+                对于企业级批量处理需求，<a href="index.html" target="_blank" rel="noopener">GACCode</a> 提供更高的 API 配额和更稳定的服务。相比官方直接订阅，可以获得：
+              </p>
+              <ul class="text-green-800 mt-2 space-y-1">
+                <li>• 更高的并发限制和速率上限</li>
+                <li>• 更稳定的服务保障，避免降额或封号风险</li>
+                <li>• 灵活的支付方式和快速的技术支持</li>
+              </ul>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">6.5 日志和审计</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              批量处理应保留详细日志，便于问题追溯：
+            </p>
+
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code># 将输出和错误都记录到日志文件
+claude --batch-files "src/*.js" -p "代码审查" \
+  > batch_process.log 2>&1
+
+# 分离标准输出和错误输出
+claude --batch-files "src/*.js" -p "代码审查" \
+  > batch_process.log 2> batch_errors.log</code></pre>
+
+            <h2 id="enterprise" class="text-2xl font-bold text-gray-900 mb-6 mt-8">七、企业级应用</h2>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">7.1 CI/CD 完整集成</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              企业级应用通常需要将 Claude Code 集成到完整的 CI/CD 流程中。以下是一个典型的 GitLab CI 配置：
+            </p>
+
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>stages:
+  - security-review
+  - code-quality
+
+security-review:
+  stage: security-review
+  script:
+    - claude /security-review --output-format json > security_report.json
+    - cat security_report.json
+  artifacts:
+    reports:
+      security: security_report.json
+  only:
+    - merge_requests
+
+code-quality:
+  stage: code-quality
+  script:
+    - claude --batch-files "src/**/*.js" -p "代码质量检查" --output-format json > quality_report.json
+  artifacts:
+    reports:
+      codequality: quality_report.json
+  only:
+    - merge_requests</code></pre>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">7.2 自定义安全规则</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              企业客户可以根据内部安全策略自定义审查规则。Claude Code 支持通过 Markdown 文档定义自定义规则。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>示例：创建自定义规则文件 <code>.claude/security-rules.md</code></strong></p>
+
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code># 自定义安全规则
+
+## 1. 禁止硬编码敏感信息
+- 检查代码中的 API 密钥、数据库密码、访问令牌
+- 确保所有敏感信息使用环境变量
+
+## 2. 强制使用参数化查询
+- 所有数据库查询必须使用参数化查询或 ORM
+- 禁止字符串拼接构建 SQL 语句
+
+## 3. API 端点身份验证
+- 所有 API 端点必须实现身份验证中间件
+- 公开端点需明确标注并通过安全审查</code></pre>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>运行自定义规则审查：</strong></p>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>claude -p "根据 .claude/security-rules.md 中的规则审查代码" --batch</code></pre>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-6">7.3 团队协作配置</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              多人协作时，可通过共享配置文件统一审查标准：
+            </p>
+
+            <ul class="list-disc list-inside space-y-2 ml-6">
+              <li>在项目根目录创建 <code>.claude/config.json</code> 定义全局配置</li>
+              <li>使用版本控制管理配置文件，确保团队一致性</li>
+              <li>定期更新安全规则库，适应新的安全威胁</li>
+            </ul>
+
+            <h2 id="conclusion" class="text-2xl font-bold text-gray-900 mb-6 mt-8">总结</h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Code 的代码审查和批量文件处理功能为开发者提供了强大的自动化工具。通过 <code>/security-review</code> 命令，可以在开发早期发现安全漏洞；通过批量处理和并行技术，可以高效处理大规模代码重构任务。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4"><strong>关键要点回顾：</strong></p>
+            <ul class="list-disc list-inside space-y-2 ml-6">
+              <li><strong>代码审查</strong>：使用 <code>/security-review</code> 和 GitHub Actions 实现自动化安全扫描</li>
+              <li><strong>批量处理</strong>：掌握 <code>--batch-files</code>、管道操作和并行处理技术</li>
+              <li><strong>高级技巧</strong>：Hooks 自动化、非交互模式、自定义规则</li>
+              <li><strong>最佳实践</strong>：合理配置批量大小、超时、重试机制和日志记录</li>
+              <li><strong>企业应用</strong>：CI/CD 集成、自定义安全规则、团队协作配置</li>
+            </ul>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              对于企业级用户和需要稳定服务的开发者，访问 <a href="index.html" target="_blank" rel="noopener">GACCode</a> 可以获取稳定的 Claude Code 订阅服务，避免官方平台的支付限制和账户风险，同时享受更高的 API 配额和专业技术支持。
+            </p>
+
+            <h2 id="resources" class="text-2xl font-bold text-gray-900 mb-6 mt-8">参考资源</h2>
+
+            <ul class="list-disc list-inside space-y-2 ml-6">
+              <li><a href="https://www.anthropic.com/news/automate-security-reviews-with-claude-code" target="_blank" rel="noopener">Anthropic 官方：自动化安全审查</a></li>
+              <li><a href="https://www.anthropic.com/engineering/claude-code-best-practices" target="_blank" rel="noopener">Claude Code 最佳实践指南</a></li>
+              <li><a href="https://smartscope.blog/en/generative-ai/claude/claude-code-batch-processing/" target="_blank" rel="noopener">SmartScope：批量处理完整指南</a></li>
+              <li><a href="https://smartscope.blog/en/generative-ai/claude/claude-code-autonomous-scheduling-complete-guide/" target="_blank" rel="noopener">SmartScope：自主调度和 Hooks 实现</a></li>
+              <li><a href="https://github.com/anthropics/claude-code-action" target="_blank" rel="noopener">Claude Code GitHub Action 官方仓库</a></li>
+              <li><a href="https://platform.claude.com/docs/en/build-with-claude/batch-processing" target="_blank" rel="noopener">Claude 批量处理官方文档</a></li>
+            </ul>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 my-8">
+              <p class="text-blue-900 font-semibold text-lg">立即开始使用 Claude Code</p>
+              <p class="text-blue-800 mt-3">
+                想要体验 Claude Code 的强大功能？访问 <a href="index.html" target="_blank" rel="noopener" class="underline font-medium">GACCode</a> 获取稳定的订阅服务，支持灵活支付方式，避免官方支付限制。现在订阅还可享受专属技术支持，帮助你快速上手代码审查和批量处理功能。
+              </p>
+              <a href="index.html#contact" target="_blank" rel="noopener" class="inline-block mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors">
+                立即订阅
+              </a>
+            </div>
+          </div>
+
+          <!-- Author Info -->
+          <div class="mt-12 pt-8 border-t border-gray-200">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center">
+                  <span class="text-white font-bold text-lg">GAC</span>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-semibold text-gray-900">
+                  官方邮箱 gaccode@163.com 订阅后
+                </h4>
+                <p class="text-sm text-gray-600">
+                  专注于提供稳定可靠的 Claude Code 订阅服务
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200">
+            <h3 class="text-xl font-bold text-gray-900 mb-6">相关文章</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <a href="claude-code-best-practices.html" class="group p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">
+                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 mb-2">
+                  Claude Code 两个月实战总结：15 条最佳实践
+                </h4>
+                <p class="text-sm text-gray-600">
+                  深度总结 Claude Code 使用经验，涵盖配置优化、工作流技巧等核心实践。
+                </p>
+              </a>
+              <a href="claude-code-official-best-practices.html" class="group p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">
+                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 mb-2">
+                  Claude Code 官方最佳实践完整指南
+                </h4>
+                <p class="text-sm text-gray-600">
+                  基于 Anthropic 官方文档的完整最佳实践指南，包含工具使用、上下文管理等。
+                </p>
+              </a>
+              <a href="claude-code-cli-install-guide.html" class="group p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">
+                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 mb-2">
+                  Claude Code CLI 完整安装配置教程
+                </h4>
+                <p class="text-sm text-gray-600">
+                  从零开始的 Claude Code CLI 安装指南，包含常见问题解决方案。
+                </p>
+              </a>
+              <a href="claude-code-complete-features-guide-2025.html" class="group p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">
+                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 mb-2">
+                  Claude Code 2025 完整功能指南
+                </h4>
+                <p class="text-sm text-gray-600">
+                  全面介绍 Claude Code 2025 年的所有核心功能和应用场景。
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CTA Section -->
+      <div class="mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white text-center">
+        <h3 class="text-2xl font-bold mb-4">准备好开始使用 Claude Code 了吗？</h3>
+        <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+          通过 官方邮箱 gaccode@163.com 订阅后 获取稳定的 Claude Code 订阅服务，享受更高配额、更灵活支付、更稳定的服务保障
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="index.html#products" class="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors inline-block">
+            查看套餐价格
+          </a>
+          <a href="index.html#contact" class="px-8 py-3 bg-blue-800 text-white font-semibold rounded-lg hover:bg-blue-900 transition-colors inline-block">
+            立即购买
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 mt-20">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-sm">GAC</span>
+              </div>
+              <span class="text-white font-bold text-lg">官方邮箱 gaccode@163.com 订阅后</span>
+            </div>
+            <p class="text-sm text-gray-400">
+              专业的 Claude Code 订阅服务提供商
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-white font-semibold mb-4">产品服务</h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="index.html#products" class="hover:text-white transition-colors">套餐价格</a>
+              </li>
+              <li>
+                <a href="about.html" class="hover:text-white transition-colors">关于我们</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-white font-semibold mb-4">使用教程</h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="posts.html" class="hover:text-white transition-colors">全部文章</a>
+              </li>
+              <li>
+                <a href="index.html#faq" class="hover:text-white transition-colors">常见问题</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-white font-semibold mb-4">联系我们</h4>
+            <ul class="space-y-2 text-sm">
+              
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-center text-gray-400">
+          <p class="text-lg text-gray-700 leading-relaxed mb-4">&copy; 2025 官方邮箱 gaccode@163.com 订阅后. 保留所有权利。</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          menu.classList.toggle("hidden");
+        });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href !== "#" && href !== "#contact") {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          }
+        });
+      });
+
+      // Wechat modal function
+      function openWechatModal() {
+        // 可以在这里添加模态框逻辑，目前使用 hover 效果
+        console.log("WeChat modal opened");
+      }
+    </script>
+  <script defer src="static/js/v8c78df7c7c0f484497ecbca7046644da1771523124516.js" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0609a436c77044e68b7153f24036675e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

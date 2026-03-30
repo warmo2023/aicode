@@ -1,0 +1,960 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code CLI 安装配置指南 - 从零开始搭建 AI 编程环境 | 官方邮箱 gaccode@163.com 订阅后</title>
+    <meta name="description" content="详细的 Claude Code CLI 安装配置教程，包含 Windows、macOS、Linux 系统安装步骤，环境变量配置，API 密钥设置，IDE 集成等完整指南。适合初学者快速上手 AI 编程助手。">
+    <meta name="keywords" content="Claude Code CLI安装,AI编程助手安装,Claude Code配置教程,GACCode CLI设置,编程环境搭建,AI代码助手配置,Claude Code安装指南,命令行工具安装,开发环境配置,AI编程工具教程">
+    <meta name="author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Claude Code CLI 安装配置指南 - 从零开始搭建 AI 编程环境">
+    <meta property="og:description" content="完整的 Claude Code CLI 安装配置教程，支持多操作系统，包含详细的故障排除和最佳实践建议。">
+    <meta property="og:url" content="https://GACCode/post/claude-code-cli-install-guide">
+    <meta property="og:site_name" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2025-08-07T14:00:00+08:00">
+    <meta property="article:modified_time" content="2025-08-07T14:00:00+08:00">
+    <meta property="article:author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="article:section" content="配置指南">
+    <meta property="article:tag" content="Claude Code CLI">
+    <meta property="article:tag" content="安装教程">
+    <meta property="article:tag" content="AI 编程助手">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Code CLI 安装配置指南 - 从零开始搭建 AI 编程环境">
+    <meta name="twitter:description" content="详细的 Claude Code CLI 安装配置教程，支持多操作系统，适合初学者快速上手。">
+    <meta name="msvalidate.01" content="7F5A4F41F59B7840336A1530F6D3474E">
+    <link rel="icon" target="_blank" href="https://GACCode/img/logo.webp">
+    <!-- Canonical URL -->
+    <link rel="canonical" target="_blank" href="https://GACCode/post/claude-code-cli-install-guide">
+
+    <!-- <script defer src="https://umami.xinhuo.dev/script.js" data-website-id="aa83f7b8-15cd-4ed3-9f16-8efa73548ed0"></script> -->
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Claude Code CLI 安装配置指南 - 从零开始搭建 AI 编程环境",
+        "description": "详细的 Claude Code CLI 安装配置教程，包含 Windows、macOS、Linux 系统安装步骤，环境变量配置，API 密钥设置，IDE 集成等完整指南。",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://GACCode/img/logo.webp",
+          "width": 400,
+          "height": 300
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "url": "https://GACCode"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://GACCode/img/logo.webp"
+          }
+        },
+        "datePublished": "2025-08-07T14:00:00+08:00",
+        "dateModified": "2025-08-07T14:00:00+08:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://GACCode/post/claude-code-cli-install-guide"
+        }
+      }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" target="_blank" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" target="_blank" href="/apple-touch-icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="static/js/js.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#64748b",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- 右侧分享挂件 -->
+    <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 space-y-3">
+      <div class="group relative">
+        <button onclick="openWechatModal()" class="w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+<svg t="1754325230831" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1687" width="128" height="128"><path d="M337.387283 341.82659c-17.757225 0-35.514451 11.83815-35.514451 29.595375s17.757225 29.595376 35.514451 29.595376 29.595376-11.83815 29.595376-29.595376c0-18.49711-11.83815-29.595376-29.595376-29.595375zM577.849711 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763zM501.641618 401.017341c17.757225 0 29.595376-12.578035 29.595376-29.595376 0-17.757225-11.83815-29.595376-29.595376-29.595375s-35.514451 11.83815-35.51445 29.595375 17.757225 29.595376 35.51445 29.595376zM706.589595 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763z" fill="#28C445" p-id="1688"></path><path d="M510.520231 2.959538C228.624277 2.959538 0 231.583815 0 513.479769s228.624277 510.520231 510.520231 510.520231 510.520231-228.624277 510.520231-510.520231-228.624277-510.520231-510.520231-510.520231zM413.595376 644.439306c-29.595376 0-53.271676-5.919075-81.387284-12.578034l-81.387283 41.433526 22.936416-71.768786c-58.450867-41.433526-93.965318-95.445087-93.965317-159.815029 0-113.202312 105.803468-201.988439 233.803468-201.98844 114.682081 0 216.046243 71.028902 236.023121 166.473989-7.398844-0.739884-14.797688-1.479769-22.196532-1.479769-110.982659 1.479769-198.289017 85.086705-198.289017 188.67052 0 17.017341 2.959538 33.294798 7.398844 49.572255-7.398844 0.739884-15.537572 1.479769-22.936416 1.479768z m346.265896 82.867052l17.757225 59.190752-63.630058-35.514451c-22.936416 5.919075-46.612717 11.83815-70.289017 11.83815-111.722543 0-199.768786-76.947977-199.768786-172.393063-0.739884-94.705202 87.306358-171.653179 198.289017-171.65318 105.803468 0 199.028902 77.687861 199.028902 172.393064 0 53.271676-34.774566 100.624277-81.387283 136.138728z" fill="#28C445" p-id="1689"></path></svg>        </button>
+        <div class="absolute right-14 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-80 text-white px-4 py-3 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div class="text-center">
+            <div class="mb-2">客服微信</div>
+            <img src="static/picture/qrcode_new2.webp" class="w-32 rounded mx-auto" alt="微信二维码">
+          </div>
+          <div class="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-black bg-opacity-80 rotate-45"></div>
+        </div>
+      </div>
+      
+      
+    </div>
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a target="_blank" href="index.html" class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">GAC</span>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-800">GACCode 订阅购买</div>
+              <!-- <p class="text-sm text-gray-600">专业团队</p> -->
+            </div>
+          </a>
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <!-- 产品服务 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                产品服务
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a target="_blank" href="index.html#products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐价格</a>
+                  <a href="gaccode-package-comparison.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐对比</a>
+                  <a href="gaccode-product-introduction.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">产品介绍</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 使用指南 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                使用指南
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <!-- <a href="#how-to-use" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">快速开始</a> -->
+                  <a href="" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">CLI安装</a>
+                  <a href="gaccode-purchase-channels.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">购买指南</a>
+                  <a href="claude-code-api-best-practices.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">最佳实践</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 技术资源 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                技术资源
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="posts.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">所有文章</a>
+                  <a href="what-is-gaccode.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">什么是GACCode</a>
+                  <a href="claude-code-proxy-sites.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">服务对比</a>
+                  <a href="gaccode-faq.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">常见问题</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 立即购买按钮 -->
+            <a href="share.html" target="_blank" class="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group">
+              <span class="relative z-10">免费体验</span>
+              <svg class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <span class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></span>
+            </a>
+            
+            <!-- CTA 按钮 -->
+            <!-- <a target="_blank" href="/#products" class="ml-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md hover:shadow-lg">
+              立即购买
+            </a>
+            <a href="#free-codes" class="px-3 py-2 text-sm text-green-600 hover:text-green-700 hover:bg-green-50 rounded-lg transition-all duration-200 font-medium">
+              免费获取
+            </a> -->
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <div class="lg:hidden">
+            <button id="mobile-menu-button" class="p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors" aria-label="打开菜单">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100">
+        <div class="container mx-auto px-4 py-4">
+          <div class="space-y-3">
+            <!-- 产品服务 -->
+            <div>
+              <div class="font-medium text-gray-900 mb-2">产品服务</div>
+              <div class="pl-4 space-y-2">
+                <a target="_blank" href="index.html#products" class="block text-sm text-gray-600 hover:text-blue-600">套餐价格</a>
+                <a href="gaccode-package-comparison.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">套餐对比</a>
+                <a href="gaccode-product-introduction.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">产品介绍</a>
+              </div>
+            </div>
+            
+            <!-- 使用指南 -->
+            <div>
+              <div class="font-medium text-gray-900 mb-2">使用指南</div>
+              <div class="pl-4 space-y-2">
+                <!-- <a href="#how-to-use" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">快速开始</a> -->
+                <a href="" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">CLI安装</a>
+                <a href="gaccode-purchase-channels.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">购买指南</a>
+                <a href="claude-code-api-best-practices.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">最佳实践</a>
+              </div>
+            </div>
+            
+            <!-- 技术资源 -->
+            <div>
+              <a href="posts.html" target="_blank" class="font-medium text-gray-900 mb-2">技术资源</a>
+              <div class="pl-4 space-y-2">
+                <a href="what-is-gaccode.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">什么是GACCode</a>
+                <a href="claude-code-proxy-sites.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">服务对比</a>
+                <a href="gaccode-faq.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">常见问题</a>
+              </div>
+            </div>
+            
+            <!-- 其他链接 -->
+            <div class="pt-3 border-t border-gray-200">
+              <a href="index.html#products" target="_blank" class="block py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg px-4 transition-all duration-300 shadow-md hover:shadow-lg">立即购买</a>
+              <a href="#contact" target="_blank" class="block py-2 text-sm text-gray-700 hover:text-blue-600">联系支持</a>
+            </div>
+            
+            <!-- CTA 按钮 -->
+            <!-- <div class="pt-3 space-y-2">
+              <a target="_blank" href="/#products" class="block w-full text-center py-3 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                立即购买
+              </a>
+              <a href="#free-codes" class="block w-full text-center py-3 border border-green-600 text-green-600 text-sm font-medium rounded-lg hover:bg-green-50 transition-colors">
+                免费获取
+              </a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="text-sm breadcrumbs mb-8">
+          <div class="flex items-center text-gray-500">
+            <a target="_blank" href="index.html" class="hover:text-blue-600 transition-colors">首页</a>
+            <span class="mx-2">/</span>
+            <a target="_blank" href="posts.html" class="hover:text-blue-600 transition-colors">技术文章</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">Claude Code CLI 安装配置指南</span>
+          </div>
+        </nav>
+
+        <!-- Article Header -->
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="px-8 py-8">
+            <header class="mb-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">配置指南</span>
+                </div>
+              </div>
+              <h1 class="text-4xl font-bold text-gray-900 mb-4">Claude Code CLI 安装配置指南：从零开始搭建 AI 编程环境</h1>
+              <div class="flex items-center text-gray-600 text-sm space-x-4 mb-4">
+                <time datetime="2025-08-07T14:00:00+08:00">发布时间：2025年08月07日</time>
+                <span>•</span>
+                <span>阅读时间：约 15 分钟</span>
+                <span>•</span>
+                <span>分类：配置指南</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Claude Code CLI</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">安装教程</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">AI 编程助手</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">环境配置</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">开发工具</span>
+              </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+              <h2 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                文章目录
+              </h2>
+              <ul class="space-y-2 text-blue-800">
+                <li><a target="_blank" href="#introduction" class="hover:underline">• 引言与前置要求</a></li>
+                <li><a target="_blank" href="#nodejs-setup" class="hover:underline">• Node.js 环境准备</a></li>
+                <li><a target="_blank" href="#cli-installation" class="hover:underline">• Claude Code CLI 安装步骤</a></li>
+                <li><a target="_blank" href="#api-configuration" class="hover:underline">• API 密钥配置</a></li>
+                <li><a target="_blank" href="#verification" class="hover:underline">• 配置验证与测试</a></li>
+                <li><a target="_blank" href="#ide-integration" class="hover:underline">• IDE 集成配置</a></li>
+                <li><a target="_blank" href="#troubleshooting" class="hover:underline">• 故障排除与最佳实践</a></li>
+              </ul>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose prose-lg max-w-none">
+              <!-- 引言 -->
+              <section id="introduction" class="mb-8">
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                  Claude Code CLI 是 Anthropic 公司开发的强大 AI 编程助手命令行工具。通过 Claude Code CLI，开发者可以直接在终端中使用 AI 辅助编程，大幅提高开发效率。本指南将详细介绍如何在不同操作系统上安装和配置 Claude Code CLI 工具，包括环境变量设置、API 密钥配置等完整流程。
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  无论您是初次接触 AI 编程工具的新手，还是希望优化现有配置的经验开发者，本指南都将为您提供清晰、实用的步骤说明。
+                </p>
+
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
+                  <h3 class="text-xl font-semibold text-yellow-800 mb-4">前置要求</h3>
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 class="font-semibold text-yellow-700 mb-2">系统要求</h4>
+                      <ul class="text-yellow-700 space-y-1 text-sm">
+                        <li>• <strong>操作系统</strong>：Windows 10/11、macOS 10.14+、Linux (Ubuntu 16.04+, CentOS 7+)</li>
+                        <li>• <strong>Node.js</strong>：版本 18.0.0 或更高</li>
+                        <li>• <strong>npm</strong>：版本 8.0.0 或更高</li>
+                        <li>• <strong>网络连接</strong>：稳定的互联网连接</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-yellow-700 mb-2">权限要求</h4>
+                      <ul class="text-yellow-700 space-y-1 text-sm">
+                        <li>• 系统管理员权限（用于全局安装）</li>
+                        <li>• 或者具备在用户目录下安装软件包的权限</li>
+                        <li>• 可访问命令行终端</li>
+                        <li>• 文件系统写入权限</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Node.js 环境准备 -->
+              <section id="nodejs-setup" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Node.js 环境准备</h2>
+                
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">检查现有 Node.js 版本</h3>
+                <p class="text-gray-700 mb-4">首先检查您的系统是否已安装 Node.js：</p>
+                <div class="bg-gray-100 rounded-lg p-4 mb-6">
+                  <pre class="text-sm text-gray-800"><code>node --version
+npm --version</code></pre>
+                </div>
+                <p class="text-gray-700 mb-6">如果版本号低于要求，请继续下面的安装步骤。</p>
+
+                <!-- Windows 安装 -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-blue-800 mb-4">Windows 系统安装 Node.js</h4>
+                  <ol class="list-decimal list-inside text-blue-700 space-y-3">
+                    <li><strong>下载 Node.js 安装包</strong>
+                      <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>访问 Node.js 官网 (https://nodejs.org/)</li>
+                        <li>下载 LTS 版本（推荐）</li>
+                        <li>选择 Windows 64位安装包</li>
+                      </ul>
+                    </li>
+                    <li><strong>执行安装</strong>
+                      <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>双击下载的 .msi 文件</li>
+                        <li>按照安装向导完成安装</li>
+                        <li>确保勾选 "Add to PATH" 选项</li>
+                      </ul>
+                    </li>
+                    <li><strong>验证安装</strong>
+                      <div class="bg-gray-100 rounded p-3 mt-2">
+                        <code>node --version<br>npm --version</code>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+
+                <!-- macOS 安装 -->
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-green-800 mb-4">macOS 系统安装 Node.js</h4>
+                  <div class="space-y-4">
+                    <div>
+                      <h5 class="font-semibold text-green-700 mb-2">方法一：使用 Homebrew（推荐）</h5>
+                      <div class="bg-gray-100 rounded p-3">
+                        <code class="text-sm">
+                          # 安装 Homebrew（如果尚未安装）<br>
+                          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"<br><br>
+                          # 使用 Homebrew 安装 Node.js<br>
+                          brew install node<br><br>
+                          # 验证安装<br>
+                          node --version<br>
+                          npm --version
+                        </code>
+                      </div>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold text-green-700 mb-2">方法二：使用官方安装包</h5>
+                      <p class="text-green-700 text-sm">从官网下载 .pkg 安装包，双击安装即可。</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Linux 安装 -->
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-purple-800 mb-4">Linux 系统安装 Node.js</h4>
+                  <div class="space-y-4">
+                    <div>
+                      <h5 class="font-semibold text-purple-700 mb-2">Ubuntu/Debian 系统</h5>
+                      <div class="bg-gray-100 rounded p-3">
+                        <code class="text-sm">
+                          sudo apt update<br>
+                          sudo apt install nodejs npm<br>
+                          node --version<br>
+                          npm --version
+                        </code>
+                      </div>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold text-purple-700 mb-2">CentOS/RHEL 系统</h5>
+                      <div class="bg-gray-100 rounded p-3">
+                        <code class="text-sm">
+                          sudo yum install nodejs npm<br>
+                          # 或者使用 dnf（较新版本）<br>
+                          sudo dnf install nodejs npm
+                        </code>
+                      </div>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold text-purple-700 mb-2">使用 nvm 管理多版本（推荐）</h5>
+                      <div class="bg-gray-100 rounded p-3">
+                        <code class="text-sm">
+                          # 安装 nvm<br>
+                          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash<br>
+                          source ~/.bashrc<br><br>
+                          # 安装最新 LTS 版本<br>
+                          nvm install --lts<br>
+                          nvm use --lts<br>
+                          nvm alias default lts/*
+                        </code>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- CLI 安装步骤 -->
+              <section id="cli-installation" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Claude Code CLI 安装步骤</h2>
+                
+                <div class="bg-blue-100 border border-blue-300 rounded-lg p-6 mb-6">
+                  <h3 class="text-xl font-semibold text-blue-800 mb-4">全局安装 Claude Code CLI</h3>
+                  <p class="text-blue-700 mb-4">确认 Node.js 环境就绪后，使用 npm 全局安装 Claude Code CLI：</p>
+                  <div class="bg-white rounded-lg p-4 mb-4">
+                    <pre class="text-sm text-gray-800"><code># 全局安装 Claude Code CLI
+npm install -g @anthropic-ai/claude-code
+
+# 验证安装是否成功
+claude --version</code></pre>
+                  </div>
+                  
+                  <div class="bg-yellow-50 border border-yellow-200 rounded p-4">
+                    <h4 class="font-semibold text-yellow-800 mb-2">权限问题解决</h4>
+                    <p class="text-yellow-700 text-sm mb-2">如果安装过程中遇到权限问题：</p>
+                    <div class="space-y-2 text-sm">
+                      <div>
+                        <strong>Windows 系统：</strong>
+                        <div class="bg-gray-100 rounded p-2 mt-1">
+                          <code># 以管理员身份运行命令提示符<br>npm install -g @anthropic-ai/claude-code</code>
+                        </div>
+                      </div>
+                      <div>
+                        <strong>macOS/Linux 系统：</strong>
+                        <div class="bg-gray-100 rounded p-2 mt-1">
+                          <code># 配置 npm 全局包路径（推荐）<br>mkdir ~/.npm-global<br>npm config set prefix '~/.npm-global'<br>export PATH=~/.npm-global/bin:$PATH<br>npm install -g @anthropic-ai/claude-code</code>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-green-100 border border-green-300 rounded-lg p-6">
+                  <h3 class="text-xl font-semibold text-green-800 mb-4">验证安装</h3>
+                  <p class="text-green-700 mb-4">安装完成后，通过以下命令验证：</p>
+                  <div class="bg-white rounded-lg p-4">
+                    <pre class="text-sm text-gray-800"><code># 检查 Claude Code CLI 版本
+claude --version
+
+# 查看帮助信息
+claude --help
+
+# 检查可用命令
+claude</code></pre>
+                  </div>
+                </div>
+              </section>
+
+              <!-- API 配置 -->
+              <section id="api-configuration" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">API 密钥配置</h2>
+                
+                <div class="bg-orange-50 border border-orange-200 rounded-lg p-6 mb-6">
+                  <h3 class="text-xl font-semibold text-orange-800 mb-4">获取 GACCode API 密钥</h3>
+                  <div class="space-y-4">
+                    <div>
+                      <h4 class="font-semibold text-orange-700 mb-2">通过 GACCode 服务获取</h4>
+                      <ul class="list-disc list-inside text-orange-700 space-y-1 text-sm">
+                        <li>购买 GACCode 日卡或月卡</li>
+                        <li>联系客服获取 API 密钥和端点信息</li>
+                        <li>微信客服:caicats</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-orange-700 mb-2">准备配置信息</h4>
+                      <ul class="list-disc list-inside text-orange-700 space-y-1 text-sm">
+                        <li><strong>API Key</strong>：您的专用密钥</li>
+                        <li><strong>Base URL</strong>：GACCode 提供的 API 端点</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-6">
+                  <!-- Windows 配置 -->
+                  <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-4">Windows 系统环境变量配置</h3>
+                    <div class="space-y-4">
+                      <div>
+                        <h4 class="font-semibold text-blue-700 mb-2">方法一：使用命令行设置</h4>
+                        <div class="bg-white rounded p-3">
+                          <code class="text-sm">
+                            setx ANTHROPIC_API_KEY "your-gaccode-api-key"<br>
+                            setx ANTHROPIC_BASE_URL "https://your-gaccode-endpoint"<br><br>
+                            # 重启命令提示符使变量生效
+                          </code>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 class="font-semibold text-blue-700 mb-2">方法二：通过系统设置</h4>
+                        <ol class="list-decimal list-inside text-blue-700 text-sm space-y-1">
+                          <li>右键点击"此电脑" → "属性"</li>
+                          <li>点击"高级系统设置"</li>
+                          <li>点击"环境变量"</li>
+                          <li>在"用户变量"中添加必要的变量</li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- macOS/Linux 配置 -->
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-green-800 mb-4">macOS/Linux 系统环境变量配置</h3>
+                    <div class="space-y-4">
+                      <div>
+                        <h4 class="font-semibold text-green-700 mb-2">临时设置（仅对当前终端会话有效）</h4>
+                        <div class="bg-white rounded p-3">
+                          <code class="text-sm">
+                            export ANTHROPIC_API_KEY="your-gaccode-api-key"<br>
+                            export ANTHROPIC_BASE_URL="https://your-gaccode-endpoint"
+                          </code>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 class="font-semibold text-green-700 mb-2">永久设置</h4>
+                        <div class="space-y-3">
+                          <div>
+                            <p class="text-green-700 text-sm mb-1"><strong>对于 bash：</strong></p>
+                            <div class="bg-white rounded p-3">
+                              <code class="text-sm">
+                                # 编辑 .bashrc 文件<br>
+                                nano ~/.bashrc<br><br>
+                                # 添加以下内容<br>
+                                export ANTHROPIC_API_KEY="your-gaccode-api-key"<br>
+                                export ANTHROPIC_BASE_URL="https://your-gaccode-endpoint"<br><br>
+                                # 使配置生效<br>
+                                source ~/.bashrc
+                              </code>
+                            </div>
+                          </div>
+                          <div>
+                            <p class="text-green-700 text-sm mb-1"><strong>对于 zsh（macOS 默认）：</strong></p>
+                            <div class="bg-white rounded p-3">
+                              <code class="text-sm">
+                                # 编辑 .zshrc 文件<br>
+                                nano ~/.zshrc<br><br>
+                                # 添加配置并使生效<br>
+                                source ~/.zshrc
+                              </code>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 配置验证 -->
+              <section id="verification" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">配置验证</h2>
+                
+                <div class="bg-green-100 border border-green-300 rounded-lg p-6 mb-6">
+                  <h3 class="text-xl font-semibold text-green-800 mb-4">测试 API 连接</h3>
+                  <p class="text-green-700 mb-4">验证配置是否正确：</p>
+                  <div class="bg-white rounded-lg p-4">
+                    <pre class="text-sm text-gray-800"><code># 测试基本连接
+claude auth test
+
+# 或者尝试简单查询
+claude "Hello, please confirm the connection is working"</code></pre>
+                  </div>
+                  <p class="text-green-700 mt-4 text-sm">成功配置后，您应该能看到 Claude 的响应。</p>
+                </div>
+
+                <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                  <h3 class="text-xl font-semibold text-red-800 mb-4">常见配置问题排查</h3>
+                  <div class="space-y-4">
+                    <div>
+                      <h4 class="font-semibold text-red-700 mb-2">问题1：命令找不到</h4>
+                      <div class="bg-white rounded p-3">
+                        <code class="text-sm">
+                          # 检查 PATH 配置<br>
+                          echo $PATH<br><br>
+                          # 查找 claude 命令位置<br>
+                          which claude<br><br>
+                          # 重新安装（如有必要）<br>
+                          npm uninstall -g @anthropic-ai/claude-code<br>
+                          npm install -g @anthropic-ai/claude-code
+                        </code>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-red-700 mb-2">问题2：API 密钥错误</h4>
+                      <div class="bg-white rounded p-3">
+                        <code class="text-sm">
+                          # 检查环境变量是否正确设置<br>
+                          echo $ANTHROPIC_API_KEY<br>
+                          echo $ANTHROPIC_BASE_URL<br><br>
+                          # 重新设置环境变量<br>
+                          export ANTHROPIC_API_KEY="correct-api-key"<br>
+                          export ANTHROPIC_BASE_URL="correct-base-url"
+                        </code>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- IDE 集成 -->
+              <section id="ide-integration" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">IDE 集成配置</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-4">Visual Studio Code 集成</h3>
+                    <ol class="list-decimal list-inside text-blue-700 space-y-2 text-sm">
+                      <li>打开 VS Code，进入扩展商店</li>
+                      <li>搜索 "Claude Code" 并安装官方插件</li>
+                      <li>配置插件设置：</li>
+                    </ol>
+                    <div class="bg-white rounded p-3 mt-3">
+                      <code class="text-xs">
+                        {<br>
+                        &nbsp;&nbsp;"claude.apiKey": "your-gaccode-api-key",<br>
+                        &nbsp;&nbsp;"claude.baseUrl": "https://your-gaccode-endpoint",<br>
+                        &nbsp;&nbsp;"claude.autoComplete": true,<br>
+                        &nbsp;&nbsp;"claude.suggestionDelay": 300<br>
+                        }
+                      </code>
+                    </div>
+                  </div>
+                  
+                  <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-purple-800 mb-4">JetBrains IDEs 集成</h3>
+                    <ol class="list-decimal list-inside text-purple-700 space-y-2 text-sm">
+                      <li>打开 IntelliJ IDEA / PyCharm 等</li>
+                      <li>Settings → Plugins</li>
+                      <li>搜索并安装 Claude Code 插件</li>
+                      <li>配置设置：
+                        <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                          <li>Settings → Tools → Claude Code</li>
+                          <li>输入 API Key 和 Base URL</li>
+                          <li>启用自动补全功能</li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 故障排除与最佳实践 -->
+              <section id="troubleshooting" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">故障排除与最佳实践</h2>
+                
+                <div class="space-y-6">
+                  <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-yellow-800 mb-4">安全注意事项</h3>
+                    <ul class="list-disc list-inside text-yellow-700 space-y-2 text-sm">
+                      <li><strong>API 密钥保护</strong>：不要在代码中硬编码 API 密钥，使用环境变量或配置文件</li>
+                      <li><strong>定期轮换</strong>：定期更换 API 密钥以提高安全性</li>
+                      <li><strong>版本控制</strong>：不要将 API 密钥提交到版本控制系统</li>
+                      <li><strong>网络安全</strong>：使用 HTTPS 连接，在企业环境中配置适当的代理</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-green-800 mb-4">最佳实践建议</h3>
+                    <div class="space-y-4">
+                      <div>
+                        <h4 class="font-semibold text-green-700 mb-2">开发工作流集成</h4>
+                        <div class="bg-white rounded p-3">
+                          <code class="text-sm">
+                            # 在提交前使用 Claude 检查代码<br>
+                            git add .<br>
+                            claude review-staged<br>
+                            git commit -m "经过 AI 审查的代码更新"
+                          </code>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 class="font-semibold text-green-700 mb-2">性能优化</h4>
+                        <ul class="list-disc list-inside text-green-700 text-sm space-y-1">
+                          <li>批量处理：合并多个小请求</li>
+                          <li>缓存策略：缓存常用的代码片段建议</li>
+                          <li>避免重复的 API 调用</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-4">更新和维护</h3>
+                    <div class="bg-white rounded p-3">
+                      <code class="text-sm">
+                        # 检查更新<br>
+                        npm outdated -g @anthropic-ai/claude-code<br><br>
+                        # 更新到最新版本<br>
+                        npm update -g @anthropic-ai/claude-code<br><br>
+                        # 清理缓存（如果需要）<br>
+                        npm cache clean --force
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 总结 -->
+              <section class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">总结</h2>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  通过本指南，您已经掌握了 Claude Code CLI 的完整安装和配置流程。关键步骤包括环境准备、工具安装、密钥配置、验证测试和 IDE 集成。定期更新工具版本，关注最新功能和安全补丁，将帮助您始终保持最佳的 AI 编程体验。
+                </p>
+                
+                <div class="bg-green-100 border border-green-300 rounded-lg p-6">
+                  <h3 class="text-lg font-semibold text-green-800 mb-3">如果遇到问题，建议：</h3>
+                  <ul class="list-disc list-inside text-green-700 space-y-1 text-sm">
+                    <li>查阅官方文档获取最新信息</li>
+                    <li>加入社区讨论获得帮助</li>
+                    <li>联系 GACCode 客服获取技术支持</li>
+                    <li>查看我们的其他技术文章了解更多使用技巧</li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- 免责声明 -->
+              <section class="bg-gray-100 rounded-lg p-6">
+                <p class="text-sm text-gray-600 italic">
+                  <strong>更新说明</strong>：本指南会根据工具更新持续维护。建议收藏以便随时查阅最新安装方法和最佳实践。
+                </p>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <!-- 相关文章推荐 -->
+        <section class="mt-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">相关文章推荐</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg shadow-md p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                <a target="_blank" href="what-is-gaccode1.html" class="hover:text-blue-600 transition-colors">GACCode 是什么？全面了解这个 Claude Code API 服务</a>
+              </h3>
+              <p class="text-gray-600 text-sm">了解 GACCode 的定义、工作原理和使用注意事项，为使用 Claude Code CLI 提供背景知识。</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                <a target="_blank" href="/post/claude-code-api-best-practices/" class="hover:text-blue-600 transition-colors">Claude Code API 最佳实践指南</a>
+              </h3>
+              <p class="text-gray-600 text-sm">学习如何高效使用 Claude Code API，包括性能优化技巧和安全注意事项。</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold">GAC</span>
+              </div>
+              <span class="text-xl font-bold">GACCode 订阅购买</span>
+            </div>
+            <p class="text-gray-400">
+              专业的GACCode技术团队，为用户提供安全、便捷的GACCode兑换码购买服务。
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a target="_blank" href="index.html#products" class="hover:text-white transition-colors">日卡套餐</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#products" class="hover:text-white transition-colors">月卡套餐</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#how-to-use" class="hover:text-white transition-colors">使用说明</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">技术支持</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a target="_blank" href="https://claudecodeapi.com/zh" class="hover:text-white transition-colors">ClaudeCodeAPI</a>
+              </li>
+              <li>
+                <a target="_blank" href="/post" class="hover:text-white transition-colors">技术文章</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#products" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">立即购买</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#contact" class="hover:text-white transition-colors">联系我们</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">相关链接</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a target="_blank" href="https://gaccode.com/signup?ref=19EOB4I5" target="_blank" rel="noopener" class="hover:text-white transition-colors">GACCode 官网</a>
+              </li>
+              <li>
+                <a target="_blank" href="#" class="hover:text-white transition-colors">隐私政策</a>
+              </li>
+              <li>
+                <a target="_blank" href="#" class="hover:text-white transition-colors">服务条款</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 官方邮箱 gaccode@163.com 订阅后. 保留所有权利。</p>
+          <p class="mt-2 text-sm">
+            专业的GACCode技术团队 | 网站域名：GACCode
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WeChat QR Code Modal -->
+    <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl max-w-md w-full p-8 text-center relative">
+        <button onclick="closeWechatModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">
+          扫码加我
+        </h3>
+        <p class="text-gray-600 ">扫描下方二维码，添加微信好友</p>
+        
+        <div class="bg-gray-100 rounded-lg p-6 mb-6">
+          <div class="w-48  bg-gray-200 rounded flex items-center justify-center mx-auto">
+            <img src="static/picture/qrcode_new2.webp" class="text-gray-400">
+          </div>
+        </div>
+        
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4 ">
+          <h4 class="font-semibold text-green-800 mb-2">微信号</h4>
+          <p class="text-green-700 text-lg font-mono">caicats</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript for smooth scrolling -->
+    <script>
+      // 微信弹窗功能
+      function openWechatModal() {
+        const modal = document.getElementById('wechat-modal');
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeWechatModal() {
+        const modal = document.getElementById('wechat-modal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+
+      document.getElementById('wechat-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeWechatModal();
+        }
+      });
+
+      // 平滑滚动到锚点
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // ESC键关闭弹窗
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeWechatModal();
+        }
+      });
+    </script>
+  <script defer src="static/js/v8c78df7c7c0f484497ecbca7046644da1771523124516.js" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0609a436c77044e68b7153f24036675e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

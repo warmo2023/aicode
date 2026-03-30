@@ -1,0 +1,725 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Claude Skills 完全指南：功能详解、安装使用及与 MCP 对比（2025） | 官方邮箱 gaccode@163.com 订阅后
+    </title>
+    <meta name="description" content="详解 Claude Skills 是什么、有什么用、与 MCP 的区别，以及如何安装使用。附 2025 年最新官方信息，帮助你快速上手 Agent Skills，效率提升40%。">
+    <meta name="keywords" content="Claude Skills,Agent Skills,Claude Code Skills,Skills vs MCP,Claude Skills 安装,Claude Skills 教程,Claude Skills 使用,MCP 对比,GACCode">
+    <meta name="author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Claude Skills 完全指南：功能详解、安装使用及与 MCP 对比（2025）">
+    <meta property="og:description" content="详解 Claude Skills 功能、安装方法和与 MCP 的区别，效率提升40%，错误率降低35%。">
+    <meta property="og:url" content="https://GACCode/post/claude-skills-complete-guide">
+    <meta property="og:site_name" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2025-12-28T10:00:00+08:00">
+    <meta property="article:modified_time" content="2025-12-28T10:00:00+08:00">
+    <meta property="article:author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="article:section" content="使用指南">
+    <meta property="article:tag" content="Claude Skills">
+    <meta property="article:tag" content="Agent Skills">
+    <meta property="article:tag" content="MCP">
+    <meta property="article:tag" content="Claude Code">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Skills 完全指南：功能详解、安装使用及与 MCP 对比（2025）">
+    <meta name="twitter:description" content="详解 Claude Skills 功能、安装方法和与 MCP 的区别。">
+    <meta name="msvalidate.01" content="7F5A4F41F59B7840336A1530F6D3474E">
+
+    <link rel="icon" href="https://GACCode/img/logo.webp">
+    <link rel="canonical" href="https://GACCode/post/claude-skills-complete-guide">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Claude Skills 完全指南：功能详解、安装使用及与 MCP 对比（2025）",
+        "description": "详解 Claude Skills 是什么、有什么用、与 MCP 的区别，以及如何安装使用",
+        "author": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://GACCode/img/logo.webp"
+          }
+        },
+        "datePublished": "2025-12-28T10:00:00+08:00",
+        "dateModified": "2025-12-28T10:00:00+08:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://GACCode/post/claude-skills-complete-guide"
+        }
+      }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="static/js/js.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#64748b",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+      .code-block {
+        background-color: #1e293b;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0;
+        overflow-x: auto;
+      }
+      .code-block code {
+        color: #e2e8f0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+      }
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .comparison-table th {
+        background-color: #f3f4f6;
+        font-weight: 600;
+        color: #1f2937;
+      }
+      .comparison-table tr:hover {
+        background-color: #f9fafb;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">GAC</span>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-800">
+                GACCode 订阅购买
+              </div>
+            </div>
+          </a>
+          <div class="hidden lg:flex items-center space-x-1">
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                产品服务
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="index.html#products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐价格</a>
+                  <a href="gaccode-package-comparison.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐对比</a>
+                  <a href="gaccode-product-introduction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">产品介绍</a>
+                </div>
+              </div>
+            </div>
+            <a href="share.html" class="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group">
+              <span class="relative z-10">免费体验</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto py-8 px-4">
+      <!-- Breadcrumb -->
+      <nav class="text-sm breadcrumbs mb-8">
+        <div class="flex items-center text-gray-500">
+          <a href="index.html" class="hover:text-blue-600 transition-colors">首页</a>
+          <span class="mx-2">/</span>
+          <a href="posts.html" class="hover:text-blue-600 transition-colors">技术文章</a>
+          <span class="mx-2">/</span>
+          <span class="text-gray-800">Claude Skills 完全指南</span>
+        </div>
+      </nav>
+
+      <!-- Article -->
+      <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <!-- Article Header -->
+        <div class="p-8 border-b border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">使用指南</span>
+            <span class="text-gray-500 text-sm mx-3">•</span>
+            <time class="text-gray-500 text-sm" datetime="2025-12-28T10:00:00+08:00">2025-12-28</time>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+            Claude Skills 完全指南：功能详解、安装使用及与 MCP 对比（2025）
+          </h1>
+
+          <p class="text-xl text-gray-600 leading-relaxed">
+            Claude Skills 是 Anthropic 在 2025年10月推出的新功能，让 Claude AI 能更高效地完成专业任务。本文详解 Skills 是什么、能做什么、与 MCP 的区别，以及如何安装使用。
+          </p>
+
+          <div class="flex items-center mt-6 pt-6 border-t border-gray-100">
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold text-sm">GAC</span>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-gray-900">官方邮箱 gaccode@163.com 订阅后</p>
+                <p class="text-sm text-gray-500">专业技术团队</p>
+              </div>
+            </div>
+            <div class="ml-auto text-sm text-gray-500">
+              <span>约 12 分钟阅读</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="p-8 bg-gray-50 border-b border-gray-200">
+          <h2 class="text-lg font-semibold text-gray-900 mb-4">文章目录</h2>
+          <nav class="space-y-2">
+            <a href="#what-is-skills" class="block text-blue-600 hover:text-blue-800 transition-colors">1. Claude Skills 是什么？</a>
+            <a href="#capabilities" class="block text-blue-600 hover:text-blue-800 transition-colors">2. Skills 能做什么？效果如何？</a>
+            <a href="#skills-vs-mcp" class="block text-blue-600 hover:text-blue-800 transition-colors">3. Skills vs MCP：区别在哪？</a>
+            <a href="#installation" class="block text-blue-600 hover:text-blue-800 transition-colors">4. 如何安装和使用 Claude Skills？</a>
+            <a href="#comparison" class="block text-blue-600 hover:text-blue-800 transition-colors">5. 为什么要用 Claude Skills？对比传统方式</a>
+            <a href="#gaccode" class="block text-blue-600 hover:text-blue-800 transition-colors">6. GACCode：稳定使用 Claude Code 的推荐方案</a>
+          </nav>
+        </div>
+
+        <!-- Article Content -->
+        <div class="prose prose-lg max-w-none p-8">
+          <!-- Section 1: What is Skills -->
+          <section id="what-is-skills" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              Claude Skills 是什么？
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Skills 是 Anthropic 在 2025年10月推出的新功能，让 Claude AI 能更高效地完成专业任务。很多人问：Skills 和之前的 MCP 有啥区别？到底该用哪个？
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              本文解决三个问题：Skills 是什么、能做什么、怎么用。
+            </p>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 my-6">
+              <h3 class="text-lg font-semibold text-blue-900 mb-3">Skills 的组成</h3>
+              <p class="text-blue-800 mb-3">
+                Skills 是一套模块化的能力包。每个 Skill 就是一个文件夹，里面包含：
+              </p>
+              <ul class="list-disc list-inside text-blue-800 space-y-2">
+                <li>
+                  <strong>SKILL.md 文件</strong>：说明这个 Skill 的用途和操作步骤
+                </li>
+                <li>
+                  <strong>脚本和模板</strong>：自动执行任务的代码（比如处理 Excel、生成 PPT）
+                </li>
+                <li>
+                  <strong>资源文件</strong>：辅助材料，像代码片段、流程文档等
+                </li>
+              </ul>
+            </div>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude 会根据你的任务，自动判断需要哪些 Skills，然后加载使用。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              打个比方，你给手机装了"美颜相机"App，拍照时打开就能用。Skills 就是给 Claude 装的专业工具包。
+            </p>
+          </section>
+
+          <!-- Section 2: Capabilities -->
+          <section id="capabilities" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              Skills 能做什么？效果如何？
+            </h2>
+
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 mb-6">
+              <h3 class="text-lg font-semibold text-green-900 mb-3">
+                Anthropic 实测数据
+              </h3>
+              <ul class="space-y-2 text-green-800">
+                <li>• 任务效率提升 <strong>40%</strong></li>
+                <li>• 错误率下降 <strong>35%</strong></li>
+                <li>• Token 使用量减少 <strong>14%-70%</strong>（Sonnet 3.7 模型）</li>
+              </ul>
+            </div>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              为什么效果这么明显？因为 Skills 把常用任务封装好了，Claude 不用每次都"从头思考"怎么做，直接调用现成工具就行。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-8">主要能力</h3>
+
+            <div class="space-y-6">
+              <div class="bg-white border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-gray-900 mb-2">1. 办公文档处理</h4>
+                <p class="text-gray-700">
+                  生成 Excel 表格、制作 PPT、编辑 Word、处理 PDF。你给 Claude 一堆数据，它能直接生成格式规范的 Excel 报告。
+                </p>
+              </div>
+
+              <div class="bg-white border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-gray-900 mb-2">2. 品牌和内容一致性</h4>
+                <p class="text-gray-700">
+                  按照公司的风格指南写文案、设计素材，保证输出内容符合品牌调性。
+                </p>
+              </div>
+
+              <div class="bg-white border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-gray-900 mb-2">3. 数据分析和处理</h4>
+                <p class="text-gray-700">
+                  自动分析客户反馈、整理数据、生成可视化图表。
+                </p>
+              </div>
+
+              <div class="bg-white border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-gray-900 mb-2">4. 可组合使用</h4>
+                <p class="text-gray-700">
+                  多个 Skills 叠加。比如"品牌规范 Skill"保证文档风格，"报告生成 Skill"处理内容结构，"数据分析 Skill"做数据处理，三个一起用，完成复杂项目。
+                </p>
+              </div>
+
+              <div class="bg-white border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-gray-900 mb-2">5. 跨平台通用</h4>
+                <p class="text-gray-700">
+                  一套 Skills 可以在 Claude 应用、Claude Code、API 里通用，搭建一次到处用。
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 3: Skills vs MCP -->
+          <section id="skills-vs-mcp" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              Skills vs MCP：区别在哪？
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              很多人搞混 Skills 和 MCP，其实它们职责不同。
+            </p>
+
+            <div class="bg-purple-50 border-l-4 border-purple-500 p-6 my-6">
+              <h3 class="text-lg font-semibold text-purple-900 mb-3">核心区别</h3>
+              <ul class="space-y-2 text-purple-800">
+                <li>
+                  • <strong>Skills</strong>：教 Claude "怎么做"（流程、标准、方法）
+                </li>
+                <li>
+                  • <strong>MCP</strong>：连接 Claude "到什么"（外部系统、数据库、API）
+                </li>
+              </ul>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-8">详细对比</h3>
+
+            <div class="overflow-x-auto mb-6">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>维度</th>
+                    <th>Claude Skills</th>
+                    <th>MCP（Model Context Protocol）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>核心作用</strong></td>
+                    <td>教 Claude 执行任务的流程和标准</td>
+                    <td>连接 Claude 到外部系统和数据源</td>
+                  </tr>
+                  <tr>
+                    <td><strong>适用场景</strong></td>
+                    <td>内部流程自动化（文档处理、风格规范、SOP）</td>
+                    <td>外部系统集成（数据库、SaaS工具、API）</td>
+                  </tr>
+                  <tr>
+                    <td><strong>技术复杂度</strong></td>
+                    <td>简单（Markdown + 少量脚本）</td>
+                    <td>复杂（完整协议规范、多传输方式）</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Context 占用</strong></td>
+                    <td>每个 Skill 仅几十 token（仅加载元数据）</td>
+                    <td>每个 MCP 服务器几千到上万 token</td>
+                  </tr>
+                  <tr>
+                    <td><strong>加载方式</strong></td>
+                    <td>渐进式：先加载元数据，需要时再加载完整内容</td>
+                    <td>启动时加载完整内容</td>
+                  </tr>
+                  <tr>
+                    <td><strong>标准化程度</strong></td>
+                    <td>Anthropic 专属，但 OpenAI 已采用相同格式</td>
+                    <td>开源协议，多厂商支持</td>
+                  </tr>
+                  <tr>
+                    <td><strong>典型用例</strong></td>
+                    <td>按风格指南写文案、生成报告、数据格式化</td>
+                    <td>查询数据库、调用外部 API、访问云服务</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-8">举例说明</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              假设你要生成一份销售报告：
+            </p>
+
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4 mb-6">
+              <li>
+                <strong>用 Skills</strong>：Claude 按照公司报告模板（Skill 里定义的格式和风格）自动生成内容。
+              </li>
+              <li>
+                <strong>用 MCP</strong>：Claude 先从数据库（通过 MCP）拉取销售数据，再生成报告。
+              </li>
+              <li>
+                <strong>Skills + MCP</strong>：MCP 负责拉取数据，Skills 负责按标准格式生成报告。
+              </li>
+            </ul>
+
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-6 my-6">
+              <h3 class="text-lg font-semibold text-amber-900 mb-3">
+                两者不是竞争，而是互补
+              </h3>
+              <ul class="space-y-2 text-amber-800">
+                <li>• 如果任务是"怎么做"（流程、标准），用 Skills</li>
+                <li>• 如果任务需要"连接外部系统"（数据库、API），用 MCP</li>
+                <li>• 复杂场景可以两者结合：MCP 获取数据，Skills 处理数据</li>
+              </ul>
+            </div>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              对普通用户日常工作，Skills 已经够用。企业级复杂场景（跨系统集成、自动分发），Skills + MCP 才是最佳组合。
+            </p>
+          </section>
+
+          <!-- Section 4: Installation -->
+          <section id="installation" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              如何安装和使用 Claude Skills？
+            </h2>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">官方 Skills 库</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Anthropic 在 GitHub 开源了 12+ 个 Skills，涵盖：
+            </p>
+
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4 mb-6">
+              <li><strong>文档处理</strong>：PDF、Word、PPT、Excel</li>
+              <li><strong>创意设计</strong>：品牌规范、内容生成</li>
+              <li><strong>编程开发</strong>：代码测试、MCP 生成</li>
+            </ul>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+              GitHub 地址：<a href="https://github.com/anthropics/skills" class="text-blue-600 hover:underline" target="_blank" rel="noopener">github.com/anthropics/skills</a>
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">安装方法</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              在 Claude Code 中执行这条命令：
+            </p>
+
+            <div class="code-block">
+              <code>/plugin marketplace add anthropics/skills</code>
+            </div>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+              安装完成后，问 Claude："你有哪些 skills？"，就能看到可用的工具列表。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">使用方式</h3>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              你不需要手动选择 Skill，Claude 会自动判断。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              比如你上传了一个 PDF 文件，要求提取表格数据，Claude 会自动调用"PDF 处理 Skill"，直接给出结果。
+            </p>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+              在 Claude 的思考过程（chain of thought）里，你能看到它调用了哪些 Skills。
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">使用限制</h3>
+
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4 mb-6">
+              <li><strong>支持用户</strong>：Pro、Max、Team、Enterprise 用户可用</li>
+              <li><strong>API 使用</strong>：需要开启 <code class="bg-gray-200 px-2 py-1 rounded">files-api-2025-04-14</code> 和代码执行工具的 beta 功能</li>
+              <li><strong>数量限制</strong>：每次请求最多加载 8 个 Skills</li>
+            </ul>
+          </section>
+
+          <!-- Section 5: Comparison -->
+          <section id="comparison" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              为什么要用 Claude Skills？对比传统方式
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              传统方式处理任务，Claude 需要临时生成代码、调试、修正，耗时且容易出错。
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 my-8">
+              <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                <h3 class="text-lg font-semibold text-red-900 mb-4">
+                  ❌ 传统方式（不用 Skills）
+                </h3>
+                <ol class="list-decimal list-inside text-red-800 space-y-2">
+                  <li>上传 PDF 文件</li>
+                  <li>告诉 Claude 提取表格</li>
+                  <li>Claude 现场生成 Python 脚本（用 pdfplumber 或 PyPDF2）</li>
+                  <li>运行脚本，可能报错</li>
+                  <li>修正代码，再运行</li>
+                  <li>返回结果</li>
+                </ol>
+                <p class="text-red-700 mt-4 text-sm">
+                  整个过程多轮交互，消耗大量 token。
+                </p>
+              </div>
+
+              <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                <h3 class="text-lg font-semibold text-green-900 mb-4">
+                  ✅ 用 Skills
+                </h3>
+                <ol class="list-decimal list-inside text-green-800 space-y-2">
+                  <li>上传 PDF 文件</li>
+                  <li>告诉 Claude 提取表格</li>
+                  <li>Claude 自动调用"PDF 处理 Skill"，运行预写好的脚本</li>
+                  <li>几乎瞬时返回结果</li>
+                </ol>
+                <p class="text-green-700 mt-4 text-sm">
+                  任务标准化，处理流程固化，像"拿工具箱里的工具"一样快速。
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 6: GACCode -->
+          <section id="gaccode" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              GACCode：稳定使用 Claude Code 的推荐方案
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              想长期稳定使用 Claude Code 和 Skills，建议通过 <strong>GACCode</strong> 订阅。
+            </p>
+
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 my-6">
+              <h3 class="text-xl font-semibold text-blue-900 mb-6">
+                为什么推荐 GACCode？
+              </h3>
+
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-semibold text-blue-800 mb-2">
+                    1. 避免官方账户政策风险
+                  </h4>
+                  <p class="text-blue-700">
+                    近期不少用户反映 Claude 官方账户出现降额或封号。GACCode 提供企业级账户服务，规避个人账户的政策波动。
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-blue-800 mb-2">
+                    2. 支付更灵活
+                  </h4>
+                  <p class="text-blue-700">
+                    官方订阅可能遇到支付限制（信用卡、地区限制）。GACCode 支持多种支付方式，国内用户更方便。
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-blue-800 mb-2">
+                    3. 服务更稳定
+                  </h4>
+                  <p class="text-blue-700">
+                    专业服务商提供技术支持，遇到问题响应更快，保证 Claude Code 持续可用。
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-8 text-center">
+                <a href="index.html" class="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-lg">
+                  访问 GACCode 了解订阅方案
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 7: Summary -->
+          <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              总结和建议
+            </h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Claude Skills 是 2025年 Claude 的重要更新，核心价值是：
+            </p>
+
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4 mb-6">
+              <li>把复杂任务标准化、自动化</li>
+              <li>效率提升 40%，错误率降低 35%</li>
+              <li>和 MCP 互补，不是替代</li>
+            </ul>
+
+            <div class="bg-gray-100 rounded-lg p-6 my-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-4">使用建议</h3>
+              <ol class="list-decimal list-inside text-gray-700 space-y-2">
+                <li>日常办公（文档处理、内容生成），直接用 Skills 就够</li>
+                <li>企业复杂场景（外部系统集成），Skills + MCP 结合使用</li>
+                <li>想稳定、长期使用，通过 GACCode 订阅，避免官方账户政策风险</li>
+              </ol>
+            </div>
+
+            <p class="text-lg text-gray-700 leading-relaxed">
+              现在就去 Claude Code 装上 Skills，试试效率提升有多明显。
+            </p>
+          </section>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="p-8 bg-gray-50 border-t border-gray-200">
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">相关文章推荐</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <a href="claude-code-comprehensive-guide.html" class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all">
+              <h3 class="font-semibold text-gray-900 mb-2">
+                Claude Code 完全使用指南：从安装到精通（2025年最新）
+              </h3>
+              <p class="text-sm text-gray-600">
+                最全面的 Claude Code 使用指南，涵盖安装配置、核心功能、MCP集成、高级技巧和最佳实践。
+              </p>
+            </a>
+            <a href="claude-code-best-practices.html" class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all">
+              <h3 class="font-semibold text-gray-900 mb-2">
+                Claude Code 最佳实践指南：提升开发效率的10个技巧
+              </h3>
+              <p class="text-sm text-gray-600">
+                从实战角度总结 Claude Code 的最佳使用技巧，让你的开发效率提升10倍。
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="p-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+          <div class="text-center">
+            <h2 class="text-2xl font-bold mb-4">
+              开始使用 GACCode 稳定订阅服务
+            </h2>
+            <p class="text-lg mb-6 text-blue-100">
+              避免官方账户政策风险，享受专业技术支持和稳定服务保障
+            </p>
+            <a href="index.html" class="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg">
+              立即订阅 GACCode
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-white font-bold text-lg mb-4">官方邮箱 gaccode@163.com 订阅后</h3>
+            <p class="text-sm text-gray-400">
+              专业的 Claude Code 订阅服务平台，为开发者提供稳定、高效的 AI 编程助手解决方案。
+            </p>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-4">产品服务</h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="index.html#products" class="hover:text-white transition-colors">套餐价格</a>
+              </li>
+              <li>
+                <a href="gaccode-package-comparison.html" class="hover:text-white transition-colors">套餐对比</a>
+              </li>
+              <li>
+                <a href="gaccode-product-introduction.html" class="hover:text-white transition-colors">产品介绍</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-4">技术支持</h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="posts.html" class="hover:text-white transition-colors">技术文章</a>
+              </li>
+              <li>
+                <a href="claude-code-comprehensive-guide.html" class="hover:text-white transition-colors">使用指南</a>
+              </li>
+              <li>
+                <a href="gaccode-faq.html" class="hover:text-white transition-colors">常见问题</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-4">联系我们</h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="about.html" class="hover:text-white transition-colors">关于我们</a>
+              </li>
+              <li>
+                <a href="share.html" class="hover:text-white transition-colors">免费体验</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-500">
+          <p>&copy; 2025 官方邮箱 gaccode@163.com 订阅后. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  <script defer src="static/js/v8c78df7c7c0f484497ecbca7046644da1771523124516.js" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0609a436c77044e68b7153f24036675e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

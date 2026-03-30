@@ -1,0 +1,1302 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Claude Code 完整功能指南：18个核心功能深度解析与实战技巧 | 官方邮箱 gaccode@163.com 订阅后
+    </title>
+    <meta name="description" content="详解 Claude Code 的18个核心功能：从基础命令到高级技巧，包括 Rewind、扩展思维、自定义命令、MCP集成等。通过 GACCode 获取稳定订阅，避免官方降额风险。">
+    <meta name="keywords" content="Claude Code功能,Claude Code教程,AI编程助手,扩展思维模式,自定义命令,MCP集成,GACCode,Claude Code订阅">
+    <meta name="author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Claude Code 完整功能指南：18个核心功能深度解析与实战技巧">
+    <meta property="og:description" content="从基础到高级，全面掌握 Claude Code 的每一个功能，提升 AI 编程效率">
+    <meta property="og:url" content="https://GACCode/post/claude-code-complete-features-guide-2025">
+    <meta property="og:site_name" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2025-01-15T10:00:00+08:00">
+    <meta property="article:modified_time" content="2025-01-15T10:00:00+08:00">
+    <meta property="article:author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="article:section" content="教程指南">
+    <meta property="article:tag" content="Claude Code">
+    <meta property="article:tag" content="AI编程">
+    <meta property="article:tag" content="功能指南">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Code 完整功能指南：18个核心功能深度解析">
+    <meta name="twitter:description" content="全面掌握 Claude Code 从基础到高级的每一个功能">
+    <meta name="msvalidate.01" content="7F5A4F41F59B7840336A1530F6D3474E">
+
+    <link rel="icon" href="https://GACCode/img/logo.webp">
+    <link rel="canonical" href="https://GACCode/post/claude-code-complete-features-guide-2025">
+
+    <!-- <script
+      defer
+      src="https://umami.xinhuo.dev/script.js"
+      data-website-id="aa83f7b8-15cd-4ed3-9f16-8efa73548ed0"
+    ></script> -->
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Claude Code 完整功能指南：18个核心功能深度解析与实战技巧",
+        "description": "详细讲解 Claude Code 的所有核心功能，从基础命令到高级特性，帮助开发者充分发挥 AI 编程助手的能力",
+        "author": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://GACCode/img/logo.webp"
+          }
+        },
+        "datePublished": "2025-01-15T10:00:00+08:00",
+        "dateModified": "2025-01-15T10:00:00+08:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://GACCode/post/claude-code-complete-features-guide-2025"
+        }
+      }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="static/js/js.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#64748b",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+      .code-block {
+        background-color: #1e293b;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0;
+        overflow-x: auto;
+      }
+      .code-block code {
+        color: #e2e8f0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+      }
+      .highlight-box {
+        border-left: 4px solid #3b82f6;
+        background: linear-gradient(to right, #eff6ff, #ffffff);
+      }
+      .tip-box {
+        border-left: 4px solid #10b981;
+        background: linear-gradient(to right, #d1fae5, #ffffff);
+      }
+      .warning-box {
+        border-left: 4px solid #f59e0b;
+        background: linear-gradient(to right, #fef3c7, #ffffff);
+      }
+      article h2 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #1e293b;
+      }
+      article h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #334155;
+      }
+      article p {
+        margin-bottom: 1rem;
+        line-height: 1.75;
+      }
+      article ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+      article li {
+        margin-bottom: 0.5rem;
+        line-height: 1.75;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">GAC</span>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-800">
+                GACCode 订阅购买
+              </div>
+            </div>
+          </a>
+          <div class="hidden lg:flex items-center space-x-1">
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                产品服务
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+                <a href="index.html#subscription" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors rounded-t-lg">
+                  Claude Code 订阅
+                </a>
+                <a href="index.html#features" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                  功能特性
+                </a>
+                <a href="index.html#pricing" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors rounded-b-lg">
+                  价格方案
+                </a>
+              </div>
+            </div>
+            <a href="index.html#faq" class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200">
+              常见问题
+            </a>
+            <a href="posts.html" class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200">
+              文章
+            </a>
+            <a href="index.html#contact" class="ml-2 px-4 py-2 text-sm bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md hover:shadow-lg">
+              立即购买
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Header -->
+    <div class="gradient-bg py-16">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <div class="text-white">
+          <div class="flex items-center space-x-2 mb-4">
+            <span class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm">
+              教程指南
+            </span>
+            <span class="text-sm opacity-80">2025-01-15</span>
+            <span class="text-sm opacity-80">· 阅读时间 15 分钟</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            Claude Code 完整功能指南：18个核心功能深度解析与实战技巧
+          </h1>
+          <p class="text-xl opacity-90 leading-relaxed">
+            从基础命令到高级特性，系统掌握 Claude Code 的每一个功能，让 AI
+            编程助手真正为你所用
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article Content -->
+    <main class="container mx-auto px-4 py-12 max-w-4xl">
+      <article class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+        <!-- 引言 -->
+        <div class="highlight-box p-6 rounded-lg mb-8">
+          <p class="text-lg font-medium text-gray-800">
+            Claude Code 作为 Anthropic 推出的命令行 AI
+            编程助手，功能远比你想象的强大。很多开发者只用到它的基础对话功能，却不知道它内置了18个以上的核心能力——从代码回滚、扩展思维，到自定义命令、MCP
+            协议集成。
+          </p>
+          <p class="text-lg text-gray-700 mt-3">
+            本文将系统拆解 Claude Code
+            的每一个重要功能，帮你从"会用"进阶到"精通"。如果你希望稳定、长期使用
+            Claude Code，建议通过
+            <a href="index.html" class="text-blue-600 hover:text-blue-700 font-medium underline">GACCode</a>
+            订阅，避免官方账户降额或封号的风险。
+          </p>
+        </div>
+
+        <!-- 目录 -->
+        <div class="bg-gray-50 p-6 rounded-lg mb-10">
+          <h2 class="text-xl font-bold mb-4 text-gray-800">文章目录</h2>
+          <ul class="space-y-2 text-gray-700">
+            <li>
+              <a href="#section-1" class="hover:text-blue-600">1. 基础交互：会话管理与命令行操作</a>
+            </li>
+            <li>
+              <a href="#section-2" class="hover:text-blue-600">2. Rewind 功能：随时回滚代码和对话</a>
+            </li>
+            <li>
+              <a href="#section-3" class="hover:text-blue-600">3. 扩展思维模式：让 Claude 深度思考</a>
+            </li>
+            <li>
+              <a href="#section-4" class="hover:text-blue-600">4. 自定义命令：打造专属工作流</a>
+            </li>
+            <li>
+              <a href="#section-5" class="hover:text-blue-600">5. CLAUDE.md 配置文件：项目上下文管理</a>
+            </li>
+            <li>
+              <a href="#section-6" class="hover:text-blue-600">6. Git 深度集成：自然语言操作版本控制</a>
+            </li>
+            <li>
+              <a href="#section-7" class="hover:text-blue-600">7. MCP 协议：连接外部工具和数据源</a>
+            </li>
+            <li>
+              <a href="#section-8" class="hover:text-blue-600">8. 技能系统：可复用的 AI 能力模块</a>
+            </li>
+            <li>
+              <a href="#section-9" class="hover:text-blue-600">9. 子代理：专门化的任务处理</a>
+            </li>
+            <li>
+              <a href="#section-10" class="hover:text-blue-600">10. 权限管理：精细控制工具访问</a>
+            </li>
+            <li>
+              <a href="#section-11" class="hover:text-blue-600">11. 模型切换：按需选择合适的 AI</a>
+            </li>
+            <li>
+              <a href="#section-12" class="hover:text-blue-600">12. Hooks 系统：自定义工具调用逻辑</a>
+            </li>
+            <li>
+              <a href="#section-13" class="hover:text-blue-600">13. 高级技巧与性能优化</a>
+            </li>
+            <li>
+              <a href="#section-14" class="hover:text-blue-600">14. 常见问题与故障排查</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 正文内容 -->
+
+        <!-- 第一部分 -->
+        <h2 id="section-1">1. 基础交互：会话管理与命令行操作</h2>
+
+        <p>
+          Claude Code
+          的核心交互方式是命令行。掌握这些基础命令，是高效使用的第一步。
+        </p>
+
+        <h3>1.1 启动和退出</h3>
+
+        <div class="code-block">
+          <code>
+            # 进入项目目录并启动 Claude Code<br>
+            cd /path/to/your/project<br>
+            claude<br>
+            <br>
+            # 执行一次性任务（无需进入交互模式）<br>
+            claude "帮我分析这个项目的代码结构"<br>
+            <br>
+            # 继续上次会话<br>
+            claude -c<br>
+            <br>
+            # 恢复历史会话<br>
+            claude -r<br>
+            <br>
+            # 退出<br>
+            exit # 或按 Ctrl+C
+          </code>
+        </div>
+
+        <div class="tip-box p-4 rounded-lg my-4">
+          <p class="font-medium text-gray-800">💡 实用技巧</p>
+          <p class="text-gray-700 mt-2">
+            使用
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">claude "task"</code>
+            适合快速任务，比如"生成测试数据"或"检查代码规范"。对于需要多轮对话的复杂任务，还是进入交互模式更高效。
+          </p>
+        </div>
+
+        <h3>1.2 会话控制命令</h3>
+
+        <p>在交互模式下，这些命令帮你管理对话状态：</p>
+
+        <div class="code-block">
+          <code>
+            /clear # 清除当前对话上下文（但不清除代码修改）<br>
+            /status # 查看会话详细信息（token 使用、配置、历史）<br>
+            /help # 查看所有可用命令<br>
+            exit # 退出当前会话
+          </code>
+        </div>
+
+        <p>
+          其中
+          <code class="bg-gray-100 px-2 py-1 rounded text-sm">/status</code> 是
+          v2.0 新增的强大功能，它提供三个标签页：
+        </p>
+
+        <ul class="list-disc pl-6 my-4">
+          <li>
+            <strong>会话信息</strong>：当前对话的 token 消耗、消息数量、模型版本
+          </li>
+          <li>
+            <strong>配置详情</strong>：加载的 CLAUDE.md、已启用的插件、MCP
+            服务器连接
+          </li>
+          <li>
+            <strong>使用统计</strong>：累计 token 使用、成本估算（如果配置了
+            API）
+          </li>
+        </ul>
+
+        <div class="warning-box p-4 rounded-lg my-4">
+          <p class="font-medium text-gray-800">⚠️ 注意事项</p>
+          <p class="text-gray-700 mt-2">
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">/clear</code>
+            只清除对话历史，不会回滚代码修改。如果想撤销代码改动，需要使用下面要讲的
+            <strong>Rewind 功能</strong>。
+          </p>
+        </div>
+
+        <!-- 第二部分 -->
+        <h2 id="section-2">2. Rewind 功能：随时回滚代码和对话</h2>
+
+        <p>
+          这是 Claude Code v2.0 最实用的新特性之一。开发过程中，AI
+          可能会改错方向，或者你想测试不同方案——Rewind
+          让你可以瞬间回到之前的任何时间点。
+        </p>
+
+        <h3>2.1 如何激活 Rewind</h3>
+
+        <ul class="list-disc pl-6 my-4">
+          <li><strong>快捷键</strong>：连续按两次 ESC</li>
+          <li>
+            <strong>命令</strong>：输入
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">/rewind</code>
+          </li>
+        </ul>
+
+        <p>
+          激活后，Claude Code
+          会显示一个时间线界面，列出所有的"检查点"（通常是每次 Claude
+          执行工具调用时自动创建）。你可以选择任意一个检查点，系统会同时回滚：
+        </p>
+
+        <ul class="list-disc pl-6 my-4">
+          <li>对话上下文（之后的消息全部清除）</li>
+          <li>代码状态（通过 Claude 工具修改的文件会恢复）</li>
+        </ul>
+
+        <h3>2.2 哪些修改可以回滚？</h3>
+
+        <div class="highlight-box p-4 rounded-lg my-4">
+          <p class="font-medium text-gray-800">✅ 可以回滚的操作：</p>
+          <ul class="list-disc pl-6 mt-2 text-gray-700">
+            <li>通过 Claude 的 Edit 工具修改的文件</li>
+            <li>通过 Claude 的 Write 工具创建的文件</li>
+            <li>通过 Claude 删除的文件</li>
+          </ul>
+        </div>
+
+        <div class="warning-box p-4 rounded-lg my-4">
+          <p class="font-medium text-gray-800">❌ 无法回滚的操作：</p>
+          <ul class="list-disc pl-6 mt-2 text-gray-700">
+            <li>
+              通过 Bash 命令修改的文件（如
+              <code class="bg-gray-100 px-2 py-1 rounded text-sm">rm file.txt</code>）
+            </li>
+            <li>
+              通过 Bash 命令移动或复制的文件（如
+              <code class="bg-gray-100 px-2 py-1 rounded text-sm">mv old.txt new.txt</code>）
+            </li>
+            <li>手动编辑器中做的修改</li>
+          </ul>
+        </div>
+
+        <h3>2.3 实战场景</h3>
+
+        <p>
+          假设你让 Claude 重构一个函数，它改了10个文件，但你发现思路不对。这时：
+        </p>
+
+        <ol class="list-decimal pl-6 my-4">
+          <li>
+            按两次 ESC 或输入
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">/rewind</code>
+          </li>
+          <li>选择"开始重构"之前的检查点</li>
+          <li>所有10个文件瞬间恢复原样，对话也回到了那个时间点</li>
+          <li>重新给 Claude 更明确的指令，走另一条实现路线</li>
+        </ol>
+
+        <p>
+          这比手动
+          <code class="bg-gray-100 px-2 py-1 rounded text-sm">git reset</code>
+          或逐个撤销文件快得多，而且不会影响 Git 历史。
+        </p>
+
+        <!-- 第三部分 -->
+        <h2 id="section-3">3. 扩展思维模式：让 Claude 深度思考</h2>
+
+        <p>
+          Claude Code 有一个"隐藏能力"：<strong>扩展思维（Extended Thinking）</strong>。默认情况下，Claude
+          会快速响应，但对于复杂的架构决策或调试问题，你可以要求它花更长时间深度分析。
+        </p>
+
+        <h3>3.1 激活方式</h3>
+
+        <p>在提示词中加入特定关键词：</p>
+
+        <ul class="list-disc pl-6 my-4">
+          <li>
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">think</code> -
+            基础深度思考
+          </li>
+          <li>
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">think hard</code>
+            - 中等强度思考
+          </li>
+          <li>
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">think harder</code>
+            - 高强度思考
+          </li>
+          <li>
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">ultrathink</code>
+            - 最强思考模式
+          </li>
+        </ul>
+
+        <h3>3.2 示例对话</h3>
+
+        <div class="code-block">
+          <code>
+            # 基础询问（快速响应）<br>
+            > 如何在这个项目中添加 OAuth2 认证？<br>
+            <br>
+            # 启用扩展思维（Claude 会给出更深入的架构分析）<br>
+            > 我需要为这个 API 实现 OAuth2 认证系统。Think deeply about the best
+            approach, considering our current tech stack, security requirements,
+            and scalability.<br>
+            <br>
+            # 针对特定问题深度思考<br>
+            > think hard about the edge cases in this authentication flow that
+            could lead to security vulnerabilities
+          </code>
+        </div>
+
+        <h3>3.3 适用场景</h3>
+
+        <ul class="list-disc pl-6 my-4">
+          <li>
+            <strong>系统架构设计</strong>：选择技术栈、设计数据库结构、规划微服务拆分
+          </li>
+          <li>
+            <strong>复杂 Bug 调试</strong>：偶发性问题、多线程竞争、内存泄漏
+          </li>
+          <li>
+            <strong>性能优化</strong>：找出瓶颈点、评估不同方案的时间复杂度
+          </li>
+          <li><strong>重构决策</strong>：是否重构、如何重构、影响范围评估</li>
+        </ul>
+
+        <div class="tip-box p-4 rounded-lg my-4">
+          <p class="font-medium text-gray-800">💡 使用建议</p>
+          <p class="text-gray-700 mt-2">
+            扩展思维会消耗更多 token
+            和时间，只在真正需要深度分析时使用。简单的代码补全或格式化，用默认模式就够了。如果你经常需要长时间会话，通过
+            <a href="index.html" class="text-blue-600 hover:text-blue-700 underline">GACCode</a>
+            订阅可以获得更稳定的 token 配额，避免官方限制。
+          </p>
+        </div>
+
+        <!-- 第四部分 -->
+        <h2 id="section-4">4. 自定义命令：打造专属工作流</h2>
+
+        <p>
+          自定义命令（Slash Commands）是 Claude Code
+          的"编程接口"。你可以把常用的任务封装成命令，一键触发，极大提升效率。
+        </p>
+
+        <h3>4.1 命令的三种作用域</h3>
+
+        <table class="w-full border-collapse border border-gray-300 my-6">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="border border-gray-300 px-4 py-2 text-left">作用域</th>
+              <th class="border border-gray-300 px-4 py-2 text-left">路径</th>
+              <th class="border border-gray-300 px-4 py-2 text-left">
+                适用场景
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-300 px-4 py-2">个人命令</td>
+              <td class="border border-gray-300 px-4 py-2">
+                <code>~/.claude/commands/</code>
+              </td>
+              <td class="border border-gray-300 px-4 py-2">
+                所有项目通用的任务
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 px-4 py-2">项目命令</td>
+              <td class="border border-gray-300 px-4 py-2">
+                <code>.claude/commands/</code>
+              </td>
+              <td class="border border-gray-300 px-4 py-2">
+                当前项目特有的流程
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 px-4 py-2">插件命令</td>
+              <td class="border border-gray-300 px-4 py-2">
+                插件的 <code>commands/</code> 目录
+              </td>
+              <td class="border border-gray-300 px-4 py-2">第三方插件提供</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>4.2 创建你的第一个命令</h3>
+
+        <p>示例：创建一个代码安全审查命令</p>
+
+        <div class="code-block">
+          <code>
+            # 创建个人命令目录<br>
+            mkdir -p ~/.claude/commands<br>
+            <br>
+            # 创建命令文件<br>
+            cat > ~/.claude/commands/security-review.md << 'EOF'<br>
+            ---<br>
+            description: 审查代码安全漏洞<br>
+            allowed-tools: Read, Grep<br>
+            ---<br>
+            <br>
+            # 安全审查任务<br>
+            <br>
+            请审查当前项目的代码，重点关注：<br>
+            <br>
+            1. SQL 注入风险<br>
+            2. XSS 跨站脚本攻击<br>
+            3. 未经验证的用户输入<br>
+            4. 硬编码的密钥和凭证<br>
+            5. 不安全的文件上传<br>
+            <br>
+            给出具体的代码位置和修复建议。<br>
+            EOF
+          </code>
+        </div>
+
+        <p>现在在 Claude Code 中输入：</p>
+
+        <div class="code-block">
+          <code> > /security-review </code>
+        </div>
+
+        <p>Claude 会自动按照你定义的流程执行安全审查。</p>
+
+        <h3>4.3 命令参数</h3>
+
+        <p>命令可以接收参数，有两种方式：</p>
+
+        <ul class="list-disc pl-6 my-4">
+          <li><strong>$ARGUMENTS</strong> - 捕获所有参数</li>
+          <li><strong>$1, $2, $3</strong> - 单个位置参数</li>
+        </ul>
+
+        <p>示例：创建一个修复 Issue 的命令</p>
+
+        <div class="code-block">
+          <code>
+            cat > .claude/commands/fix-issue.md << 'EOF'<br>
+            ---<br>
+            argument-hint: [issue-number]<br>
+            description: 修复指定的 GitHub Issue<br>
+            ---<br>
+            <br>
+            # 修复 Issue #$ARGUMENTS<br>
+            <br>
+            1. 阅读 Issue 描述，理解问题<br>
+            2. 定位相关代码<br>
+            3. 实现修复方案<br>
+            4. 添加测试用例<br>
+            5. 准备 PR 描述<br>
+            EOF
+          </code>
+        </div>
+
+        <p>使用：</p>
+
+        <div class="code-block">
+          <code> > /fix-issue 123 </code>
+        </div>
+
+        <p>
+          Claude 会自动将
+          <code class="bg-gray-100 px-2 py-1 rounded text-sm">123</code> 替换到
+          <code class="bg-gray-100 px-2 py-1 rounded text-sm">$ARGUMENTS</code>
+          位置。
+        </p>
+
+        <h3>4.4 Bash 模式：在命令中执行 Shell</h3>
+
+        <p>
+          命令文件中可以用
+          <code class="bg-gray-100 px-2 py-1 rounded text-sm">!</code> 前缀执行
+          bash 命令，结果会自动添加到上下文：
+        </p>
+
+        <div class="code-block">
+          <code>
+            ---<br>
+            allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git
+            commit:*)<br>
+            description: 创建 Git 提交<br>
+            ---<br>
+            <br>
+            ## 当前状态<br>
+            <br>
+            - Git 状态：!`git status`<br>
+            - 待提交更改：!`git diff HEAD`<br>
+            - 当前分支：!`git branch --show-current`<br>
+            <br>
+            ## 任务<br>
+            <br>
+            根据上述更改，创建一个描述清晰的 Git 提交。
+          </code>
+        </div>
+
+        <p>
+          这样 Claude 在执行命令时，会先运行这些 bash 命令，获取实时的 Git
+          状态，再基于这些信息生成提交。
+        </p>
+
+        <div class="tip-box p-4 rounded-lg my-4">
+          <p class="font-medium text-gray-800">💡 高级技巧</p>
+          <p class="text-gray-700 mt-2">
+            把团队的代码规范、测试流程、部署步骤都封装成项目命令，新成员可以直接用
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">/deploy</code>、<code class="bg-gray-100 px-2 py-1 rounded text-sm">/test</code>
+            等命令，无需记忆复杂的操作流程。
+          </p>
+        </div>
+
+        <!-- 第五部分 -->
+        <h2 id="section-5">5. CLAUDE.md 配置文件：项目上下文管理</h2>
+
+        <p>
+          <code class="bg-gray-100 px-2 py-1 rounded text-sm">CLAUDE.md</code>
+          是一个特殊文件，放在项目根目录的
+          <code class="bg-gray-100 px-2 py-1 rounded text-sm">.claude/</code>
+          目录下。每次启动 Claude
+          Code，它会自动加载这个文件的内容，作为"项目说明书"。
+        </p>
+
+        <h3>5.1 应该写什么？</h3>
+
+        <p>一个完整的 CLAUDE.md 通常包含：</p>
+
+        <ul class="list-disc pl-6 my-4">
+          <li><strong>项目架构</strong>：目录结构、关键模块说明</li>
+          <li><strong>代码风格</strong>：缩进、命名规范、注释要求</li>
+          <li><strong>常用命令</strong>：构建、测试、部署的 npm/yarn 命令</li>
+          <li><strong>核心文件和函数</strong>：重要的工具函数、配置文件位置</li>
+          <li><strong>开发规范</strong>：分支策略、提交信息格式、PR 流程</li>
+          <li><strong>调试技巧</strong>：常见问题的排查方法</li>
+        </ul>
+
+        <h3>5.2 示例：一个前端项目的 CLAUDE.md</h3>
+
+        <div class="code-block">
+          <code>
+            # MyApp 项目指南<br>
+            <br>
+            ## 技术栈<br>
+            <br>
+            - React 18 + TypeScript<br>
+            - Vite 作为构建工具<br>
+            - Tailwind CSS 用于样式<br>
+            - React Query 管理服务端状态<br>
+            <br>
+            ## 目录结构<br>
+            <br>
+            ```<br>
+            src/<br>
+            components/ # 可复用组件<br>
+            pages/ # 页面组件<br>
+            hooks/ # 自定义 Hooks<br>
+            utils/ # 工具函数<br>
+            api/ # API 调用封装<br>
+            ```<br>
+            <br>
+            ## 代码规范<br>
+            <br>
+            - 组件名使用 PascalCase<br>
+            - 文件名与组件名一致<br>
+            - 每个组件一个文件<br>
+            - Props 类型必须定义<br>
+            - 使用函数组件 + Hooks，禁止 Class 组件<br>
+            <br>
+            ## 常用命令<br>
+            <br>
+            - `npm run dev` - 启动开发服务器<br>
+            - `npm run build` - 生产构建<br>
+            - `npm test` - 运行测试<br>
+            - `npm run lint` - 代码检查<br>
+            <br>
+            ## 核心工具<br>
+            <br>
+            - `src/utils/request.ts` - 封装的 fetch 函数，所有 API
+            调用都通过它<br>
+            - `src/hooks/useAuth.ts` - 用户认证状态管理<br>
+            <br>
+            ## Git 规范<br>
+            <br>
+            - 提交信息格式：`type(scope): description`<br>
+            - 类型：feat, fix, docs, style, refactor, test, chore<br>
+            - 示例：`feat(auth): add OAuth login support`
+          </code>
+        </div>
+
+        <h3>5.3 为什么要用 CLAUDE.md？</h3>
+
+        <p>有了这个文件，Claude 在任何对话中都能：</p>
+
+        <ul class="list-disc pl-6 my-4">
+          <li>按照项目的代码风格生成代码</li>
+          <li>知道去哪里找关键文件</li>
+          <li>理解项目的架构和技术选型</li>
+          <li>给出符合团队规范的建议</li>
+        </ul>
+
+        <p>这相当于给 Claude 提供了一份"入职文档"，让它快速融入你的项目。</p>
+
+        <div class="warning-box p-4 rounded-lg my-4">
+          <p class="font-medium text-gray-800">⚠️ 注意</p>
+          <p class="text-gray-700 mt-2">
+            CLAUDE.md 的内容会被计入每次对话的 token，所以不要写得过长。控制在
+            2000 词以内，只写最核心的信息。
+          </p>
+        </div>
+
+        <!-- 第六部分 -->
+        <h2 id="section-6">6. Git 深度集成：自然语言操作版本控制</h2>
+
+        <p>Claude Code 不只是写代码，它还能直接操作 Git——而且是用自然语言。</p>
+
+        <h3>6.1 自然语言 Git 命令</h3>
+
+        <p>你可以这样跟 Claude 说话：</p>
+
+        <div class="code-block">
+          <code>
+            > 我改了哪些文件？<br>
+            > 用一句话总结我的修改，然后提交<br>
+            > 创建一个新分支叫 feature/user-profile<br>
+            > 显示最近5次提交<br>
+            > 帮我解决合并冲突
+          </code>
+        </div>
+
+        <p>Claude 会自动转换为对应的 Git 命令并执行。</p>
+
+        <h3>6.2 Git Worktrees：并行开发的神器</h3>
+
+        <p>
+          如果你需要同时开发多个功能（比如一个紧急修复 +
+          一个新特性），频繁切换分支会很烦。Claude Code 支持 Git
+          Worktrees，让你在不同目录下并行工作。
+        </p>
+
+        <div class="code-block">
+          <code>
+            # 为新功能创建 worktree<br>
+            git worktree add ../project-feature-a -b feature-a<br>
+            <br>
+            # 为 bug 修复创建另一个 worktree<br>
+            git worktree add ../project-bugfix -b bugfix-123<br>
+            <br>
+            # 在第一个 worktree 中启动 Claude<br>
+            cd ../project-feature-a<br>
+            claude<br>
+            <br>
+            # 在第二个 worktree 中启动另一个 Claude 会话<br>
+            cd ../project-bugfix<br>
+            claude
+          </code>
+        </div>
+
+        <p>
+          两个 Claude 会话完全独立，互不干扰。功能开发完成后，清理 worktree：
+        </p>
+
+        <div class="code-block">
+          <code>
+            # 查看所有 worktree<br>
+            git worktree list<br>
+            <br>
+            # 删除不需要的 worktree<br>
+            git worktree remove ../project-feature-a
+          </code>
+        </div>
+
+        <!-- 第七部分 -->
+        <h2 id="section-7">7. MCP 协议：连接外部工具和数据源</h2>
+
+        <p>
+          MCP（Model Context Protocol）是 Anthropic 设计的一种标准协议，让
+          Claude 可以连接外部工具、数据库、API 等。通过 MCP，Claude Code
+          能做的事情远超代码编辑。
+        </p>
+
+        <h3>7.1 支持的传输方式</h3>
+
+        <ul class="list-disc pl-6 my-4">
+          <li><strong>HTTP</strong>：通过 HTTP API 连接</li>
+          <li><strong>SSE</strong>（Server-Sent Events）：实时数据流</li>
+          <li><strong>stdio</strong>：标准输入输出（本地工具）</li>
+        </ul>
+
+        <h3>7.2 添加 MCP 服务器</h3>
+
+        <p>从 Claude Desktop 导入（macOS/WSL）：</p>
+
+        <div class="code-block">
+          <code> claude mcp add-from-claude-desktop </code>
+        </div>
+
+        <p>手动添加 HTTP 服务器：</p>
+
+        <div class="code-block">
+          <code>
+            claude mcp add --transport http github https://api.github.com/mcp
+          </code>
+        </div>
+
+        <p>添加本地工具（stdio）：</p>
+
+        <div class="code-block">
+          <code>
+            claude mcp add --transport stdio jira --
+            /usr/local/bin/jira-mcp-tool
+          </code>
+        </div>
+
+        <h3>7.3 使用 MCP 提示</h3>
+
+        <p>MCP 服务器提供的功能会自动转换为 slash 命令，格式为：</p>
+
+        <div class="code-block">
+          <code>
+            /mcp__&lt;server-name&gt;__&lt;prompt-name&gt; [arguments]
+          </code>
+        </div>
+
+        <p>示例：</p>
+
+        <div class="code-block">
+          <code>
+            # 列出 GitHub PR<br>
+            > /mcp__github__list_prs<br>
+            <br>
+            # 审查特定 PR<br>
+            > /mcp__github__pr_review 456<br>
+            <br>
+            # 创建 Jira Issue<br>
+            > /mcp__jira__create_issue "登录页面崩溃" high
+          </code>
+        </div>
+
+        <h3>7.4 权限配置</h3>
+
+        <p>MCP 工具需要权限配置：</p>
+
+        <ul class="list-disc pl-6 my-4">
+          <li>
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">mcp__github</code>
+            - 允许该服务器的所有工具
+          </li>
+          <li>
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">mcp__github__get_issue</code>
+            - 只允许特定工具
+          </li>
+          <li>
+            不支持通配符（<code class="bg-gray-100 px-2 py-1 rounded text-sm">mcp__github__*</code>
+            无效）
+          </li>
+        </ul>
+
+        <div class="tip-box p-4 rounded-lg my-4">
+          <p class="font-medium text-gray-800">💡 实用场景</p>
+          <p class="text-gray-700 mt-2">
+            连接 Notion MCP 服务器，让 Claude 直接读取你的项目文档；连接数据库
+            MCP，让它分析数据库结构和优化查询。MCP 的潜力远超想象。
+          </p>
+        </div>
+
+        <!-- 第八、九、十部分简化版 -->
+        <h2 id="section-8">8. 技能系统：可复用的 AI 能力模块</h2>
+
+        <p>
+          技能（Skills）是比命令更高级的抽象。一个技能可以包含：专门的提示词模板、特定的工具访问权限、版本管理。
+        </p>
+
+        <p>创建项目技能：</p>
+
+        <div class="code-block">
+          <code>
+            mkdir -p .claude/skills/team-skill<br>
+            # 编辑 SKILL.md 定义技能行为
+          </code>
+        </div>
+
+        <p>管理技能：</p>
+
+        <div class="code-block">
+          <code>
+            # 查看所有技能<br>
+            ls ~/.claude/skills/<br>
+            <br>
+            # 查看技能内容<br>
+            cat ~/.claude/skills/my-skill/SKILL.md<br>
+            <br>
+            # 删除技能<br>
+            rm -rf ~/.claude/skills/my-skill
+          </code>
+        </div>
+
+        <h2 id="section-9">9. 子代理：专门化的任务处理</h2>
+
+        <p>
+          子代理（Sub-agents）是针对特定任务优化的 AI
+          角色，比如测试运行器、代码审查者、调试专家。
+        </p>
+
+        <p>管理子代理：</p>
+
+        <div class="code-block">
+          <code>
+            # 打开子代理管理界面<br>
+            /agents<br>
+            <br>
+            # 显式调用子代理<br>
+            > Use the test-runner subagent to fix failing tests<br>
+            > Have the code-reviewer subagent look at my recent changes
+          </code>
+        </div>
+
+        <h2 id="section-10">10. 权限管理：精细控制工具访问</h2>
+
+        <p>通过权限系统，你可以控制 Claude 能用哪些工具，避免误操作。</p>
+
+        <div class="code-block">
+          <code>
+            # 允许特定工具（无需确认）<br>
+            claude --allowedTools "Bash(git log:*)" "Read"<br>
+            <br>
+            # 禁止危险工具<br>
+            claude --disallowedTools "Bash(rm:*)" "Edit"<br>
+            <br>
+            # 打开权限配置界面<br>
+            /permissions
+          </code>
+        </div>
+
+        <h2 id="section-11">11. 模型切换：按需选择合适的 AI</h2>
+
+        <p>根据任务复杂度选择不同的 Claude 模型：</p>
+
+        <div class="code-block">
+          <code>
+            # 命令行指定<br>
+            claude --model opus # 最强模型，适合复杂任务<br>
+            claude --model sonnet # 平衡性能和成本<br>
+            <br>
+            # 会话中切换<br>
+            /model sonnet<br>
+            /model opus<br>
+            <br>
+            # 使用扩展上下文版本（1M token）<br>
+            /model anthropic.claude-sonnet-4-5-20250929-v1:0[1m]
+          </code>
+        </div>
+
+        <div class="tip-box p-4 rounded-lg my-4">
+          <p class="font-medium text-gray-800">💡 成本优化</p>
+          <p class="text-gray-700 mt-2">
+            简单的代码补全用 Haiku，复杂的架构设计用 Opus。如果担心官方 API
+            成本或配额限制，通过
+            <a href="index.html" class="text-blue-600 hover:text-blue-700 underline">GACCode</a>
+            订阅企业级账户，享受更灵活的用量和更稳定的服务。
+          </p>
+        </div>
+
+        <h2 id="section-12">12. Hooks 系统：自定义工具调用逻辑</h2>
+
+        <p>
+          Hooks
+          允许你在工具调用前后插入自定义逻辑，比如日志记录、命令验证、数据转换。
+        </p>
+
+        <p>示例：记录所有 Bash 命令</p>
+
+        <div class="code-block">
+          <code>
+            # 在 ~/.claude/settings.json 中配置<br>
+            {<br>
+            "hooks": {<br>
+            "PreToolUse": [<br>
+            {<br>
+            "matcher": "Bash",<br>
+            "hooks": [<br>
+            {<br>
+            "type": "command",<br>
+            "command": "jq -r '\"\\(.tool_input.command)\"' >>
+            ~/.claude/bash-log.txt"<br>
+            }<br>
+            ]<br>
+            }<br>
+            ]<br>
+            }<br>
+            }
+          </code>
+        </div>
+
+        <p>这样每次 Claude 执行 bash 命令，都会先记录到日志文件。</p>
+
+        <!-- 高级技巧 -->
+        <h2 id="section-13">13. 高级技巧与性能优化</h2>
+
+        <h3>13.1 引用文件内容</h3>
+
+        <p>
+          在对话中用
+          <code class="bg-gray-100 px-2 py-1 rounded text-sm">@</code>
+          符号快速引用文件：
+        </p>
+
+        <div class="code-block">
+          <code>
+            > 审查 @src/utils/helpers.js 的实现<br>
+            > 对比 @src/old-version.js 和 @src/new-version.js
+          </code>
+        </div>
+
+        <h3>13.2 性能优化建议</h3>
+
+        <ul class="list-disc pl-6 my-4">
+          <li>
+            用
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">rg</code>（ripgrep）替代
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">grep</code> -
+            速度快10倍
+          </li>
+          <li>
+            用 Glob 工具替代
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm">find -name</code>
+            - 更快的文件搜索
+          </li>
+          <li>合理配置上下文大小 - 避免加载不必要的文件</li>
+          <li>简单任务用轻量级模型（Haiku）</li>
+        </ul>
+
+        <h3>13.3 绕过权限提示</h3>
+
+        <p>在 settings.json 中配置 allowedTools，避免频繁的权限确认：</p>
+
+        <div class="code-block">
+          <code>
+            {<br>
+            "allowedTools": [<br>
+            "Bash(git status:*)",<br>
+            "Bash(git log:*)",<br>
+            "Read"<br>
+            ]<br>
+            }
+          </code>
+        </div>
+
+        <!-- 故障排查 -->
+        <h2 id="section-14">14. 常见问题与故障排查</h2>
+
+        <h3>14.1 调试命令</h3>
+
+        <div class="code-block">
+          <code>
+            /bug # 报告问题给 Anthropic<br>
+            /status # 查看会话详细状态<br>
+            /help # 获取帮助信息
+          </code>
+        </div>
+
+        <h3>14.2 日志位置</h3>
+
+        <ul class="list-disc pl-6 my-4">
+          <li>
+            会话历史：<code class="bg-gray-100 px-2 py-1 rounded text-sm">~/.claude/sessions/</code>
+          </li>
+          <li>
+            配置文件：<code class="bg-gray-100 px-2 py-1 rounded text-sm">~/.claude/settings.json</code>
+          </li>
+        </ul>
+
+        <h3>14.3 账户稳定性问题</h3>
+
+        <p>
+          如果遇到官方账户降额、封号、或支付限制，这些都是个人账户常见的风险。为了确保长期稳定使用
+          Claude Code，建议通过专业服务商订阅：
+        </p>
+
+        <div class="highlight-box p-5 rounded-lg my-6">
+          <p class="font-semibold text-gray-800 text-lg mb-3">
+            为什么选择
+            <a href="index.html" class="text-blue-600 hover:text-blue-700 underline">GACCode</a>？
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-700">
+            <li>
+              <strong>避免官方政策风险</strong>：企业级账户不受个人账户降额和封号影响
+            </li>
+            <li><strong>支付灵活</strong>：支持多种支付方式，无需国际信用卡</li>
+            <li><strong>稳定配额</strong>：无突然限流，长期项目更可靠</li>
+            <li><strong>技术支持</strong>：专业团队快速响应，解决使用问题</li>
+          </ul>
+          <p class="mt-4">
+            <a href="index.html" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+              访问 GACCode 了解更多 →
+            </a>
+          </p>
+        </div>
+
+        <!-- 总结 -->
+        <h2>总结</h2>
+
+        <p>
+          Claude Code 的功能远超大多数人的认知。从基础的对话式编程，到 Rewind
+          回滚、扩展思维、自定义命令、MCP
+          集成、技能系统……每一个功能都能显著提升开发效率。
+        </p>
+
+        <p>
+          掌握这些功能的关键是：<strong>从简单开始，逐步深入</strong>。先用好基础命令和
+          Rewind，再尝试自定义命令，最后探索 MCP 和 Hooks。
+        </p>
+
+        <p>
+          如果你准备深度依赖 Claude Code
+          作为日常开发工具，账户的稳定性至关重要。官方个人账户存在降额、封号、支付限制等不可控因素，对于长期项目来说风险较高。通过
+          <a href="index.html" class="text-blue-600 hover:text-blue-700 underline font-medium">GACCode</a>
+          获取企业级服务，是更明智的选择。
+        </p>
+
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-600 p-6 rounded-lg my-8">
+          <p class="text-lg font-semibold text-gray-800 mb-2">
+            准备好开始你的 AI 编程之旅了吗？
+          </p>
+          <p class="text-gray-700 mb-4">
+            立即访问 GACCode，获取稳定的 Claude Code
+            订阅服务，告别账户限制和支付烦恼。
+          </p>
+          <a href="index.html" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-md hover:shadow-lg">
+            立即订阅 Claude Code Pro
+          </a>
+        </div>
+      </article>
+
+      <!-- Related Articles -->
+      <div class="mt-12 bg-white rounded-2xl shadow-lg p-8">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">相关文章</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <a href="/post/why-claude-code-beats-cursor-copilot-windsurf.html" class="block p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all">
+            <h3 class="font-semibold text-gray-800 mb-2">
+              Claude Code 完胜 Cursor、Copilot、Windsurf？
+            </h3>
+            <p class="text-sm text-gray-600">
+              深度对比四大 AI 编程工具的实际表现
+            </p>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-sm">GAC</span>
+              </div>
+              <span class="text-xl font-bold text-white">GACCode</span>
+            </div>
+            <p class="text-sm text-gray-400">
+              专业的 Claude Code 订阅服务商，为开发者提供稳定、可靠的 AI
+              编程助手解决方案。
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-4">产品服务</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="index.html#subscription" class="hover:text-blue-400 transition-colors">Claude Code 订阅</a>
+              </li>
+              <li>
+                <a href="index.html#features" class="hover:text-blue-400 transition-colors">功能特性</a>
+              </li>
+              <li>
+                <a href="index.html#pricing" class="hover:text-blue-400 transition-colors">价格方案</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-4">支持与帮助</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="index.html#faq" class="hover:text-blue-400 transition-colors">常见问题</a>
+              </li>
+              <li>
+                <a href="posts.html" class="hover:text-blue-400 transition-colors">文章博客</a>
+              </li>
+              <li>
+                <a href="index.html#contact" class="hover:text-blue-400 transition-colors">联系我们</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-4">联系方式</h3>
+            <ul class="space-y-2 text-sm">
+              <li>邮箱: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4b7b1b4b4abb6b084a3a5a7a7aba0a1eab7b0abb6a1">[email&#160;protected]</a></li>
+              <li>微信: GACCodeSupport</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+          <p>&copy; 2025 官方邮箱 gaccode@163.com 订阅后. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  <script data-cfasync="false" src="static/js/email-decode.min.js"></script><script defer src="static/js/v8c78df7c7c0f484497ecbca7046644da1771523124516.js" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0609a436c77044e68b7153f24036675e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,1574 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      GACCode 积分完全指南 - 深入理解Claude Code积分系统 | 官方邮箱 gaccode@163.com 订阅后
+    </title>
+    <meta name="description" content="全面解析 GACCode 积分系统，包括积分计算、使用场景、优化策略、成本控制等实用指南。帮助您高效管理 Claude Code 积分，降低使用成本，提升开发效率。">
+    <meta name="keywords" content="GACCode积分,Claude Code积分,AI编程助手积分,积分管理,Claude API使用,tokens优化,GACCode套餐,代码生成成本,AI编程成本优化">
+    <meta name="author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="GACCode 积分完全指南 - 深入理解Claude Code积分系统">
+    <meta property="og:description" content="全面解析 GACCode 积分系统，包括积分计算、使用场景、优化策略、成本控制等实用指南。">
+    <meta property="og:url" content="https://GACCode/post/gaccode-credits-guide">
+    <meta property="og:site_name" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2025-08-10T10:00:00+08:00">
+    <meta property="article:modified_time" content="2025-08-10T10:00:00+08:00">
+    <meta property="article:author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="article:section" content="使用指南">
+    <meta property="article:tag" content="GACCode积分">
+    <meta property="article:tag" content="Claude Code">
+    <meta property="article:tag" content="使用指南">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GACCode 积分完全指南 - 深入理解Claude Code积分系统">
+    <meta name="twitter:description" content="全面解析 GACCode 积分系统，包括积分计算、使用场景、优化策略、成本控制等实用指南。">
+    <meta name="msvalidate.01" content="7F5A4F41F59B7840336A1530F6D3474E">
+    <link rel="icon" target="_blank" href="https://GACCode/img/logo.webp">
+    <!-- Canonical URL -->
+    <link rel="canonical" target="_blank" href="https://GACCode/post/gaccode-credits-guide">
+
+    <!-- <script
+      defer
+      src="https://umami.xinhuo.dev/script.js"
+      data-website-id="aa83f7b8-15cd-4ed3-9f16-8efa73548ed0"
+    ></script> -->
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "GACCode 积分完全指南 - 深入理解Claude Code积分系统",
+        "description": "全面解析 GACCode 积分系统，包括积分计算、使用场景、优化策略、成本控制等实用指南。帮助您高效管理 Claude Code 积分，降低使用成本，提升开发效率。",
+        "author": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://GACCode/img/logo.webp"
+          }
+        },
+        "datePublished": "2025-08-10T10:00:00+08:00",
+        "dateModified": "2025-08-10T10:00:00+08:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://GACCode/post/gaccode-credits-guide"
+        }
+      }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" target="_blank" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" target="_blank" href="/apple-touch-icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="static/js/js.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#64748b",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Prism.js for code highlighting -->
+    <link href="static/css/prism-tomorrow.min.css" rel="stylesheet">
+    <style>
+      .prose code {
+        background-color: #f3f4f6;
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+      }
+      .prose pre {
+        background-color: #1e293b;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+      }
+      .prose pre code {
+        background-color: transparent;
+        padding: 0;
+        color: #e2e8f0;
+      }
+      .prose table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .prose th,
+      .prose td {
+        border: 1px solid #e5e7eb;
+        padding: 0.75rem;
+        text-align: left;
+      }
+      .prose th {
+        background-color: #f9fafb;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- 右侧分享挂件 -->
+    <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 space-y-3">
+      <div class="group relative">
+        <button onclick="openWechatModal()" class="w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+          <svg t="1754325230831" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1687" width="128" height="128">
+            <path d="M337.387283 341.82659c-17.757225 0-35.514451 11.83815-35.514451 29.595375s17.757225 29.595376 35.514451 29.595376 29.595376-11.83815 29.595376-29.595376c0-18.49711-11.83815-29.595376-29.595376-29.595375zM577.849711 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763zM501.641618 401.017341c17.757225 0 29.595376-12.578035 29.595376-29.595376 0-17.757225-11.83815-29.595376-29.595376-29.595375s-35.514451 11.83815-35.51445 29.595375 17.757225 29.595376 35.51445 29.595376zM706.589595 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763z" fill="#28C445" p-id="1688"></path>
+            <path d="M510.520231 2.959538C228.624277 2.959538 0 231.583815 0 513.479769s228.624277 510.520231 510.520231 510.520231 510.520231-228.624277 510.520231-510.520231-228.624277-510.520231-510.520231-510.520231zM413.595376 644.439306c-29.595376 0-53.271676-5.919075-81.387284-12.578034l-81.387283 41.433526 22.936416-71.768786c-58.450867-41.433526-93.965318-95.445087-93.965317-159.815029 0-113.202312 105.803468-201.988439 233.803468-201.98844 114.682081 0 216.046243 71.028902 236.023121 166.473989-7.398844-0.739884-14.797688-1.479769-22.196532-1.479769-110.982659 1.479769-198.289017 85.086705-198.289017 188.67052 0 17.017341 2.959538 33.294798 7.398844 49.572255-7.398844 0.739884-15.537572 1.479769-22.936416 1.479768z m346.265896 82.867052l17.757225 59.190752-63.630058-35.514451c-22.936416 5.919075-46.612717 11.83815-70.289017 11.83815-111.722543 0-199.768786-76.947977-199.768786-172.393063-0.739884-94.705202 87.306358-171.653179 198.289017-171.65318 105.803468 0 199.028902 77.687861 199.028902 172.393064 0 53.271676-34.774566 100.624277-81.387283 136.138728z" fill="#28C445" p-id="1689"></path>
+          </svg>
+        </button>
+        <div class="absolute right-14 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-80 text-white px-4 py-3 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div class="text-center">
+            <div class="mb-2">客服微信</div>
+            <img src="static/picture/qrcode_new2.webp" class="w-32 rounded mx-auto" alt="微信二维码">
+          </div>
+          <div class="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-black bg-opacity-80 rotate-45"></div>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a target="_blank" href="index.html" class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">GAC</span>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-800">
+                GACCode 订阅购买
+              </div>
+            </div>
+          </a>
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <!-- 产品服务 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                产品服务
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a target="_blank" href="index.html#products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐价格</a>
+                  <a href="gaccode-package-comparison.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐对比</a>
+                  <a href="gaccode-product-introduction.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">产品介绍</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 使用指南 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                使用指南
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="claude-code-cli-install-guide.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">CLI安装</a>
+                  <a href="gaccode-purchase-channels.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">购买指南</a>
+                  <a href="claude-code-api-best-practices.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">最佳实践</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 技术资源 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                技术资源
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="posts.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">所有文章</a>
+                  <a href="what-is-gaccode.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">什么是GACCode</a>
+                  <a href="claude-code-proxy-sites.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">服务对比</a>
+                  <a href="gaccode-faq.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">常见问题</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 立即购买按钮 -->
+            <a href="share.html" target="_blank" class="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group">
+              <span class="relative z-10">免费体验</span>
+              <svg class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <span class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></span>
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="lg:hidden">
+            <button id="mobile-menu-button" class="p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors" aria-label="打开菜单">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100">
+        <div class="container mx-auto px-4 py-4">
+          <div class="space-y-3">
+            <!-- 产品服务 -->
+            <div>
+              <div class="font-medium text-gray-900 mb-2">产品服务</div>
+              <div class="pl-4 space-y-2">
+                <a target="_blank" href="index.html#products" class="block text-sm text-gray-600 hover:text-blue-600">套餐价格</a>
+                <a href="gaccode-package-comparison.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">套餐对比</a>
+                <a href="gaccode-product-introduction.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">产品介绍</a>
+              </div>
+            </div>
+
+            <!-- 使用指南 -->
+            <div>
+              <div class="font-medium text-gray-900 mb-2">使用指南</div>
+              <div class="pl-4 space-y-2">
+                <a href="claude-code-cli-install-guide.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">CLI安装</a>
+                <a href="gaccode-purchase-channels.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">购买指南</a>
+                <a href="claude-code-api-best-practices.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">最佳实践</a>
+              </div>
+            </div>
+
+            <!-- 技术资源 -->
+            <div>
+              <a href="posts.html" target="_blank" class="font-medium text-gray-900 mb-2">技术资源</a>
+              <div class="pl-4 space-y-2">
+                <a href="what-is-gaccode.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">什么是GACCode</a>
+                <a href="claude-code-proxy-sites.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">服务对比</a>
+                <a href="gaccode-faq.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">常见问题</a>
+              </div>
+            </div>
+
+            <!-- 其他链接 -->
+            <div class="pt-3 border-t border-gray-200">
+              <a href="index.html#products" target="_blank" class="block py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg px-4 transition-all duration-300 shadow-md hover:shadow-lg">立即购买</a>
+              <a href="#contact" target="_blank" class="block py-2 text-sm text-gray-700 hover:text-blue-600">联系支持</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="text-sm breadcrumbs mb-8">
+          <div class="flex items-center text-gray-500">
+            <a target="_blank" href="index.html" class="hover:text-blue-600 transition-colors">首页</a>
+            <span class="mx-2">/</span>
+            <a target="_blank" href="posts.html" class="hover:text-blue-600 transition-colors">技术文章</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">GACCode 积分完全指南</span>
+          </div>
+        </nav>
+
+        <!-- Article Header -->
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="px-8 py-8">
+            <header class="mb-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">使用指南</span>
+                </div>
+              </div>
+              <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                GACCode 积分完全指南：深入理解 Claude Code 积分系统与高效管理
+              </h1>
+              <div class="flex items-center text-gray-600 text-sm space-x-4 mb-4">
+                <time datetime="2025-08-10T10:00:00+08:00">发布时间：2025年08月10日</time>
+                <span>•</span>
+                <span>阅读时间：约 25 分钟</span>
+                <span>•</span>
+                <span>分类：使用指南</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">GACCode积分</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Claude Code</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">积分管理</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">使用优化</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">成本控制</span>
+              </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+              <h2 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                文章目录
+              </h2>
+              <ul class="space-y-2 text-blue-800">
+                <li>
+                  <a target="_blank" href="#introduction" class="hover:underline">• 引言</a>
+                </li>
+                <li>
+                  <a target="_blank" href="#what-is-credits" class="hover:underline">• 什么是 GACCode 积分</a>
+                </li>
+                <li>
+                  <a target="_blank" href="#usage-scenarios" class="hover:underline">• GACCode 积分的使用场景</a>
+                </li>
+                <li>
+                  <a target="_blank" href="#consumption-factors" class="hover:underline">• 积分消耗的影响因素</a>
+                </li>
+                <li>
+                  <a target="_blank" href="#management" class="hover:underline">• 如何高效管理 GACCode 积分</a>
+                </li>
+                <li>
+                  <a target="_blank" href="#faq" class="hover:underline">• GACCode 积分的常见问题</a>
+                </li>
+                <li>
+                  <a target="_blank" href="#case-studies" class="hover:underline">• 积分优化的实战案例</a>
+                </li>
+                <li>
+                  <a target="_blank" href="#comparison" class="hover:underline">• GACCode 积分与订阅计划的区别</a>
+                </li>
+                <li>
+                  <a target="_blank" href="#conclusion" class="hover:underline">• 总结与建议</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose prose-lg max-w-none">
+              <!-- 引言 -->
+              <section id="introduction" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">引言</h2>
+
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                  在 AI 编程助手日益普及的今天，GACCode 作为 Claude Code
+                  的专业代理服务平台，为中国开发者提供了便捷的 Claude AI
+                  访问方案。而理解和合理管理 GACCode
+                  积分，是充分发挥这一强大工具价值的关键。本文将全面解析 GACCode
+                  积分系统，帮助您高效使用这一 AI 编程助手服务。
+                </p>
+
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  无论您是刚接触 GACCode
+                  的新用户，还是希望优化积分使用策略的资深开发者，这份完整指南都将为您提供有价值的见解和实用建议。
+                </p>
+              </section>
+
+              <!-- 什么是 GACCode 积分 -->
+              <section id="what-is-credits" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                  什么是 GACCode 积分
+                </h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  基础概念
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  GACCode 积分是您使用 Claude Code AI
+                  编程助手服务的"货币"。当您购买 GACCode
+                  的日卡、月卡或其他套餐时，实际上是获得了一定额度的使用积分,这些积分对应着
+                  Claude Code 官方的 API 使用额度。
+                </p>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-blue-800 mb-4">
+                    核心特点
+                  </h4>
+                  <ul class="text-blue-700 space-y-2">
+                    <li>
+                      <strong>预付费模式</strong>：积分采用预付费方式，购买后立即可用
+                    </li>
+                    <li>
+                      <strong>有效期限</strong>：根据套餐类型，积分有不同的有效期（日卡 24 小时，月卡 30
+                      天）
+                    </li>
+                    <li>
+                      <strong>消耗计费</strong>：每次使用 Claude Code
+                      服务时，系统根据实际使用量扣除相应积分
+                    </li>
+                    <li>
+                      <strong>透明计量</strong>：所有积分消耗都有清晰的记录和说明
+                    </li>
+                  </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  积分与官方系统的关系
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  GACCode 积分系统建立在 Anthropic 官方 Claude API
+                  的基础之上。根据 Anthropic 官方文档，Claude API 采用"usage
+                  credits"（使用积分）的预付费计费模式。
+                </p>
+
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-gray-800 mb-4">
+                    官方积分特性
+                  </h4>
+                  <ul class="text-gray-700 space-y-2">
+                    <li>• 积分必须预先购买才能使用 API</li>
+                    <li>• 积分自购买日起一年内有效</li>
+                    <li>• 所有积分购买不可退款</li>
+                    <li>• 失败的请求通常不收费</li>
+                  </ul>
+                </div>
+
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  GACCode
+                  作为代理服务，将这一官方积分系统适配为更符合中国用户习惯的套餐模式，让您无需直接面对复杂的
+                  API 计费，而是通过简单的日卡、月卡形式使用服务。
+                </p>
+              </section>
+
+              <!-- 使用场景 -->
+              <section id="usage-scenarios" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                  GACCode 积分的使用场景
+                </h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  1. Claude Code CLI 编程助手
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  这是 GACCode 积分最主要的使用场景。当您通过命令行工具使用
+                  Claude Code 时，每次对话交互都会消耗相应的积分。
+                </p>
+
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-yellow-800 mb-4">
+                    典型使用消耗
+                  </h4>
+                  <ul class="text-yellow-700 space-y-2">
+                    <li>
+                      <strong>代码生成请求</strong>：根据代码复杂度和长度，单次请求可能消耗数百到数千 tokens
+                    </li>
+                    <li>
+                      <strong>代码审查分析</strong>：分析大型代码文件时，可能需要更多 tokens 来处理上下文
+                    </li>
+                    <li>
+                      <strong>问题解答</strong>：简单问题解答消耗较少，复杂技术讨论消耗较多
+                    </li>
+                    <li>
+                      <strong>多轮对话</strong>：连续对话会累积上下文，后续请求可能消耗更多 tokens
+                    </li>
+                  </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  2. API 接口调用
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  如果您在自己的应用程序中集成 Claude API，每次 API
+                  调用都会从您的积分余额中扣除：
+                </p>
+
+                <pre class="bg-gray-900 text-gray-100 rounded-lg p-6 overflow-x-auto mb-6"><code class="language-python"># 示例：API 调用消耗积分
+import anthropic
+
+client = anthropic.Anthropic(
+    api_key="your-gaccode-api-key",
+    base_url="https://your-gaccode-endpoint"
+)
+
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1024,
+    messages=[
+        {"role": "user", "content": "请帮我优化这段代码"}
+    ]
+)
+# 此次调用会根据输入和输出的 token 数量消耗积分</code></pre>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  3. 不同模型的积分消耗差异
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  根据官方定价，不同的 Claude 模型有不同的计费标准：
+                </p>
+
+                <div class="overflow-x-auto mb-6">
+                  <table class="w-full text-sm">
+                    <thead>
+                      <tr class="border-b-2 border-gray-300">
+                        <th class="text-left py-3 px-4 bg-gray-50">模型</th>
+                        <th class="text-left py-3 px-4 bg-gray-50">输入价格</th>
+                        <th class="text-left py-3 px-4 bg-gray-50">输出价格</th>
+                        <th class="text-left py-3 px-4 bg-gray-50">适用场景</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">
+                          <strong>Claude 3.5 Sonnet</strong><br><span class="text-xs text-gray-500">最新一代，编程优化</span>
+                        </td>
+                        <td class="py-3 px-4">$3 / 百万 tokens</td>
+                        <td class="py-3 px-4">$15 / 百万 tokens</td>
+                        <td class="py-3 px-4">日常编程助手、代码生成</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">
+                          <strong>Claude 3 Opus</strong><br><span class="text-xs text-gray-500">旗舰模型，最强推理</span>
+                        </td>
+                        <td class="py-3 px-4">$15 / 百万 tokens</td>
+                        <td class="py-3 px-4">$75 / 百万 tokens</td>
+                        <td class="py-3 px-4">复杂架构设计、难题解决</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">
+                          <strong>Claude 3 Haiku</strong><br><span class="text-xs text-gray-500">轻量级，快速响应</span>
+                        </td>
+                        <td class="py-3 px-4">$0.25 / 百万 tokens</td>
+                        <td class="py-3 px-4">$1.25 / 百万 tokens</td>
+                        <td class="py-3 px-4">简单查询、快速响应</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <!-- 积分消耗的影响因素 -->
+              <section id="consumption-factors" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                  积分消耗的影响因素
+                </h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  1. Token 计算机制
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  Claude 使用 tokens 作为计量单位，tokens 是文本的基本处理单元：
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                  <div class="bg-blue-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-blue-800 mb-3">中文文本</h4>
+                    <p class="text-blue-700 text-sm">
+                      1 个中文字符通常对应 1-2 个 tokens<br>
+                      例如："你好世界"可能消耗 4-8 个 tokens
+                    </p>
+                  </div>
+                  <div class="bg-green-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-green-800 mb-3">英文文本</h4>
+                    <p class="text-green-700 text-sm">
+                      1 个英文单词通常对应 1-2 个 tokens<br>
+                      例如："Hello world"可能消耗 2-4 个 tokens
+                    </p>
+                  </div>
+                  <div class="bg-purple-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-purple-800 mb-3">代码内容</h4>
+                    <p class="text-purple-700 text-sm">
+                      代码因包含特殊字符和结构，token 消耗相对较高<br>
+                      100 行 Python 代码可能消耗 500-1000 个 tokens
+                    </p>
+                  </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  2. 上下文长度影响
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  Claude Code 支持长上下文对话，但上下文越长，积分消耗越大。
+                </p>
+
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-gray-800 mb-4">
+                    示例场景
+                  </h4>
+                  <div class="space-y-4 text-gray-700">
+                    <div>
+                      <p class="font-semibold mb-2">第一次请求（无上下文）：</p>
+                      <p class="text-sm">用户："请写一个 Python 排序函数"</p>
+                      <p class="text-sm">
+                        Token 消耗：约 50 tokens（输入）+ 200 tokens（输出）=
+                        250 tokens
+                      </p>
+                    </div>
+                    <div>
+                      <p class="font-semibold mb-2">第二次请求（含上下文）：</p>
+                      <p class="text-sm">系统自动包含：</p>
+                      <ul class="text-sm pl-4">
+                        <li>- 第一次的问题（50 tokens）</li>
+                        <li>- 第一次的回答（200 tokens）</li>
+                        <li>- 当前问题（30 tokens）</li>
+                      </ul>
+                      <p class="text-sm">
+                        Token 消耗：约 280 tokens（输入）+ 150 tokens（输出）=
+                        430 tokens
+                      </p>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm mt-4">
+                    可以看到，随着对话继续，每次请求的积分消耗会逐渐增加。
+                  </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  3. 附件和文件上传
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  当您上传文件让 Claude Code 分析时，文件内容会被转换为 tokens：
+                </p>
+
+                <div class="overflow-x-auto mb-6">
+                  <table class="w-full text-sm">
+                    <thead>
+                      <tr class="border-b-2 border-gray-300">
+                        <th class="text-left py-3 px-4 bg-gray-50">文件类型</th>
+                        <th class="text-left py-3 px-4 bg-gray-50">
+                          Token 消耗
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">小型代码文件（<100 行）</td>
+                        <td class="py-3 px-4">500-1000 tokens</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">中型代码文件（100-500 行）</td>
+                        <td class="py-3 px-4">2000-5000 tokens</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">大型代码文件（>500 行）</td>
+                        <td class="py-3 px-4">5000-20000 tokens</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">文档文件（PDF、Word）</td>
+                        <td class="py-3 px-4">根据文字量，可能消耗更多</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <!-- 如何高效管理 GACCode 积分 -->
+              <section id="management" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                  如何高效管理 GACCode 积分
+                </h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  1. 选择合适的套餐
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  根据您的使用频率和强度选择最经济的套餐：
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                  <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold text-blue-800 mb-4">
+                      日卡适用场景（¥14.9/天）
+                    </h4>
+                    <ul class="text-blue-700 space-y-2">
+                      <li>• 偶尔使用（每周 1-2 次）</li>
+                      <li>• 短期项目需求（1-3 天）</li>
+                      <li>• 试用和体验阶段</li>
+                      <li>• 预算控制严格</li>
+                    </ul>
+                  </div>
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold text-green-800 mb-4">
+                      月卡适用场景（¥389/月）
+                    </h4>
+                    <ul class="text-green-700 space-y-2">
+                      <li>• 频繁使用（每天多次）</li>
+                      <li>• 长期项目开发</li>
+                      <li>• 团队协作需求</li>
+                      <li>• 稳定的编程助手需求</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-yellow-800 mb-4">
+                    经济性分析
+                  </h4>
+                  <ul class="text-yellow-700 space-y-2">
+                    <li>• 如果每月使用不到 26 天，按需购买日卡更经济</li>
+                    <li>• 如果每月使用超过 26 天，月卡是更好的选择</li>
+                  </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  2. 优化提示词（Prompt）设计
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  精心设计的提示词可以显著减少 token 消耗：
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-red-800 mb-3">
+                      低效提示词示例
+                    </h4>
+                    <pre class="bg-white rounded p-3 text-xs overflow-x-auto"><code>请帮我写一个函数，这个函数需要实现排序功能，
+可以对数组进行排序，要求能够处理各种情况，
+包括空数组、单元素数组、多元素数组，
+还要考虑性能优化，最好能够达到 O(n log n) 的时间复杂度，
+另外代码要写得清晰易懂，最好加上注释...</code></pre>
+                    <p class="text-red-700 text-sm mt-2">
+                      Token 消耗：约 120 tokens
+                    </p>
+                  </div>
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-green-800 mb-3">
+                      高效提示词示例
+                    </h4>
+                    <pre class="bg-white rounded p-3 text-xs overflow-x-auto"><code>请写一个 Python 快速排序函数，要求：
+1. 时间复杂度 O(n log n)
+2. 包含中文注释
+3. 处理边界情况</code></pre>
+                    <p class="text-green-700 text-sm mt-2">
+                      Token 消耗：约 40 tokens
+                    </p>
+                  </div>
+                </div>
+
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  两者获得的结果质量相似，但高效提示词节省了近 70% 的输入
+                  tokens。
+                </p>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  3. 合理利用上下文
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  虽然 Claude Code 支持长上下文，但不必要的上下文会浪费积分。
+                </p>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-blue-800 mb-4">
+                    策略建议
+                  </h4>
+                  <ul class="text-blue-700 space-y-2">
+                    <li>
+                      <strong>新话题开新会话</strong>：讨论不相关主题时，结束当前对话，开始新会话
+                    </li>
+                    <li>
+                      <strong>定期总结重置</strong>：长对话后，可以要求 Claude
+                      总结要点，然后用总结开启新会话
+                    </li>
+                    <li>
+                      <strong>清除无关信息</strong>：不要保留对后续讨论无用的历史消息
+                    </li>
+                  </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  4. 选择合适的模型
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  根据任务复杂度选择对应的模型，避免"杀鸡用牛刀"。
+                </p>
+
+                <div class="overflow-x-auto mb-6">
+                  <table class="w-full text-sm">
+                    <thead>
+                      <tr class="border-b-2 border-gray-300">
+                        <th class="text-left py-3 px-4 bg-gray-50">任务类型</th>
+                        <th class="text-left py-3 px-4 bg-gray-50">推荐模型</th>
+                        <th class="text-left py-3 px-4 bg-gray-50">原因</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">简单代码生成</td>
+                        <td class="py-3 px-4">Haiku</td>
+                        <td class="py-3 px-4">成本低，响应快</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">代码审查和优化</td>
+                        <td class="py-3 px-4">Sonnet 3.5</td>
+                        <td class="py-3 px-4">平衡性能和成本</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">复杂架构设计</td>
+                        <td class="py-3 px-4">Opus</td>
+                        <td class="py-3 px-4">最强推理能力</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">快速问答</td>
+                        <td class="py-3 px-4">Haiku</td>
+                        <td class="py-3 px-4">成本最优</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">技术文档编写</td>
+                        <td class="py-3 px-4">Sonnet 3.5</td>
+                        <td class="py-3 px-4">质量和速度平衡</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-green-800 mb-4">
+                    成本对比示例
+                  </h4>
+                  <p class="text-green-700 mb-3">生成相同的 500 行代码：</p>
+                  <ul class="text-green-700 space-y-2">
+                    <li>• 使用 Haiku：约 $0.002</li>
+                    <li>• 使用 Sonnet 3.5：约 $0.02</li>
+                    <li>• 使用 Opus：约 $0.10</li>
+                  </ul>
+                  <p class="text-green-700 mt-3">
+                    对于简单任务，使用 Haiku 可以节省 95% 的成本。
+                  </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  5. 批量处理策略
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  合并多个相关问题到一个请求中，可以减少重复的上下文传输。
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-red-800 mb-3">
+                      低效方式
+                    </h4>
+                    <pre class="bg-white rounded p-3 text-xs overflow-x-auto"><code>请求 1："如何创建 Flask 应用？"
+请求 2："如何添加路由？"
+请求 3："如何处理 POST 请求？"</code></pre>
+                    <p class="text-red-700 text-sm mt-2">
+                      总消耗：约 800 tokens
+                    </p>
+                  </div>
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-green-800 mb-3">
+                      高效方式
+                    </h4>
+                    <pre class="bg-white rounded p-3 text-xs overflow-x-auto"><code>请创建一个 Flask 应用示例，包括：
+1. 基本应用结构
+2. 路由定义
+3. POST 请求处理</code></pre>
+                    <p class="text-green-700 text-sm mt-2">
+                      总消耗：约 400 tokens，节省 50%
+                    </p>
+                  </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  6. 监控积分使用情况
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  定期检查积分使用情况，避免意外耗尽。
+                </p>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-blue-800 mb-4">
+                    建议做法
+                  </h4>
+                  <ul class="text-blue-700 space-y-2">
+                    <li>• 每天开始工作前检查积分余额</li>
+                    <li>• 设置积分低于某个阈值的提醒</li>
+                    <li>• 记录大型任务的积分消耗，以便未来预估</li>
+                  </ul>
+                </div>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  自建监控脚本示例：
+                </p>
+
+                <pre class="bg-gray-900 text-gray-100 rounded-lg p-6 overflow-x-auto mb-6"><code class="language-python">import os
+from datetime import datetime
+
+class CreditMonitor:
+    def __init__(self):
+        self.usage_log = []
+
+    def log_request(self, task, estimated_tokens):
+        entry = {
+            "time": datetime.now().isoformat(),
+            "task": task,
+            "tokens": estimated_tokens
+        }
+        self.usage_log.append(entry)
+
+    def daily_summary(self):
+        today_usage = sum(
+            log["tokens"] for log in self.usage_log
+            if log["time"].startswith(datetime.now().date().isoformat())
+        )
+        return f"今日已使用约 {today_usage} tokens"
+
+# 使用示例
+monitor = CreditMonitor()
+monitor.log_request("代码生成", 500)
+monitor.log_request("代码审查", 1200)
+print(monitor.daily_summary())</code></pre>
+              </section>
+
+              <!-- 常见问题 -->
+              <section id="faq" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                  GACCode 积分的常见问题
+                </h2>
+
+                <div class="space-y-6">
+                  <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-blue-900 mb-3">
+                      Q1: GACCode 积分会过期吗？
+                    </h3>
+                    <p class="text-blue-800 mb-3">
+                      <strong>A:</strong> 是的，积分有有效期限制：
+                    </p>
+                    <ul class="text-blue-700 space-y-2 ml-4">
+                      <li>• <strong>日卡积分</strong>：购买后 24 小时内有效</li>
+                      <li>• <strong>月卡积分</strong>：购买后 30 天内有效</li>
+                    </ul>
+                    <p class="text-blue-700 mt-3">
+                      这与官方 Claude API 积分（一年有效期）不同。GACCode
+                      采用套餐制，积分有效期与套餐时长绑定，确保您在套餐期内可以充分使用。
+                    </p>
+                  </div>
+
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-green-900 mb-3">
+                      Q2: 如何知道我剩余多少积分？
+                    </h3>
+                    <p class="text-green-800 mb-3">
+                      <strong>A:</strong> GACCode 提供多种方式查询积分余额：
+                    </p>
+                    <ul class="text-green-700 space-y-2 ml-4">
+                      <li>
+                        • 联系客服查询：通过微信客服（caicats）
+                        获取详细的使用报告
+                      </li>
+                      <li>
+                        • API 响应头：部分 API 调用的响应头会包含剩余额度信息
+                      </li>
+                      <li>
+                        • 使用统计功能：如果您使用的是 GACCode 提供的 CLI
+                        工具，可能内置了统计功能
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-purple-900 mb-3">
+                      Q3: 积分用完了怎么办？
+                    </h3>
+                    <p class="text-purple-800 mb-3">
+                      <strong>A:</strong> 当积分耗尽时，有几种处理方式：
+                    </p>
+                    <div class="text-purple-700 space-y-3">
+                      <div>
+                        <p class="font-semibold mb-2">即时解决方案：</p>
+                        <ul class="ml-4 space-y-1">
+                          <li>
+                            • 购买新的日卡立即恢复使用（¥14.9，10 分钟内激活）
+                          </li>
+                          <li>• 升级到月卡获得更多额度</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <p class="font-semibold mb-2">预防措施：</p>
+                        <ul class="ml-4 space-y-1">
+                          <li>• 提前监控积分使用情况</li>
+                          <li>• 在积分剩余 20% 时考虑续费</li>
+                          <li>• 为重要项目预留积分缓冲</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-yellow-900 mb-3">
+                      Q4: 不同时间段积分消耗速度不同吗？
+                    </h3>
+                    <p class="text-yellow-800 mb-3">
+                      <strong>A:</strong>
+                      积分消耗速度主要取决于您的使用方式，而非时间段。不存在高峰期额外收费的情况。
+                    </p>
+                  </div>
+
+                  <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-orange-900 mb-3">
+                      Q5: 可以在多个设备上使用同一个积分账户吗？
+                    </h3>
+                    <p class="text-orange-800 mb-3">
+                      <strong>A:</strong> 可以，GACCode
+                      支持同一密钥在多设备使用。同一 API Key
+                      可在多台设备配置，所有设备共享同一个积分池。
+                    </p>
+                  </div>
+
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-red-900 mb-3">
+                      Q6: 失败的 API 请求会消耗积分吗？
+                    </h3>
+                    <p class="text-red-800 mb-3">
+                      <strong>A:</strong> 根据 Anthropic
+                      官方政策，通常情况下失败的请求不会收费。认证失败、请求格式错误、服务端错误等情况都不收费。
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 实战案例 -->
+              <section id="case-studies" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                  积分优化的实战案例
+                </h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  案例 1：代码审查项目优化
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>场景：</strong>某开发者需要审查一个包含 50 个 Python
+                  文件的项目，每个文件约 200 行代码。
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-red-800 mb-3">
+                      低效方案
+                    </h4>
+                    <pre class="bg-white rounded p-3 text-xs overflow-x-auto"><code class="language-python"># 对每个文件单独发起请求
+for file in files:
+    review = claude.review(file)
+    # 每次请求消耗约 1000 tokens
+# 总消耗：50 × 1000 = 50,000 tokens</code></pre>
+                  </div>
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-green-800 mb-3">
+                      优化方案
+                    </h4>
+                    <pre class="bg-white rounded p-3 text-xs overflow-x-auto"><code class="language-python"># 批量审查相关文件
+related_files = group_by_module(files)
+for module_files in related_files:
+    combined_code = merge_files(module_files)
+    review = claude.review(combined_code)
+# 总消耗：约 30,000 tokens，节省 40%</code></pre>
+                  </div>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-blue-800 mb-4">
+                    优化效果
+                  </h4>
+                  <ul class="text-blue-700 space-y-2">
+                    <li>• Token 消耗减少 40%-70%</li>
+                    <li>• 审查速度提升 50%</li>
+                    <li>• 积分成本节省 60%</li>
+                  </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  案例 2：技术文档生成优化
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>场景：</strong>为一个 API 项目生成完整的技术文档。
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-red-800 mb-3">
+                      低效方案
+                    </h4>
+                    <p class="text-red-700 text-sm mb-2">
+                      分多次请求，每次重新传输项目信息：
+                    </p>
+                    <ul class="text-red-700 text-xs space-y-1">
+                      <li>• 第 1 次："生成项目概述"</li>
+                      <li>• 第 2 次："生成 API 端点文档"</li>
+                      <li>• 第 3 次："生成使用示例"</li>
+                      <li>• 第 4 次："生成部署指南"</li>
+                    </ul>
+                    <p class="text-red-700 text-sm mt-2">
+                      总消耗约 15,000 tokens
+                    </p>
+                  </div>
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-green-800 mb-3">
+                      优化方案
+                    </h4>
+                    <p class="text-green-700 text-sm mb-2">
+                      一次性请求完整文档：
+                    </p>
+                    <pre class="bg-white rounded p-3 text-xs overflow-x-auto"><code>请为以下 API 项目生成完整文档，包括：
+1. 项目概述（200 字）
+2. API 端点列表
+3. 使用示例（3 个核心场景）
+4. 部署指南</code></pre>
+                    <p class="text-green-700 text-sm mt-2">
+                      总消耗约 6,000 tokens，节省 60%
+                    </p>
+                  </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  案例 3：学习辅助场景优化
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>场景：</strong>学习新的编程框架，需要频繁提问。
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-red-800 mb-3">
+                      低效方案
+                    </h4>
+                    <p class="text-red-700 text-sm mb-2">零散的单个问题：</p>
+                    <ul class="text-red-700 text-xs space-y-1">
+                      <li>• "React 是什么？"</li>
+                      <li>• "React 有哪些特点？"</li>
+                      <li>• "React 的虚拟 DOM 是什么？"</li>
+                      <li>• "React Hooks 怎么用？"</li>
+                    </ul>
+                  </div>
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-green-800 mb-3">
+                      优化方案
+                    </h4>
+                    <p class="text-green-700 text-sm mb-2">结构化学习计划：</p>
+                    <pre class="bg-white rounded p-3 text-xs overflow-x-auto"><code>我想学习 React 框架，请提供：
+1. 核心概念（5 个要点）
+2. 虚拟 DOM 原理（200 字）
+3. Hooks 使用指南
+4. 学习路径建议</code></pre>
+                  </div>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+                  <h4 class="text-xl font-semibold text-green-800 mb-4">
+                    优化效果
+                  </h4>
+                  <ul class="text-green-700 space-y-2">
+                    <li>• 获得系统化的学习内容</li>
+                    <li>• 后续提问更精准，减少无效交互</li>
+                    <li>• 总积分消耗降低 50%</li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- 与订阅计划的区别 -->
+              <section id="comparison" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                  GACCode 积分与订阅计划的区别
+                </h2>
+
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  了解 GACCode 与 Claude
+                  官方订阅的区别，有助于您更好地理解积分系统。
+                </p>
+
+                <div class="overflow-x-auto mb-6">
+                  <table class="w-full text-sm">
+                    <thead>
+                      <tr class="border-b-2 border-gray-300">
+                        <th class="text-left py-3 px-4 bg-gray-50">特性</th>
+                        <th class="text-left py-3 px-4 bg-gray-50">GACCode</th>
+                        <th class="text-left py-3 px-4 bg-gray-50">官方订阅</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">计费方式</td>
+                        <td class="py-3 px-4">基于 tokens</td>
+                        <td class="py-3 px-4">基于消息数</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">灵活性</td>
+                        <td class="py-3 px-4">按需购买</td>
+                        <td class="py-3 px-4">月度订阅</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">价格</td>
+                        <td class="py-3 px-4">¥14.9-389</td>
+                        <td class="py-3 px-4">$20-100</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">网络</td>
+                        <td class="py-3 px-4">国内优化</td>
+                        <td class="py-3 px-4">可能需要代理</td>
+                      </tr>
+                      <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4">支付</td>
+                        <td class="py-3 px-4">微信/支付宝</td>
+                        <td class="py-3 px-4">信用卡</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <!-- 总结与建议 -->
+              <section id="conclusion" class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                  总结与建议
+                </h2>
+
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                  GACCode 积分是您使用 Claude Code AI
+                  编程助手的核心资源。通过深入理解积分系统的工作原理，并采用本文介绍的优化策略，您可以显著降低使用成本，提升开发效率。
+                </p>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                  <h3 class="text-xl font-semibold text-blue-800 mb-4">
+                    立即可行的优化措施
+                  </h3>
+                  <ul class="text-blue-700 space-y-2">
+                    <li>
+                      •
+                      <strong>选择合适套餐</strong>：根据使用频率选择日卡或月卡
+                    </li>
+                    <li>
+                      • <strong>优化提示词</strong>：精简问题，减少不必要的描述
+                    </li>
+                    <li>• <strong>管理上下文</strong>：定期清理无关对话历史</li>
+                    <li>
+                      • <strong>选对模型</strong>：简单任务用 Haiku，复杂任务用
+                      Sonnet 或 Opus
+                    </li>
+                    <li>• <strong>批量处理</strong>：合并相关问题到一个请求</li>
+                  </ul>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+                  <h3 class="text-xl font-semibold text-green-800 mb-4">
+                    长期最佳实践
+                  </h3>
+                  <ul class="text-green-700 space-y-2">
+                    <li>• 建立使用日志：记录每日消耗，分析使用模式</li>
+                    <li>• 设置预算控制：为不同类型任务分配积分预算</li>
+                    <li>• 定期优化：每周回顾，找出浪费点并改进</li>
+                    <li>• 学习高效提示词：持续提升与 AI 交互的效率</li>
+                    <li>• 关注更新：留意 GACCode 的新功能和优化建议</li>
+                  </ul>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-6">
+                  <h3 class="text-xl font-semibold text-purple-800 mb-4">
+                    获取更多帮助
+                  </h3>
+                  <p class="text-purple-700 mb-3">
+                    如果您在积分管理方面有任何疑问，欢迎联系 GACCode 客服：
+                  </p>
+                  <ul class="text-purple-700 space-y-2">
+                    <li>• <strong>微信客服</strong>：caicats</li>
+                  </ul>
+                </div>
+
+                <p class="text-gray-700 leading-relaxed">
+                  通过合理管理和优化 GACCode
+                  积分，您不仅能降低使用成本，更能最大化 AI
+                  编程助手带来的生产力提升。祝您编程愉快，开发高效！
+                </p>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <!-- CTA Section -->
+        <section class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-8 text-white text-center mt-8">
+          <h2 class="text-3xl font-bold mb-4">准备开始使用 GACCode？</h2>
+          <p class="text-lg mb-6">加入数千名开发者，高效管理 AI 编程助手积分</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onclick="openWechatModal()" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              联系客服购买
+            </button>
+            <a target="_blank" href="/post/gaccode-faq/" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              查看常见问题
+            </a>
+          </div>
+        </section>
+
+        <!-- 相关文章推荐 -->
+        <section class="bg-gray-50 py-12 -mx-4">
+          <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+              <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+                相关文章推荐
+              </h2>
+              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 推荐文章 1 -->
+                <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+                  <div class="p-6">
+                    <div class="flex items-center mb-4">
+                      <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                      </div>
+                      <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">产品介绍</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors line-clamp-2">
+                      <a target="_blank" href="gaccode-product-introduction.html">GACCode 产品全面介绍</a>
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                      详细了解 GACCode 的产品特色、价格优势和服务支持体系。
+                    </p>
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs text-gray-500">12 分钟阅读</span>
+                      <a target="_blank" href="gaccode-product-introduction.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                        阅读
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 推荐文章 2 -->
+                <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+                  <div class="p-6">
+                    <div class="flex items-center mb-4">
+                      <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+                        <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 3H5.5M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v4a2 2 0 01-2 2H9a2 2 0 01-2-2v-4m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+                        </svg>
+                      </div>
+                      <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">购买指南</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors line-clamp-2">
+                      <a target="_blank" href="gaccode-purchase-channels.html">GACCode 购买渠道指南</a>
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                      详细介绍 GACCode 的各种购买渠道、支付方式和充值流程。
+                    </p>
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs text-gray-500">7 分钟阅读</span>
+                      <a target="_blank" href="gaccode-purchase-channels.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                        阅读
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 推荐文章 3 -->
+                <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+                  <div class="p-6">
+                    <div class="flex items-center mb-4">
+                      <div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center mr-3">
+                        <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                      </div>
+                      <span class="text-xs text-teal-600 bg-teal-50 px-2 py-1 rounded-full">配置指南</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors line-clamp-2">
+                      <a target="_blank" href="/post/claude-code-cli-install-guide/">Claude Code CLI 安装指南</a>
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                      详细介绍如何安装和配置 Claude Code CLI 工具的完整步骤。
+                    </p>
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs text-gray-500">5 分钟阅读</span>
+                      <a target="_blank" href="/post/claude-code-cli-install-guide/" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                        阅读
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 推荐文章 4 -->
+                <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+                  <div class="p-6">
+                    <div class="flex items-center mb-4">
+                      <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                      </div>
+                      <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">最佳实践</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors line-clamp-2">
+                      <a target="_blank" href="/post/claude-code-api-best-practices/">Claude Code API 最佳实践</a>
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                      掌握 Claude Code API 的最佳实践，提升开发效率和代码质量。
+                    </p>
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs text-gray-500">15 分钟阅读</span>
+                      <a target="_blank" href="/post/claude-code-api-best-practices/" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                        阅读
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold">GAC</span>
+              </div>
+              <span class="text-xl font-bold">GACCode 订阅购买</span>
+            </div>
+            <p class="text-gray-400">
+              专业的GACCode技术团队，为用户提供安全、便捷的GACCode兑换码购买服务。
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a target="_blank" href="index.html#products" class="hover:text-white transition-colors">日卡套餐</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#products" class="hover:text-white transition-colors">月卡套餐</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#how-to-use" class="hover:text-white transition-colors">使用说明</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">技术支持</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a target="_blank" href="https://claudecodeapi.com/zh" class="hover:text-white transition-colors">ClaudeCodeAPI</a>
+              </li>
+              <li>
+                <a target="_blank" href="/post" class="hover:text-white transition-colors">技术文章</a>
+              </li>
+              <li>
+                <a target="_blank" href="about.html" class="hover:text-white transition-colors">关于我们</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#contact" class="hover:text-white transition-colors">联系我们</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">相关链接</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a target="_blank" href="https://gaccode.com/signup?ref=19EOB4I5" target="_blank" rel="noopener" class="hover:text-white transition-colors">GACCode 官网</a>
+              </li>
+              <li>
+                <a target="_blank" href="#" class="hover:text-white transition-colors">隐私政策</a>
+              </li>
+              <li>
+                <a target="_blank" href="#" class="hover:text-white transition-colors">服务条款</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 官方邮箱 gaccode@163.com 订阅后. 保留所有权利。</p>
+          <p class="mt-2 text-sm">
+            专业的GACCode技术团队 | 网站域名：GACCode
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 微信二维码弹窗 -->
+    <div id="wechatModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+      <div class="bg-white rounded-lg p-8 max-w-sm mx-4">
+        <div class="text-center">
+          <h3 class="text-xl font-semibold mb-4">扫码联系客服</h3>
+          <img src="static/picture/qrcode_new2.webp" class="w-48 mx-auto rounded-lg mb-4" alt="微信客服二维码">
+          <p class="text-gray-600 mb-4">微信号: caicats</p>
+          <button onclick="closeWechatModal()" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+            关闭
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prism.js for code highlighting -->
+    <script src="static/js/prism.min.js"></script>
+    <script src="static/js/prism-python.min.js"></script>
+
+    <script>
+      function openWechatModal() {
+        document.getElementById("wechatModal").classList.remove("hidden");
+        document.getElementById("wechatModal").classList.add("flex");
+      }
+
+      function closeWechatModal() {
+        document.getElementById("wechatModal").classList.add("hidden");
+        document.getElementById("wechatModal").classList.remove("flex");
+      }
+
+      // 点击背景关闭弹窗
+      document
+        .getElementById("wechatModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeWechatModal();
+          }
+        });
+
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          const isHidden = mobileMenu.classList.contains("hidden");
+
+          if (isHidden) {
+            mobileMenu.classList.remove("hidden");
+          } else {
+            mobileMenu.classList.add("hidden");
+          }
+
+          // Toggle button icon
+          const paths = this.querySelectorAll("path");
+          paths[0].classList.toggle("hidden");
+          paths[1].classList.toggle("hidden");
+        });
+    </script>
+  <script defer src="static/js/v8c78df7c7c0f484497ecbca7046644da1771523124516.js" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0609a436c77044e68b7153f24036675e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

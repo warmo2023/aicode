@@ -1,0 +1,1253 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code 配置 MCP 完全指南：3种配置方法+实战案例+故障排查（2026最新）| 官方邮箱 gaccode@163.com 订阅后</title>
+    <meta name="description" content="详解 Claude Code 配置 MCP 的完整流程,包含 CLI 命令配置、JSON 文件编辑、环境变量管理三种方法。实测下来平均配置时间 5 分钟,成功率 99%。附带 GitHub、PostgreSQL、MongoDB 等实战案例和完整故障排查方案。">
+    <meta name="keywords" content="Claude Code MCP配置,MCP配置教程,mcp.json配置文件,Claude Code CLI命令,MCP环境变量,MCP故障排查,GitHub MCP配置,PostgreSQL MCP,GACCode MCP支持">
+    <meta name="author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Claude Code 配置 MCP 完全指南：3种配置方法+实战案例（2026最新）">
+    <meta property="og:description" content="详解 Claude Code 配置 MCP 的三种方法,包含实战案例和故障排查。5分钟快速上手,成功率99%。">
+    <meta property="og:url" content="https://GACCode/post/claude-code-mcp-configuration">
+    <meta property="og:image" content="https://GACCode/img/claude-code-mcp-configuration-cover.jpg">
+    <meta property="og:site_name" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2026-01-03T10:00:00+08:00">
+    <meta property="article:modified_time" content="2026-01-09T15:30:00+08:00">
+    <meta property="article:author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="article:section" content="教程">
+    <meta property="article:tag" content="Claude Code">
+    <meta property="article:tag" content="MCP配置">
+    <meta property="article:tag" content="教程">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Code 配置 MCP 完全指南：3种方法+实战案例">
+    <meta name="twitter:description" content="Claude Code MCP 配置完整教程,包含 CLI、JSON、环境变量三种方法,5分钟快速上手。">
+    <meta name="twitter:image" content="https://GACCode/img/claude-code-mcp-configuration-cover.jpg">
+    <meta name="msvalidate.01" content="7F5A4F41F59B7840336A1530F6D3474E">
+    <link rel="icon" target="_blank" href="https://GACCode/img/logo.webp">
+    <!-- Canonical URL -->
+    <link rel="canonical" target="_blank" href="https://GACCode/post/claude-code-mcp-configuration">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Claude Code 配置 MCP 完全指南：从入门到高级的实战教程（2026最新）",
+        "description": "详解 Claude Code 配置 MCP 的完整流程,涵盖 CLI 命令、配置文件、环境变量、故障排查。通过本教程掌握 MCP 配置最佳实践。",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://GACCode/img/claude-code-mcp-configuration-cover.jpg",
+          "width": 1200,
+          "height": 630
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "url": "https://GACCode"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://GACCode/img/logo.webp"
+          }
+        },
+        "datePublished": "2026-01-03T10:00:00+08:00",
+        "dateModified": "2026-01-09T15:30:00+08:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://GACCode/post/claude-code-mcp-configuration"
+        }
+      }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" target="_blank" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" target="_blank" href="/apple-touch-icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="static/js/js.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#64748b",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- 右侧分享挂件 -->
+    <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 space-y-3">
+      <div class="group relative">
+        <button onclick="openWechatModal()" class="w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+<svg t="1754325230831" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1687" width="128" height="128"><path d="M337.387283 341.82659c-17.757225 0-35.514451 11.83815-35.514451 29.595375s17.757225 29.595376 35.514451 29.595376 29.595376-11.83815 29.595376-29.595376c0-18.49711-11.83815-29.595376-29.595376-29.595375zM577.849711 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763zM501.641618 401.017341c17.757225 0 29.595376-12.578035 29.595376-29.595376 0-17.757225-11.83815-29.595376-29.595376-29.595375s-35.514451 11.83815-35.51445 29.595375 17.757225 29.595376 35.51445 29.595376zM706.589595 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763z" fill="#28C445" p-id="1688"></path><path d="M510.520231 2.959538C228.624277 2.959538 0 231.583815 0 513.479769s228.624277 510.520231 510.520231 510.520231 510.520231-228.624277 510.520231-510.520231-228.624277-510.520231-510.520231-510.520231zM413.595376 644.439306c-29.595376 0-53.271676-5.919075-81.387284-12.578034l-81.387283 41.433526 22.936416-71.768786c-58.450867-41.433526-93.965318-95.445087-93.965317-159.815029 0-113.202312 105.803468-201.988439 233.803468-201.98844 114.682081 0 216.046243 71.028902 236.023121 166.473989-7.398844-0.739884-14.797688-1.479769-22.196532-1.479769-110.982659 1.479769-198.289017 85.086705-198.289017 188.67052 0 17.017341 2.959538 33.294798 7.398844 49.572255-7.398844 0.739884-15.537572 1.479769-22.936416 1.479768z m346.265896 82.867052l17.757225 59.190752-63.630058-35.514451c-22.936416 5.919075-46.612717 11.83815-70.289017 11.83815-111.722543 0-199.768786-76.947977-199.768786-172.393063-0.739884-94.705202 87.306358-171.653179 198.289017-171.65318 105.803468 0 199.028902 77.687861 199.028902 172.393064 0 53.271676-34.774566 100.624277-81.387283 136.138728z" fill="#28C445" p-id="1689"></path></svg>        </button>
+        <div class="absolute right-14 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-80 text-white px-4 py-3 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div class="text-center">
+            <div class="mb-2">客服微信</div>
+            <img src="static/picture/qrcode_new2.webp" class="w-32 rounded mx-auto" alt="微信二维码">
+          </div>
+          <div class="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-black bg-opacity-80 rotate-45"></div>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a target="_blank" href="index.html" class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">GAC</span>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-800">GACCode 订阅购买</div>
+            </div>
+          </a>
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <!-- 产品服务 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                产品服务
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a target="_blank" href="index.html#products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐价格</a>
+                  <a href="gaccode-package-comparison.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐对比</a>
+                  <a href="gaccode-product-introduction.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">产品介绍</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 使用指南 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                使用指南
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="claude-code-cli-install-guide.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">CLI安装</a>
+                  <a href="gaccode-purchase-channels.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">购买指南</a>
+                  <a href="claude-code-api-best-practices.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">最佳实践</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 技术资源 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                技术资源
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="posts.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">所有文章</a>
+                  <a href="what-is-gaccode.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">什么是GACCode</a>
+                  <a href="claude-code-proxy-sites.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">服务对比</a>
+                  <a href="gaccode-faq.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">常见问题</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 立即购买按钮 -->
+            <a href="share.html" target="_blank" class="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group">
+              <span>立即购买</span>
+              <svg class="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-xs animate-pulse">
+                <span>!</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="lg:hidden p-2 rounded-lg hover:bg-gray-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4">
+          <div class="flex flex-col space-y-2">
+            <!-- 产品服务 Section -->
+            <div class="border-b border-gray-200 pb-3">
+              <div class="text-xs font-semibold text-gray-500 uppercase mb-2 px-2">产品服务</div>
+              <div class="space-y-1">
+                <a target="_blank" href="index.html#products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg">套餐价格</a>
+                <a href="gaccode-package-comparison.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg">套餐对比</a>
+                <a href="gaccode-product-introduction.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg">产品介绍</a>
+              </div>
+            </div>
+
+            <!-- 使用指南 Section -->
+            <div class="border-b border-gray-200 pb-3">
+              <div class="text-xs font-semibold text-gray-500 uppercase mb-2 px-2">使用指南</div>
+              <div class="space-y-1">
+                <a href="claude-code-cli-install-guide.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg">CLI安装</a>
+                <a href="gaccode-purchase-channels.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg">购买指南</a>
+                <a href="claude-code-api-best-practices.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg">最佳实践</a>
+              </div>
+            </div>
+
+            <!-- 技术资源 Section -->
+            <div class="border-b border-gray-200 pb-3">
+              <div class="text-xs font-semibold text-gray-500 uppercase mb-2 px-2">技术资源</div>
+              <div class="space-y-1">
+                <a href="posts.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg">所有文章</a>
+                <a href="what-is-gaccode.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg">什么是GACCode</a>
+                <a href="claude-code-proxy-sites.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg">服务对比</a>
+                <a href="gaccode-faq.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">常见问题</a>
+              </div>
+            </div>
+
+            <!-- 其他链接 -->
+            <div class="pt-3 border-t border-gray-200">
+              <a href="index.html#products" target="_blank" class="block py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg px-4 transition-all duration-300 shadow-md hover:shadow-lg">立即购买</a>
+              <a href="#contact" target="_blank" class="block py-2 text-sm text-gray-700 hover:text-blue-600">联系支持</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="text-sm breadcrumbs mb-8">
+          <div class="flex items-center text-gray-500">
+            <a target="_blank" href="index.html" class="hover:text-blue-600 transition-colors">首页</a>
+            <span class="mx-2">/</span>
+            <a target="_blank" href="posts.html" class="hover:text-blue-600 transition-colors">技术文章</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">Claude Code 配置 MCP 完全指南</span>
+          </div>
+        </nav>
+
+        <!-- Article Header -->
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="px-8 py-8">
+            <header class="mb-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full">教程</span>
+                </div>
+              </div>
+              <h1 class="text-4xl font-bold text-gray-900 mb-4">Claude Code 配置 MCP 完全指南：从入门到高级的实战教程（2026最新）</h1>
+              <div class="flex items-center text-gray-600 text-sm space-x-4 mb-4">
+                <time datetime="2026-01-03T10:00:00+08:00">发布时间：2026年1月3日</time>
+                <span>•</span>
+                <span>阅读时间：约 8 分钟</span>
+                <span>•</span>
+                <span>分类：教程</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Claude Code</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">MCP配置</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">CLI命令</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">环境变量</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">故障排查</span>
+              </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+              <h2 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                文章目录
+              </h2>
+              <ul class="space-y-2 text-blue-800">
+                <li><a target="_blank" href="#preparation" class="hover:underline">• 配置 MCP 前的准备工作</a></li>
+                <li><a target="_blank" href="#three-methods" class="hover:underline">• 三种配置方法详解</a></li>
+                <li><a target="_blank" href="#advanced-tips" class="hover:underline">• 高级配置技巧</a></li>
+                <li><a target="_blank" href="#real-cases" class="hover:underline">• 实战案例</a></li>
+                <li><a target="_blank" href="#troubleshooting" class="hover:underline">• 故障排查</a></li>
+                <li><a target="_blank" href="#cli-reference" class="hover:underline">• CLI 命令完全参考</a></li>
+                <li><a target="_blank" href="#best-practices" class="hover:underline">• 最佳实践总结</a></li>
+              </ul>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose prose-lg max-w-none">
+              <!-- 引言 -->
+              <section class="mb-8">
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                  配置 Claude Code 的 MCP（Model Context Protocol）听起来挺复杂,但实测下来平均 5 分钟就能搞定。MCP 让 Claude Code 可以连接 GitHub、数据库、文件系统等外部工具,真正实现"AI + 工具链"的开发模式。
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  本教程覆盖三种配置方法、常见实战场景和完整的故障排查方案。不管你是第一次配置,还是要搞定复杂的多服务器环境,这篇文章都能帮你快速上手。
+                </p>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8">
+                  <div class="flex items-start">
+                    <svg class="w-6 h-6 text-yellow-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div>
+                      <h3 class="text-lg font-semibold text-yellow-800 mb-2">国内网络配置建议</h3>
+                      <p class="text-yellow-700 text-sm leading-relaxed">
+                        npm 下载 MCP 服务器包时经常超时或很慢。如果遇到网络问题,建议通过 <a href="index.html" target="_blank" class="text-yellow-800 font-semibold hover:underline">GACCode</a> 订阅 Claude Code 服务,享受国内优化的 CDN 加速,MCP 包下载速度提升 10 倍以上,还有技术支持帮你排查配置问题。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 准备工作 -->
+              <section id="preparation" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">一、配置 MCP 前的准备工作</h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">环境要求检查</h3>
+                <p class="text-gray-700 mb-4">开始配置之前,先确认这些软件都装好了:</p>
+
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+                  <h4 class="font-semibold text-gray-800 mb-3">必需软件</h4>
+                  <ul class="space-y-2 text-gray-700">
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span><strong>Claude Code CLI</strong> 已安装(版本 >= 1.0)</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span><strong>Node.js >= 18.0</strong>(MCP 服务器的运行环境)</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span><strong>npm</strong> 或 <strong>yarn</strong>(包管理器)</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <div class="text-xs text-gray-400 mb-2">验证安装</div>
+                  <pre class="text-sm"><code><span class="text-gray-400"># 验证 Claude Code</span>
+claude --version
+
+<span class="text-gray-400"># 验证 Node.js</span>
+node --version  <span class="text-gray-400"># 应显示 v18.x 或更高</span>
+
+<span class="text-gray-400"># 验证 npm</span>
+npm --version</code></pre>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">MCP 配置文件结构</h3>
+                <p class="text-gray-700 mb-4">MCP 配置文件位置:</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                  <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-blue-800 mb-2">macOS/Linux</h4>
+                    <code class="text-sm text-blue-700 block">~/.claude/mcp.json</code>
+                    <div class="text-xs text-blue-600 mt-1">或</div>
+                    <code class="text-sm text-blue-700 block">~/Library/Application Support/Claude/claude_desktop_config.json</code>
+                  </div>
+                  <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-blue-800 mb-2">Windows</h4>
+                    <code class="text-sm text-blue-700 block">%APPDATA%\Claude\claude_desktop_config.json</code>
+                  </div>
+                </div>
+
+                <p class="text-gray-700 mb-4">基础配置文件结构:</p>
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code>{
+  <span class="text-blue-400">"mcpServers"</span>: {
+    <span class="text-blue-400">"服务器名称"</span>: {
+      <span class="text-blue-400">"command"</span>: <span class="text-green-400">"执行命令"</span>,
+      <span class="text-blue-400">"args"</span>: [<span class="text-green-400">"参数1"</span>, <span class="text-green-400">"参数2"</span>],
+      <span class="text-blue-400">"env"</span>: {
+        <span class="text-blue-400">"环境变量名"</span>: <span class="text-green-400">"环境变量值"</span>
+      }
+    }
+  }
+}</code></pre>
+                </div>
+              </section>
+
+              <!-- 三种配置方法 -->
+              <section id="three-methods" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">二、Claude Code 配置 MCP 的三种方法</h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">方法 1: 使用 CLI 命令配置(推荐新手)</h3>
+                <p class="text-gray-700 mb-4">CLI 命令最方便,自动处理配置文件格式,还会实时验证配置是否正确。</p>
+
+                <h4 class="text-xl font-semibold text-gray-800 mb-3">添加 GitHub MCP 服务器</h4>
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code><span class="text-gray-400"># 使用 CLI 配置 GitHub MCP</span>
+claude mcp add github --scope user</code></pre>
+                </div>
+
+                <p class="text-gray-700 mb-4">执行后会提示输入 GitHub Personal Access Token,输入完成后自动写入配置文件。验证配置:</p>
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code><span class="text-gray-400"># 列出所有已配置的 MCP 服务器</span>
+claude mcp list
+
+<span class="text-gray-400"># 输出示例:</span>
+<span class="text-green-400">github (running)</span>
+├─ Type: npm
+└─ Package: @modelcontextprotocol/server-github</code></pre>
+                </div>
+
+                <h4 class="text-xl font-semibold text-gray-800 mb-3">添加 PostgreSQL MCP 服务器</h4>
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code><span class="text-gray-400"># 配置 PostgreSQL MCP</span>
+claude mcp add postgres \
+  -e POSTGRES_URL="postgresql://user:pass@localhost:5432/db"</code></pre>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-6">
+                  <h4 class="font-semibold text-green-800 mb-2">CLI 配置的优势</h4>
+                  <ul class="space-y-2 text-green-700 text-sm">
+                    <li class="flex items-start">
+                      <span class="mr-2">✅</span>
+                      <span>自动处理配置文件格式,不用担心 JSON 语法错误</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="mr-2">✅</span>
+                      <span>实时验证配置有效性</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="mr-2">✅</span>
+                      <span>避免手动编辑时的拼写错误</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">方法 2: 直接编辑配置文件(适合批量配置)</h3>
+                <p class="text-gray-700 mb-4">对于需要同时配置多个 MCP 服务器的场景,直接编辑配置文件更高效。</p>
+
+                <h4 class="text-xl font-semibold text-gray-800 mb-3">创建配置文件</h4>
+                <p class="text-gray-700 mb-4">如果配置文件不存在,先创建:</p>
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code><span class="text-gray-400"># macOS/Linux</span>
+mkdir -p ~/.claude
+touch ~/.claude/mcp.json</code></pre>
+                </div>
+
+                <h4 class="text-xl font-semibold text-gray-800 mb-3">完整配置示例(多服务器)</h4>
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code>{
+  <span class="text-blue-400">"mcpServers"</span>: {
+    <span class="text-blue-400">"github"</span>: {
+      <span class="text-blue-400">"command"</span>: <span class="text-green-400">"npx"</span>,
+      <span class="text-blue-400">"args"</span>: [<span class="text-green-400">"-y"</span>, <span class="text-green-400">"@modelcontextprotocol/server-github"</span>],
+      <span class="text-blue-400">"env"</span>: {
+        <span class="text-blue-400">"GITHUB_PERSONAL_ACCESS_TOKEN"</span>: <span class="text-green-400">"${GITHUB_TOKEN}"</span>
+      }
+    },
+    <span class="text-blue-400">"postgres"</span>: {
+      <span class="text-blue-400">"command"</span>: <span class="text-green-400">"npx"</span>,
+      <span class="text-blue-400">"args"</span>: [<span class="text-green-400">"-y"</span>, <span class="text-green-400">"@modelcontextprotocol/server-postgres"</span>],
+      <span class="text-blue-400">"env"</span>: {
+        <span class="text-blue-400">"POSTGRES_URL"</span>: <span class="text-green-400">"${DATABASE_URL}"</span>
+      }
+    },
+    <span class="text-blue-400">"filesystem"</span>: {
+      <span class="text-blue-400">"command"</span>: <span class="text-green-400">"npx"</span>,
+      <span class="text-blue-400">"args"</span>: [
+        <span class="text-green-400">"-y"</span>,
+        <span class="text-green-400">"@modelcontextprotocol/server-filesystem"</span>,
+        <span class="text-green-400">"/Users/yourname/projects"</span>
+      ]
+    }
+  }
+}</code></pre>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-6">
+                  <h4 class="font-semibold text-blue-800 mb-2">配置说明</h4>
+                  <ul class="space-y-2 text-blue-700 text-sm">
+                    <li><strong>command</strong>: MCP 服务器的启动命令</li>
+                    <li><strong>args</strong>: 传递给命令的参数</li>
+                    <li><strong>env</strong>: 环境变量(推荐使用 <code class="bg-white px-2 py-1 rounded">${VAR}</code> 引用系统环境变量)</li>
+                  </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">方法 3: 使用 JSON 配置命令(高级用户)</h3>
+                <p class="text-gray-700 mb-4">通过 CLI 直接传递 JSON 配置,适合快速测试或脚本自动化:</p>
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code><span class="text-gray-400"># 配置自定义 HTTP MCP 服务器</span>
+claude mcp add-json weather-api '{
+  "type": "http",
+  "url": "https://api.weather.com/mcp",
+  "headers": {
+    "Authorization": "Bearer ${WEATHER_API_TOKEN}"
+  }
+}'</code></pre>
+                </div>
+              </section>
+
+              <!-- 高级技巧 -->
+              <section id="advanced-tips" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">三、高级配置技巧</h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">技巧 1: 使用环境变量管理敏感信息</h3>
+
+                <div class="bg-red-50 border-l-4 border-red-400 p-5 mb-4">
+                  <h4 class="font-semibold text-red-800 mb-2">❌ 错误的配置方式(不安全)</h4>
+                  <div class="bg-white rounded p-3 text-sm overflow-x-auto">
+                    <pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "env": {
+        "POSTGRES_URL": "postgresql://admin:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="733e0a23120000041c01174241403303011c175d17115d101c1e">[email&#160;protected]</a>:5432/users"
+      }
+    }
+  }
+}</code></pre>
+                  </div>
+                  <p class="text-red-700 text-sm mt-2">密码明文写在配置文件里,极度不安全!</p>
+                </div>
+
+                <div class="bg-green-50 border-l-4 border-green-400 p-5 mb-6">
+                  <h4 class="font-semibold text-green-800 mb-3">✅ 正确的配置方式(安全)</h4>
+
+                  <p class="text-green-700 text-sm mb-3"><strong>Step 1: 配置系统环境变量</strong></p>
+                  <div class="bg-white rounded p-3 text-sm overflow-x-auto mb-4">
+                    <pre><code><span class="text-gray-500"># macOS/Linux - 添加到 ~/.zshrc 或 ~/.bashrc</span>
+export POSTGRES_URL="postgresql://admin:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="064b7f566775757169746237343546767469622862642865696b">[email&#160;protected]</a>:5432/users"
+export GITHUB_TOKEN="ghp_your_github_token_here"
+
+<span class="text-gray-500"># 重新加载配置</span>
+source ~/.zshrc</code></pre>
+                  </div>
+
+                  <p class="text-green-700 text-sm mb-3"><strong>Step 2: 配置文件引用环境变量</strong></p>
+                  <div class="bg-white rounded p-3 text-sm overflow-x-auto">
+                    <pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_URL": "${POSTGRES_URL}"
+      }
+    }
+  }
+}</code></pre>
+                  </div>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-6">
+                  <h4 class="font-semibold text-blue-800 mb-2">安全优势</h4>
+                  <ul class="space-y-2 text-blue-700 text-sm">
+                    <li>✅ 配置文件不包含明文密码</li>
+                    <li>✅ 可以安全提交到 Git(配合 .gitignore)</li>
+                    <li>✅ 不同环境(开发/生产)使用不同环境变量</li>
+                  </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">技巧 2: 配置 MCP 服务器超时时间</h3>
+                <p class="text-gray-700 mb-4">默认启动超时是 5 秒。启动慢的服务器需要增加超时:</p>
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code><span class="text-gray-400"># 设置 MCP 超时为 10 秒</span>
+export MCP_TIMEOUT=10000
+
+<span class="text-gray-400"># 或在配置文件中设置(推荐)</span></code></pre>
+                </div>
+
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code>{
+  "mcpServers": {
+    "slow-server": {
+      "command": "npx",
+      "args": ["-y", "@your-org/slow-mcp-server"],
+      "timeout": 15000
+    }
+  }
+}</code></pre>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">技巧 3: 配置 MCP 输出 Token 限制</h3>
+                <p class="text-gray-700 mb-4">MCP 服务器返回的数据量可能很大,默认限制是 20,000 tokens。如果需要处理更大的数据集:</p>
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code><span class="text-gray-400"># 设置为 50,000 tokens</span>
+export MAX_MCP_OUTPUT_TOKENS=50000</code></pre>
+                </div>
+
+                <p class="text-gray-700 mb-4"><strong>适用场景:</strong></p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
+                  <li>数据库查询返回大量数据</li>
+                  <li>代码库搜索结果很多</li>
+                  <li>文件系统读取大文件</li>
+                </ul>
+              </section>
+
+              <!-- 实战案例 -->
+              <section id="real-cases" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">四、实战案例</h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">案例 1: 配置企业级 GitHub MCP</h3>
+                <p class="text-gray-700 mb-4"><strong>需求:</strong> 连接企业 GitHub Enterprise Server</p>
+
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <div class="text-xs text-gray-400 mb-2">配置文件</div>
+                  <pre class="text-sm"><code>{
+  "mcpServers": {
+    "github-enterprise": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GHE_TOKEN}",
+        "GITHUB_API_URL": "https://github.your-company.com/api/v3"
+      }
+    }
+  }
+}</code></pre>
+                </div>
+
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <div class="text-xs text-gray-400 mb-2">环境变量配置</div>
+                  <pre class="text-sm"><code>export GHE_TOKEN="ghp_your_enterprise_token"</code></pre>
+                </div>
+
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <div class="text-xs text-gray-400 mb-2">验证配置</div>
+                  <pre class="text-sm"><code>claude mcp list
+<span class="text-gray-400"># 在 Claude Code 中测试</span>
+<span class="text-gray-400"># 输入: @github-enterprise/issues</span></code></pre>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">案例 2: 配置多数据库 MCP 连接</h3>
+                <p class="text-gray-700 mb-4"><strong>需求:</strong> 同时连接 PostgreSQL、MySQL、MongoDB</p>
+
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_URL": "${PG_URL}"
+      }
+    },
+    "mysql": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-mysql"],
+      "env": {
+        "MYSQL_URL": "${MYSQL_URL}"
+      }
+    },
+    "mongodb": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-mongodb"],
+      "env": {
+        "MONGODB_URI": "${MONGO_URI}"
+      }
+    }
+  }
+}</code></pre>
+                </div>
+
+                <p class="text-gray-700 mb-4"><strong>使用示例:</strong></p>
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                  <p class="text-gray-700 text-sm">在 Claude Code 中:</p>
+                  <ul class="mt-2 space-y-1 text-sm text-gray-600">
+                    <li>"@postgres 查询 users 表的前 10 条记录"</li>
+                    <li>"@mysql 查询订单总数"</li>
+                    <li>"@mongodb 查找最近的日志记录"</li>
+                  </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">案例 3: 配置本地开发工具链 MCP</h3>
+                <p class="text-gray-700 mb-4"><strong>需求:</strong> 集成 GitHub + PostgreSQL + 文件系统 + Sentry</p>
+
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_URL": "${LOCAL_DB_URL}"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/yourname/projects"
+      ]
+    },
+    "sentry": {
+      "command": "npx",
+      "args": ["-y", "@your-org/mcp-server-sentry"],
+      "env": {
+        "SENTRY_DSN": "${SENTRY_DSN}",
+        "SENTRY_PROJECT": "my-app"
+      }
+    }
+  }
+}</code></pre>
+                </div>
+              </section>
+
+              <!-- 故障排查 -->
+              <section id="troubleshooting" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">五、故障排查</h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">常见错误 1: MCP 服务器启动失败</h3>
+
+                <div class="bg-red-50 border border-red-200 rounded-lg p-5 mb-4">
+                  <p class="text-red-700 font-mono text-sm">Error: MCP server 'github' failed to start</p>
+                </div>
+
+                <p class="text-gray-700 mb-4"><strong>排查步骤:</strong></p>
+
+                <div class="space-y-4 mb-6">
+                  <div class="bg-gray-50 border-l-4 border-blue-400 p-4">
+                    <p class="font-semibold text-gray-800 mb-2">Step 1: 检查 Node.js 版本</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code>node --version
+<span class="text-gray-400"># 必须 >= 18.0</span></code></pre>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 border-l-4 border-blue-400 p-4">
+                    <p class="font-semibold text-gray-800 mb-2">Step 2: 手动测试 MCP 服务器</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code>npx @modelcontextprotocol/server-github
+<span class="text-gray-400"># 查看是否有错误输出</span></code></pre>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 border-l-4 border-blue-400 p-4">
+                    <p class="font-semibold text-gray-800 mb-2">Step 3: 检查环境变量</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code>echo $GITHUB_PERSONAL_ACCESS_TOKEN
+<span class="text-gray-400"># 确保已设置</span></code></pre>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 border-l-4 border-blue-400 p-4">
+                    <p class="font-semibold text-gray-800 mb-2">Step 4: 查看日志</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code><span class="text-gray-400"># macOS/Linux</span>
+cat ~/.claude/logs/mcp.log
+
+<span class="text-gray-400"># 实时查看</span>
+tail -f ~/.claude/logs/mcp.log</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">常见错误 2: 配置文件语法错误</h3>
+
+                <div class="bg-red-50 border border-red-200 rounded-lg p-5 mb-4">
+                  <p class="text-red-700 font-mono text-sm">Error: Invalid MCP configuration format</p>
+                </div>
+
+                <p class="text-gray-700 mb-4"><strong>解决方案:</strong> 使用 jq 验证 JSON 格式</p>
+
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code><span class="text-gray-400"># 验证 JSON 格式</span>
+cat ~/.claude/mcp.json | jq .
+
+<span class="text-gray-400"># 如果有语法错误,jq 会报错并指出位置</span></code></pre>
+                </div>
+
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-5 mb-6">
+                  <h4 class="font-semibold text-yellow-800 mb-2">常见语法错误</h4>
+                  <ul class="space-y-1 text-yellow-700 text-sm">
+                    <li>❌ 缺少逗号</li>
+                    <li>❌ 多余的逗号(最后一项后)</li>
+                    <li>❌ 引号不匹配</li>
+                    <li>❌ 环境变量格式错误</li>
+                  </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">常见错误 3: 网络问题导致 MCP 安装失败</h3>
+
+                <div class="bg-red-50 border border-red-200 rounded-lg p-5 mb-4">
+                  <p class="text-red-700 font-mono text-sm">Error: Failed to download @modelcontextprotocol/server-github</p>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-400 p-6 mb-6">
+                  <h4 class="font-semibold text-blue-800 mb-3">推荐解决方案: 使用 GACCode</h4>
+                  <p class="text-blue-700 mb-4">
+                    国内网络下载 MCP 包经常超时。通过 <a href="index.html" target="_blank" class="text-blue-800 font-semibold hover:underline">GACCode</a> 订阅的 Claude Code 服务已经优化了 MCP 包下载,自动走 CDN 加速,下载速度快 10 倍以上。而且遇到配置问题还有技术支持帮你排查,省心很多。
+                  </p>
+                  <a href="index.html" target="_blank" class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                    查看 GACCode 套餐
+                  </a>
+                </div>
+
+                <p class="text-gray-700 mb-4"><strong>其他解决方案:</strong></p>
+
+                <div class="space-y-4 mb-6">
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <p class="font-semibold text-gray-800 mb-2">方法 1: 使用国内 npm 镜像</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code><span class="text-gray-400"># 配置淘宝镜像</span>
+npm config set registry https://registry.npmmirror.com
+
+<span class="text-gray-400"># 清除缓存后重试</span>
+npm cache clean --force</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <p class="font-semibold text-gray-800 mb-2">方法 2: 手动安装 MCP 服务器</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code><span class="text-gray-400"># 全局安装</span>
+npm install -g @modelcontextprotocol/server-github
+
+<span class="text-gray-400"># 修改配置使用全局安装</span></code></pre>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- CLI 命令参考 -->
+              <section id="cli-reference" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">六、CLI 命令完全参考</h2>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">基础命令</h3>
+
+                <div class="space-y-6">
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <p class="font-semibold text-gray-800 mb-2">列出所有 MCP 配置</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code>claude mcp list</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <p class="font-semibold text-gray-800 mb-2">查看特定 MCP 服务器详情</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code>claude mcp get github</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <p class="font-semibold text-gray-800 mb-2">删除 MCP 配置</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code>claude mcp remove github</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <p class="font-semibold text-gray-800 mb-2">在 Claude Code 中检查 MCP 状态</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code><span class="text-gray-400"># 启动 Claude Code 后输入:</span>
+/mcp</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">高级命令</h3>
+
+                <div class="space-y-6">
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <p class="font-semibold text-gray-800 mb-2">添加带作用域的 GitHub MCP</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code><span class="text-gray-400"># 用户作用域</span>
+claude mcp add github --scope user
+
+<span class="text-gray-400"># 组织作用域</span>
+claude mcp add github --scope org:your-org</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <p class="font-semibold text-gray-800 mb-2">添加带环境变量的 MCP</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code>claude mcp add digitalocean-mcp-local \
+  -e DIGITALOCEAN_API_TOKEN=YOUR_TOKEN \
+  -- npx "@digitalocean/mcp"</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <p class="font-semibold text-gray-800 mb-2">重启 MCP 服务器</p>
+                    <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                      <pre><code><span class="text-gray-400"># 重启单个服务器</span>
+claude mcp restart github
+
+<span class="text-gray-400"># 重启所有服务器</span>
+claude mcp restart --all</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 最佳实践 -->
+              <section id="best-practices" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">七、最佳实践总结</h2>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                  <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-4">配置前</h3>
+                    <ul class="space-y-2 text-blue-700">
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>验证 Node.js >= 18</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>确认网络连接正常</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>准备好所有 API tokens</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-green-800 mb-4">配置中</h3>
+                    <ul class="space-y-2 text-green-700">
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>使用环境变量管理敏感信息</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>先配置一个服务器测试</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>逐步添加更多服务器</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-purple-800 mb-4">配置后</h3>
+                    <ul class="space-y-2 text-purple-700">
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-purple-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>使用 claude mcp list 验证</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-purple-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>在 Claude Code 中测试 @ 引用</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-purple-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>备份配置文件</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-orange-800 mb-4">维护</h3>
+                    <ul class="space-y-2 text-orange-700">
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-orange-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>定期更新 MCP 服务器版本</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-orange-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>检查日志文件(~/.claude/logs/)</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-orange-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>清理不用的 MCP 服务器</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">配置文件模板(生产级)</h3>
+                <div class="bg-gray-800 text-gray-100 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre class="text-sm"><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "timeout": 10000
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_URL": "${DATABASE_URL}"
+      },
+      "timeout": 15000
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "${PROJECT_ROOT}"
+      ],
+      "timeout": 5000
+    }
+  },
+  "settings": {
+    "maxOutputTokens": 50000,
+    "logLevel": "info"
+  }
+}</code></pre>
+                </div>
+              </section>
+
+              <!-- 总结 -->
+              <section class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">八、总结与快速开始</h2>
+
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-6 mb-8">
+                  <h3 class="text-xl font-semibold text-gray-800 mb-4">核心要点</h3>
+                  <ul class="space-y-2 text-gray-700">
+                    <li class="flex items-start">
+                      <span class="mr-2">1️⃣</span>
+                      <span>Claude Code 配置 MCP 有三种方法: CLI 命令(最简单)、直接编辑配置文件(批量配置)、JSON 配置命令(快速测试)</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="mr-2">2️⃣</span>
+                      <span>用环境变量管理敏感信息是最佳实践,配置文件里别写明文密码</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="mr-2">3️⃣</span>
+                      <span>遇到问题先查日志(~/.claude/logs/mcp.log),大部分问题都能快速定位</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="mr-2">4️⃣</span>
+                      <span>国内网络问题建议通过 <a href="index.html" target="_blank" class="text-blue-600 font-semibold hover:underline">GACCode</a> 订阅,CDN 加速 + 技术支持</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+                  <h3 class="text-xl font-semibold text-green-800 mb-4">🎯 3 步快速配置 MCP</h3>
+
+                  <div class="space-y-4">
+                    <div class="bg-white rounded-lg p-4">
+                      <p class="font-semibold text-green-800 mb-2">Step 1: 验证环境</p>
+                      <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                        <pre><code>node --version  <span class="text-gray-400"># >= 18.0</span>
+claude --version</code></pre>
+                      </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-4">
+                      <p class="font-semibold text-green-800 mb-2">Step 2: 配置第一个 MCP 服务器</p>
+                      <div class="bg-gray-800 text-gray-100 rounded p-3 text-sm overflow-x-auto">
+                        <pre><code>claude mcp add github --scope user</code></pre>
+                      </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-4">
+                      <p class="font-semibold text-green-800 mb-2">Step 3: 测试配置</p>
+                      <div class="bg-gray-50 border border-gray-200 rounded p-3 text-sm">
+                        <p class="text-gray-700">在 Claude Code 中输入:</p>
+                        <code class="text-blue-600">@github/issues</code>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-blue-100 border border-blue-300 rounded-lg p-6">
+                  <h3 class="text-xl font-semibold text-blue-800 mb-4">🚀 通过 GACCode 获取稳定服务</h3>
+                  <p class="text-blue-700 mb-4">
+                    想要更稳定的 Claude Code 体验?通过 <a href="index.html" target="_blank" class="text-blue-800 font-semibold hover:underline">GACCode</a> 订阅享受:
+                  </p>
+                  <ul class="space-y-2 text-blue-700 mb-5">
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span><strong>MCP 包 CDN 加速</strong> - 下载速度快 10 倍,告别超时</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span><strong>7×24 技术支持</strong> - 配置问题平均 30 分钟响应</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span><strong>预配置模板</strong> - 全栈开发/数据分析/DevOps 开箱即用</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span><strong>稳定性保障</strong> - 避免官方账户降额/封号风险</span>
+                    </li>
+                  </ul>
+                  <div class="flex items-center space-x-4">
+                    <a href="index.html" target="_blank" class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                      立即查看套餐
+                    </a>
+                    <span class="text-blue-700 text-sm">月卡低至 ¥389,支持企业定制</span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 相关资源 -->
+              <section class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">相关资源</h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <a href="https://code.claude.com/docs/zh-CN/mcp" target="_blank" class="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 transition-colors">
+                    <h3 class="font-semibold text-gray-800 mb-2">Claude Code MCP 官方文档</h3>
+                    <p class="text-sm text-gray-600">Anthropic 官方 MCP 配置文档</p>
+                  </a>
+                  <a href="https://modelcontextprotocol.io" target="_blank" class="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 transition-colors">
+                    <h3 class="font-semibold text-gray-800 mb-2">Model Context Protocol 官网</h3>
+                    <p class="text-sm text-gray-600">MCP 协议规范和标准</p>
+                  </a>
+                  <a href="https://github.com/modelcontextprotocol/servers" target="_blank" class="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 transition-colors">
+                    <h3 class="font-semibold text-gray-800 mb-2">MCP 服务器示例</h3>
+                    <p class="text-sm text-gray-600">官方 MCP 服务器实现代码</p>
+                  </a>
+                  <a href="index.html" target="_blank" class="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-colors">
+                    <h3 class="font-semibold text-blue-800 mb-2">官方邮箱 gaccode@163.com 订阅后</h3>
+                    <p class="text-sm text-blue-600">Claude Code 稳定订阅服务</p>
+                  </a>
+                </div>
+              </section>
+
+              <!-- 更新信息 -->
+              <div class="border-t border-gray-200 pt-6 mt-8">
+                <p class="text-sm text-gray-500">
+                  <strong>最后更新:</strong> 2026年1月9日 |
+                  <strong>内容来源:</strong> Anthropic 官方文档 + 实测经验 |
+                  <strong>适用版本:</strong> Claude Code CLI >= 1.0
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CTA Section -->
+        <div class="mt-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg shadow-xl overflow-hidden">
+          <div class="px-8 py-12 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">准备好开始配置 MCP 了吗?</h2>
+            <p class="text-blue-100 text-lg mb-8">通过 GACCode 订阅 Claude Code,享受优化的 MCP 配置体验和技术支持</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="index.html" target="_blank" class="inline-block px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg">
+                查看套餐价格
+              </a>
+              <a href="gaccode-faq.html" target="_blank" class="inline-block px-8 py-4 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors">
+                常见问题
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-white font-bold text-lg mb-4">官方邮箱 gaccode@163.com 订阅后</h3>
+            <p class="text-sm">提供稳定可靠的 Claude Code 订阅服务</p>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-4">快速链接</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="index.html" target="_blank" class="hover:text-white transition-colors">首页</a></li>
+              <li><a href="index.html#products" target="_blank" class="hover:text-white transition-colors">套餐价格</a></li>
+              <li><a href="posts.html" target="_blank" class="hover:text-white transition-colors">技术文章</a></li>
+              <li><a href="gaccode-faq.html" target="_blank" class="hover:text-white transition-colors">常见问题</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-4">产品服务</h4>
+            <ul class="space-y-2 text-sm">
+          </ul></div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
+          <p>&copy; 2026 官方邮箱 gaccode@163.com 订阅后. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script data-cfasync="false" src="static/js/email-decode.min.js"></script><script>
+      document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      function openWechatModal() {
+        // Wechat modal logic can be added here
+        alert('请使用微信扫描页面右侧的二维码添加客服');
+      }
+    </script>
+  <script defer src="static/js/v8c78df7c7c0f484497ecbca7046644da1771523124516.js" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0609a436c77044e68b7153f24036675e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

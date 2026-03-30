@@ -1,0 +1,2255 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GACCode 技术文章 - Claude Code API 使用指南与最佳实践</title>
+    <meta name="description" content="专业的 GACCode 和 Claude Code API 技术文章集合，包含安装指南、使用教程、常见问题解答、套餐对比、最佳实践等内容。帮助开发者更好地使用 AI 编程助手。">
+    <meta name="keywords" content="GACCode文章,Claude Code教程,AI编程助手指南,Claude Code API使用教程,GACCode安装指南,Claude Code最佳实践,AI编程工具,开发者教程,编程助手使用方法">
+    <meta name="author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GACCode 技术文章 - Claude Code API 使用指南与最佳实践">
+    <meta property="og:description" content="专业的 GACCode 和 Claude Code API 技术文章集合，包含详细的使用指南、教程和最佳实践。">
+    <meta property="og:url" content="https://GACCode/post">
+    <meta property="og:site_name" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GACCode 技术文章 - Claude Code API 使用指南">
+    <meta name="twitter:description" content="专业的 GACCode 和 Claude Code API 技术文章集合。">
+    <meta name="msvalidate.01" content="7F5A4F41F59B7840336A1530F6D3474E">
+    <link rel="icon" target="_blank" href="https://GACCode/img/logo.webp">
+    <!-- Canonical URL -->
+    <link rel="canonical" target="_blank" href="https://GACCode/post">
+
+    <!-- <script defer src="https://umami.xinhuo.dev/script.js" data-website-id="aa83f7b8-15cd-4ed3-9f16-8efa73548ed0"></script> -->
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "GACCode 技术文章",
+        "description": "专业的 GACCode 和 Claude Code API 技术文章集合，包含安装指南、使用教程、常见问题解答、套餐对比、最佳实践等内容。",
+        "url": "https://GACCode/post",
+        "publisher": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://GACCode/img/logo.webp"
+          }
+        },
+        "mainEntity": [
+          {
+            "@type": "Article",
+            "headline": "Claude Code Output Styles 完全指南：3 种编程风格如何颠覆你的开发体验",
+            "url": "https://GACCode/post/claude-code-output-styles-guide",
+            "datePublished": "2025-12-18T10:00:00+08:00"
+          },
+          {
+            "@type": "Article",
+            "headline": "Claude Code + Cursor + OpenSpec 铁三角实战指南：2025年AI编程效率提升300%完整教程",
+            "url": "https://GACCode/post/claude-code-cursor-openspec-ultimate-guide",
+            "datePublished": "2025-01-15T10:00:00+08:00"
+          },
+          {
+            "@type": "Article",
+            "headline": "Claude Code Templates 完全指南：发现这个宝藏级开发资源库",
+            "url": "https://GACCode/post/claude-code-templates-guide",
+            "datePublished": "2025-10-27T10:00:00+08:00"
+          },
+          {
+            "@type": "Article",
+            "headline": "Claude Code 还是 Codex？2025 年 AI 编程助手深度对比指南",
+            "url": "https://GACCode/post/claude-code-vs-codex-comparison",
+            "datePublished": "2025-10-27T10:00:00+08:00"
+          },
+          {
+            "@type": "Article",
+            "headline": "什么是 GAC？GACCode 全面介绍、安装方式与订阅指南（附免费体验）",
+            "url": "https://GACCode/post/gaccode-introduction",
+            "datePublished": "2025-09-02T16:00:00+08:00"
+          },
+          {
+            "@type": "Article",
+            "headline": "Claude Code 封号怎么办？2025年最新解决方案与稳定替代服务推荐",
+            "url": "https://GACCode/post/claude-code-ban-solution",
+            "datePublished": "2025-09-02T16:00:00+08:00"
+          },
+          {
+            "@type": "Article",
+            "headline": "GACCode 订阅完全指南 - 2025年最新价格与使用攻略",
+            "url": "https://GACCode/post/gaccode-subscription-guide",
+            "datePublished": "2025-09-02T10:00:00+08:00"
+          },
+          {
+            "@type": "Article",
+            "headline": "GACCode 是什么？全面了解这个 Claude Code API 服务",
+            "url": "https://GACCode/post/what-is-gaccode",
+            "datePublished": "2025-08-07T12:00:00+08:00"
+          },
+          {
+            "@type": "Article",
+            "headline": "Claude Code CLI 安装配置指南",
+            "url": "https://GACCode/post/claude-code-cli-install-guide",
+            "datePublished": "2025-08-07T14:00:00+08:00"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" target="_blank" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" target="_blank" href="/apple-touch-icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="static/js/js.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#64748b",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- 右侧分享挂件 -->
+    <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 space-y-3">
+      <div class="group relative">
+        <button onclick="openWechatModal()" class="w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+<svg t="1754325230831" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1687" width="128" height="128"><path d="M337.387283 341.82659c-17.757225 0-35.514451 11.83815-35.514451 29.595375s17.757225 29.595376 35.514451 29.595376 29.595376-11.83815 29.595376-29.595376c0-18.49711-11.83815-29.595376-29.595376-29.595375zM577.849711 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763zM501.641618 401.017341c17.757225 0 29.595376-12.578035 29.595376-29.595376 0-17.757225-11.83815-29.595376-29.595376-29.595375s-35.514451 11.83815-35.51445 29.595375 17.757225 29.595376 35.51445 29.595376zM706.589595 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763z" fill="#28C445" p-id="1688"></path><path d="M510.520231 2.959538C228.624277 2.959538 0 231.583815 0 513.479769s228.624277 510.520231 510.520231 510.520231 510.520231-228.624277 510.520231-510.520231-228.624277-510.520231-510.520231-510.520231zM413.595376 644.439306c-29.595376 0-53.271676-5.919075-81.387284-12.578034l-81.387283 41.433526 22.936416-71.768786c-58.450867-41.433526-93.965318-95.445087-93.965317-159.815029 0-113.202312 105.803468-201.988439 233.803468-201.98844 114.682081 0 216.046243 71.028902 236.023121 166.473989-7.398844-0.739884-14.797688-1.479769-22.196532-1.479769-110.982659 1.479769-198.289017 85.086705-198.289017 188.67052 0 17.017341 2.959538 33.294798 7.398844 49.572255-7.398844 0.739884-15.537572 1.479769-22.936416 1.479768z m346.265896 82.867052l17.757225 59.190752-63.630058-35.514451c-22.936416 5.919075-46.612717 11.83815-70.289017 11.83815-111.722543 0-199.768786-76.947977-199.768786-172.393063-0.739884-94.705202 87.306358-171.653179 198.289017-171.65318 105.803468 0 199.028902 77.687861 199.028902 172.393064 0 53.271676-34.774566 100.624277-81.387283 136.138728z" fill="#28C445" p-id="1689"></path></svg>        </button>
+        <div class="absolute right-14 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-80 text-white px-4 py-3 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div class="text-center">
+            <div class="mb-2">客服微信</div>
+            <img src="static/picture/qrcode_new2.webp" class="w-32 rounded mx-auto" alt="微信二维码">
+          </div>
+          <div class="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-black bg-opacity-80 rotate-45"></div>
+        </div>
+      </div>
+      
+      <div class="group relative">
+        <a target="_blank" href="https://fcai.me/gaccode" target="_blank" rel="noopener">
+            <button class="w-12 h-12  rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+                <svg t="1754325373359" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4891" width="128"><path d="M679.424 746.862l84.005-395.996c7.424-34.852-12.581-48.567-35.438-40.009L234.277 501.138c-33.72 13.13-33.134 32-5.706 40.558l126.282 39.424 293.156-184.576c13.714-9.143 26.295-3.986 16.018 5.157L426.898 615.973l-9.143 130.304c13.13 0 18.871-5.706 25.71-12.581l61.696-59.429 128 94.282c23.442 13.129 40.01 6.29 46.3-21.724zM1024 512c0 282.843-229.157 512-512 512S0 794.843 0 512 229.157 0 512 0s512 229.157 512 512z" fill="#1296DB" p-id="4892"></path></svg>
+            </button>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a target="_blank" href="index.html" class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">GAC</span>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-800">GACCode 订阅购买</div>
+              <!-- <p class="text-sm text-gray-600">专业团队</p> -->
+            </div>
+          </a>
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <!-- 产品服务 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                产品服务
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a target="_blank" href="index.html#products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐价格</a>
+                  <a href="gaccode-package-comparison.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐对比</a>
+                  <a href="gaccode-product-introduction.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">产品介绍</a>
+                  <a href="gaccode-introduction.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">GAC介绍</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 使用指南 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                使用指南
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="#how-to-use" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">快速开始</a>
+                  <a href="claude-code-cli-install-guide.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">CLI安装</a>
+                  <a href="gaccode-purchase-channels.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">购买指南</a>
+                  <a href="claude-code-api-best-practices.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">最佳实践</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 技术资源 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                技术资源
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">所有文章</a>
+                  <a href="what-is-gaccode.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">什么是GACCode</a>
+                  <a href="gaccode-introduction.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">GAC全面介绍</a>
+                  <a href="claude-code-proxy-sites.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">服务对比</a>
+                  <a href="gaccode-faq.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">常见问题</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 立即购买按钮 -->
+            <a href="share.html" target="_blank" class="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group">
+              <span class="relative z-10">免费体验</span>
+              <svg class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <span class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></span>
+            </a>
+            
+            <!-- CTA 按钮 -->
+            <!-- <a target="_blank" href="/#products" class="ml-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md hover:shadow-lg">
+              立即购买
+            </a>
+            <a href="#free-codes" class="px-3 py-2 text-sm text-green-600 hover:text-green-700 hover:bg-green-50 rounded-lg transition-all duration-200 font-medium">
+              免费获取
+            </a> -->
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <div class="lg:hidden">
+            <button id="mobile-menu-button" class="p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors" aria-label="打开菜单">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100">
+        <div class="container mx-auto px-4 py-4">
+          <div class="space-y-3">
+            <!-- 产品服务 -->
+            <div>
+              <div class="font-medium text-gray-900 mb-2">产品服务</div>
+              <div class="pl-4 space-y-2">
+                <a target="_blank" href="index.html#products" class="block text-sm text-gray-600 hover:text-blue-600">套餐价格</a>
+                <a href="gaccode-package-comparison.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">套餐对比</a>
+                <a href="gaccode-product-introduction.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">产品介绍</a>
+                <a href="gaccode-introduction.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">GAC介绍</a>
+              </div>
+            </div>
+            
+            <!-- 使用指南 -->
+            <div>
+              <div class="font-medium text-gray-900 mb-2">使用指南</div>
+              <div class="pl-4 space-y-2">
+                <!-- <a href="#how-to-use" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">快速开始</a> -->
+                <a href="claude-code-cli-install-guide.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">CLI安装</a>
+                <a href="gaccode-purchase-channels.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">购买指南</a>
+                <a href="claude-code-api-best-practices.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">最佳实践</a>
+              </div>
+            </div>
+            
+            <!-- 技术资源 -->
+            <div>
+              <a href="" target="_blank" class="font-medium text-gray-900 mb-2">技术资源</a>
+              <div class="pl-4 space-y-2">
+                <a href="what-is-gaccode.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">什么是GACCode</a>
+                <a href="gaccode-introduction.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">GAC全面介绍</a>
+                <a href="claude-code-proxy-sites.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">服务对比</a>
+                <a href="gaccode-faq.html" target="_blank" class="block text-sm text-gray-600 hover:text-blue-600">常见问题</a>
+              </div>
+            </div>
+            
+            <!-- 其他链接 -->
+            <div class="pt-3 border-t border-gray-200">
+              <a href="index.html#products" target="_blank" class="block py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg px-4 transition-all duration-300 shadow-md hover:shadow-lg">立即购买</a>
+              <a href="#contact" target="_blank" class="block py-2 text-sm text-gray-700 hover:text-blue-600">联系支持</a>
+            </div>
+            
+            <!-- CTA 按钮 -->
+            <!-- <div class="pt-3 space-y-2">
+              <a target="_blank" href="/#products" class="block w-full text-center py-3 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                立即购买
+              </a>
+              <a href="#free-codes" class="block w-full text-center py-3 border border-green-600 text-green-600 text-sm font-medium rounded-lg hover:bg-green-50 transition-colors">
+                免费获取
+              </a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="text-sm breadcrumbs mb-8">
+          <div class="flex items-center text-gray-500">
+            <a target="_blank" href="index.html" class="hover:text-blue-600 transition-colors">首页</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">技术文章</span>
+          </div>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="text-center mb-12">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">GACCode 技术文章</h1>
+          <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            深入了解 GACCode 和 Claude Code API 的使用方法、最佳实践和技术细节。从入门教程到高级技巧，帮助您充分发挥 AI 编程助手的强大功能。
+          </p>
+          
+          <!-- Search and Filter -->
+          <div class="max-w-2xl mx-auto mb-8">
+            <div class="flex flex-col md:flex-row gap-4">
+              <div class="flex-1">
+                <input type="text" id="searchInput" placeholder="搜索文章标题或内容..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+              </div>
+              <select id="categoryFilter" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="all">所有分类</option>
+                <option value="news">行业动态</option>
+                <option value="tutorial">使用教程</option>
+                <option value="guide">配置指南</option>
+                <option value="comparison">功能对比</option>
+                <option value="faq">常见问题</option>
+                <option value="best-practice">最佳实践</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Article -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 mb-12 border border-blue-100">
+          <div class="flex items-start space-x-6">
+            <div class="flex-shrink-0">
+              <div class="w-20 h-20 bg-blue-600 rounded-xl flex items-center justify-center">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1">
+              <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full mb-3">🌟 推荐阅读</span>
+              <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                <a target="_blank" href="what-is-gaccode.html" class="hover:text-blue-600 transition-colors">
+                  GACCode 是什么？深度解析这个 Claude Code 镜像站
+                </a>
+              </h2>
+              <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                详细解答 GACCode 是什么，了解这个 Claude Code API 代理服务的工作原理、使用方法、技术特点和注意事项。客观分析 GACCode 与官方订阅的区别，帮助您做出明智的选择。本文涵盖了 GACCode 的定义、技术架构、使用场景、可用模型等全方位内容。
+              </p>
+              <div class="flex items-center text-sm text-gray-500 space-x-6 mb-4">
+                <span class="flex items-center">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  约 10 分钟阅读
+                </span>
+                <span class="flex items-center">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                  </svg>
+                  技术教程
+                </span>
+                <span class="flex items-center">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4l6 6m0-6l-6 6"></path>
+                  </svg>
+                  2025年08月07日
+                </span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="inline-block bg-white text-blue-600 text-xs px-3 py-1 rounded-full border border-blue-200">GACCode</span>
+                <span class="inline-block bg-white text-blue-600 text-xs px-3 py-1 rounded-full border border-blue-200">Claude Code API</span>
+                <span class="inline-block bg-white text-blue-600 text-xs px-3 py-1 rounded-full border border-blue-200">AI 编程助手</span>
+                <span class="inline-block bg-white text-blue-600 text-xs px-3 py-1 rounded-full border border-blue-200">代理服务</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 flex items-center justify-between">
+            <div class="text-gray-600">
+              <strong>包含内容：</strong> 服务定义 • 工作原理 • 使用场景 • 模型对比 • 注意事项 • 常见问题
+            </div>
+            <a target="_blank" href="what-is-gaccode.html" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-all duration-200">
+              阅读全文
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Articles Grid -->
+        <div id="articlesContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- NEWEST: Claude Code MCP Configuration Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-purple-600 bg-purple-50 px-2 py-1 rounded-full">教程</span>
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">最新</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">8 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="claude-code-mcp-configuration.html" target="_blank">Claude Code 配置 MCP 完全指南：从入门到高级的实战教程（2026最新）</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                详解 Claude Code 配置 MCP（Model Context Protocol）的完整流程,涵盖 CLI 命令、配置文件、环境变量、故障排查。平均 5 分钟完成配置,成功率 99%。通过 GACCode 获取稳定的 MCP 配置支持。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">MCP配置</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CLI命令</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">环境变量</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">故障排查</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  2026年01月03日
+                </div>
+                <a href="claude-code-mcp-configuration.html" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm font-medium inline-flex items-center">
+                  阅读详情
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEWEST: Super Claude Code Complete Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-purple-600 bg-purple-50 px-2 py-1 rounded-full">完全指南</span>
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">最新</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">35 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="super-claude-code-complete-guide.html" target="_blank">Super Claude Code 完全指南：30+ 命令增强 Claude Code 的终极框架</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深度解析 Super Claude Code 增强框架：30 个斜杠命令、16 个智能代理、7 种行为模式、8 个 MCP 服务器集成。通过 GACCode 获取稳定服务，实现 2-3 倍性能提升，节省 30-50% Token 消耗。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Super Claude</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">命令系统</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">智能代理</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">MCP服务器</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">性能优化</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  2026年01月09日
+                </div>
+                <a href="super-claude-code-complete-guide.html" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm font-medium inline-flex items-center">
+                  阅读详情
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEWEST: Claude Code LSP Configuration Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">性能优化</span>
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">最新</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">15 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="claude-code-lsp-configuration-guide.html" target="_blank">Claude Code LSP 配置完全指南:Token 消耗降低 40%,性能提升 900 倍</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                详解 Claude Code LSP (Language Server Protocol) 配置方法，实测 Token 消耗降低 40%+，代码导航速度提升 900 倍。包含三种配置方案、常见问题和稳定订阅建议。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">LSP</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Token优化</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">性能提升</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">配置指南</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  2026年01月07日
+                </div>
+                <a href="claude-code-lsp-configuration-guide.html" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm font-medium inline-flex items-center">
+                  阅读详情
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Claude Code Seven Components Tutorial -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-purple-600 bg-purple-50 px-2 py-1 rounded-full">完全指南</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">20 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="claude-code-seven-components-tutorial.html" target="_blank">Claude Code 七大核心组件完全指南（2026版）：90%用户只用了1个！</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深度解析 Claude Code 七大核心组件：CLAUDE.md、Commands、Skills、MCP、Hooks、Subagents、Plugins。从配置到实战，带你全面掌握 Claude Code 高级功能，释放 AI 编程真正潜力。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CLAUDE.md</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Skills</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">MCP</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Hooks</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Plugins</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  2026年01月03日
+                </div>
+                <a href="claude-code-seven-components-tutorial.html" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm font-medium inline-flex items-center">
+                  阅读详情
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Claude Code Review & Batch Processing Tutorial -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">新手教程</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">12 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="claude-code-review-batch-processing-tutorial.html" target="_blank">Claude Code 代码审查与批量文件处理新手教程：从入门到实战（2025版）</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                基于 Anthropic 官方文档和 SmartScope 权威教程，详解 Claude Code 的代码自动审查和批量文件处理功能。涵盖 security-review 命令、GitHub Actions 集成、并行处理等实战技巧，审查速度提升 40 倍。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">代码审查</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">批量处理</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">GitHub Actions</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">安全扫描</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  2025年01月02日
+                </div>
+                <a href="claude-code-review-batch-processing-tutorial.html" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm font-medium inline-flex items-center">
+                  阅读详情
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Claude Skills Complete Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">使用指南</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">12 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="claude-skills-complete-guide.html" target="_blank">Claude Skills 完全指南：功能详解、安装使用及与 MCP 对比</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                详解 Claude Skills 是什么、有什么用、与 MCP 的区别，以及如何安装使用。效率提升40%，错误率降低35%。
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  2025年12月28日
+                </div>
+                <a href="claude-skills-complete-guide.html" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm font-medium inline-flex items-center">
+                  阅读详情
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Output Styles Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">功能详解</span>
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">最新</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">15 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="claude-code-output-styles-guide.html">Claude Code Output Styles 完全指南：3 种编程风格如何颠覆你的开发体验</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深度解析 Claude Code Output Styles 功能，详解 Default、Explanatory、Learning 三种输出风格的实战应用。掌握自定义 AI 编程助手风格的核心技巧，附完整配置指南和最佳实践。含 2025 年弃用通知及迁移建议。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Output Styles</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">编程风格</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">自定义配置</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">学习模式</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <span>2025年12月18日</span>
+                </div>
+                <a href="claude-code-output-styles-guide.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code + Cursor + OpenSpec Ultimate Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-purple-600 bg-purple-50 px-2 py-1 rounded-full">实战指南</span>
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">最新</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">25 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="claude-code-cursor-openspec-ultimate-guide.html">Claude Code + Cursor + OpenSpec 铁三角实战指南：2025年AI编程效率提升300%</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                完整拆解 Claude Code、Cursor、OpenSpec 三工具组合的最佳实践。包含 9 天交付 SaaS 项目实战案例、可复制的配置模板、黄金 Prompt 合集，工作时长从 60h 降到 25h。附避坑指南和常见问题解答。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">工具组合</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">效率提升300%</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">实战案例</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">配置模板</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <span>2025年1月15日</span>
+                </div>
+                <a href="claude-code-cursor-openspec-ultimate-guide.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Skills -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-cyan-600 bg-cyan-50 px-2 py-1 rounded-full">技能提升</span>
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">最新</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">8 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="claude-code-skills.html">Claude Code Skills 完全指南：掌握 AI 编程核心技能</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                系统学习 Claude Code Skills 核心内容，从界面熟悉、智能代码补全、调试技巧到代码优化，全方位提升你的 AI 编程开发技能。包含 Claude Code Skills 实战案例分析和最佳实践指南。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">界面功能</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">智能补全</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">调试优化</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">实战应用</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <span>2025年11月18日</span>
+                </div>
+                <a href="claude-code-skills.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Complete Features Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">教程指南</span>
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">最新</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">15 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="claude-code-complete-features-guide-20251.html">Claude Code 完整功能指南：18个核心功能深度解析与实战技巧</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                系统拆解 Claude Code 的每一个重要功能，从基础命令到高级特性。包括 Rewind 回滚、扩展思维模式、自定义命令、CLAUDE.md 配置、Git 集成、MCP 协议、技能系统等18个核心功能的完整使用指南。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Rewind</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">扩展思维</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">自定义命令</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">MCP集成</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <span>2025年1月15日</span>
+                </div>
+                <a href="claude-code-complete-features-guide-20251.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Best Practices and Usage Tips -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="best-practice">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">最佳实践</span>
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">最新</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">25 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a href="claude-code-best-practices-usage-tips.html">Claude Code 最佳实践与使用技巧完全指南（2025版）</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                2025年最全面的 Claude Code 最佳实践指南。深入解析 CLAUDE.md 配置、权限管理、上下文优化、工作流技巧、深度思考模式和自定义命令。从入门到精通,让 Claude Code 发挥最大效能。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CLAUDE.md</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">权限管理</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">工作流</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">深度思考</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <span>2025年11月15日</span>
+                </div>
+                <a href="claude-code-best-practices-usage-tips.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Why Claude Code Beats Others -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="comparison">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-rose-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-rose-600 bg-rose-50 px-2 py-1 rounded-full">深度对比</span>
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">最新</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">18 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="why-claude-code-beats-cursor-copilot-windsurf.html">用了 Claude Code 后,Cursor、Copilot、Windsurf 真的不够用了吗？</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深度实测 Claude Code、Cursor、Copilot、Windsurf 四大AI编程工具。从上下文理解、自主执行、终端集成到成本效益,全方位对比分析。包含 SWE-bench 实测数据、价格对比和最佳使用场景推荐。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Claude Code</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Cursor</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Copilot</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Windsurf</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年11月09日</span>
+                </div>
+                <a target="_blank" href="why-claude-code-beats-cursor-copilot-windsurf.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Sonnet 4.5 Comprehensive Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="news">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-purple-600 bg-purple-50 px-2 py-1 rounded-full">产品更新</span>
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">最新</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">18 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-sonnet-4-5-comprehensive-guide.html">Claude Sonnet 4.5 全面解读：30小时自主编码，编程新王降临</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深度解析Claude Sonnet 4.5新功能：30小时自主编码能力、82%的SWE-bench测试成绩、全新检查点功能和记忆工具。详解国内使用方案，通过GACCode稳定访问。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Claude Sonnet 4.5</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">自主编码</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">AI编程</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">最新功能</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年11月05日</span>
+                </div>
+                <a target="_blank" href="claude-sonnet-4-5-comprehensive-guide.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Productivity Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">完整教程</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">28 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-productivity-guide.html">Claude Code 完全实战指南:从零基础到 10 倍生产力提升(2025 最新)</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                一万六千字深度解析 Claude Code 使用技巧,涵盖安装配置、核心功能、实战案例与效率优化。帮助开发者掌握这款最强 AI 编程助手,实现开发效率 10 倍提升。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Claude Code教程</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">生产力工具</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">AI编程助手</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">效率提升</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年11月03日</span>
+                </div>
+                <a target="_blank" href="claude-code-productivity-guide.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code vs Gemini CLI Comparison -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="comparison">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-yellow-600 bg-yellow-50 px-2 py-1 rounded-full">技术对比</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">16 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-vs-gemini-cli-comparison.html">Claude Code 还是 Gemini CLI？2025 年 AI 编程工具深度对比与选择指南</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深度对比 Claude Code 和 Gemini CLI 的核心差异、性能表现、成本效益与适用场景。了解两大 AI 编程助手的优劣势,基于真实测试数据找到最适合你的开发工具。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Claude Code</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Gemini CLI</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">工具对比</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">选型指南</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年11月03日</span>
+                </div>
+                <a target="_blank" href="claude-code-vs-gemini-cli-comparison.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code 2 Months Best Practices -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">实战经验</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">18 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-best-practices.html">Claude Code 两个月实战总结:15 条最佳实践让效率提升 10 倍</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                基于两个月深度使用 Claude Code 的实战经验,总结 15 条核心最佳实践,涵盖 CLAUDE.md 配置、上下文管理、工作流优化、Git 集成等关键技巧。帮助开发者避开常见陷阱,充分释放 AI 编程助手的潜力。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">最佳实践</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CLAUDE.md配置</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">上下文管理</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">工作流优化</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年11月03日</span>
+                </div>
+                <a target="_blank" href="claude-code-best-practices.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code 12 Practical Tips -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-amber-600 bg-amber-50 px-2 py-1 rounded-full">实用技巧</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">22 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-12-practical-tips.html">Claude Code 避免犯错的 12 个实用技巧：提升 AI 编程助手准确性指南</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深度解析 Claude Code 使用中的常见错误及解决方案，包括 CLAUDE.md 文件配置、上下文管理、提示词优化等 12 个实用技巧。帮助开发者提升 AI 编程助手的准确性和效率，减少无效输出。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Claude Code技巧</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CLAUDE.md配置</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">上下文管理</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">提示词优化</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月27日</span>
+                </div>
+                <a target="_blank" href="claude-code-12-practical-tips.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Read Code Effectively -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">代码理解</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">16 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-read-code-effectively.html">让 Claude Code 高效读懂代码：智能代码理解完全指南（2025最新）</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深度解析 Claude Code 的代码理解机制，包括智能体式搜索、CLAUDE.md 配置、上下文管理、深度思考模式等核心技巧。助您让 AI 准确理解项目架构，提升代码分析效率 3-5 倍。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">代码理解</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">智能体式搜索</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CLAUDE.md文件</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">深度思考模式</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月27日</span>
+                </div>
+                <a target="_blank" href="claude-code-read-code-effectively.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Templates Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="guide">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-teal-600 bg-teal-50 px-2 py-1 rounded-full">开发资源</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">15 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-templates-guide.html">Claude Code Templates 完全指南：发现这个宝藏级开发资源库</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深度解析 Claude Code Templates 宝藏资源库，涵盖 400+ 组件、100+ Agents、159+ 命令配置。从安装到实战，快速上手 Claude Code 模板系统，10倍提升AI编程效率。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Claude Code</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">开发模板</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">效率工具</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">AI编程</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月27日</span>
+                </div>
+                <a target="_blank" href="claude-code-templates-guide.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code vs Codex Comparison -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="comparison">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-purple-600 bg-purple-50 px-2 py-1 rounded-full">技术对比</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">12 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-vs-codex-comparison.html">Claude Code 还是 Codex？2025 年 AI 编程助手深度对比</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深入对比 Claude Code 和 OpenAI Codex 的核心架构、性能表现、成本效益与适用场景。了解两大 AI 编程助手的优劣势，找到最适合你的开发工具。GACCode 同时支持两个工具的稳定订阅。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Claude Code</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Codex</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">工具对比</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">选型指南</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月27日</span>
+                </div>
+                <a target="_blank" href="claude-code-vs-codex-comparison.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Pitfall Guide China -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="guide">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">避坑指南</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">15 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-pitfall-guide-china.html">Claude Code 避坑指南（国内版）</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深度解析 Claude Code 国内使用痛点：封号原因、降额机制、网络环境配置、稳定替代方案。基于真实案例总结避坑经验,推荐 gaccode.com 等可靠服务。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">封号防范</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">国内使用</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">稳定方案</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月24日</span>
+                </div>
+                <a target="_blank" href="claude-code-pitfall-guide-china.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Rate Limit Announcement -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="news">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-1.732-1.333-2.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">重要通知</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">12 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-rate-limit-announcement.html">Claude Code 宣布限流:200 美元订阅党,你的快乐到此为止</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                Anthropic 官方宣布 Claude Code 新增周限额政策。深度解析 200 美元 Max 订阅的限流细节、影响范围和稳定替代方案。了解如何通过 GACCode 规避政策风险。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">限流政策</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">周限额</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Max订阅</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">替代方案</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月24日</span>
+                </div>
+                <a target="_blank" href="claude-code-rate-limit-announcement.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Official Best Practices -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">官方最佳实践</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">18 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-official-best-practices.html">Claude Code 官方最佳实践：Agent 工具与上下文管理进阶</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                Anthropic 官方发布的 Claude Code 最佳实践指南。深度解析 CLAUDE.md 文件配置、Agent 工具本质、扩展思维模式和上下文管理技巧,助您充分发挥 AI 编程助手的潜力。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CLAUDE.md</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Agent 工具</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">上下文管理</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">扩展思维</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月22日</span>
+                </div>
+                <a target="_blank" href="claude-code-official-best-practices.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code 26 Features Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-teal-600 bg-teal-50 px-2 py-1 rounded-full">功能大全</span>
+                    <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">NEW</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">25 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-26-features-guide.html">Claude Code 26 项核心功能完全指南（收藏版）</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                全面拆解 Claude Code 26+ 核心功能与实战技巧。涵盖斜杠命令、Subagents、Hooks、深度思考模式、MCP 协议等高级特性,适合开发者系统学习和长期收藏。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">斜杠命令</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Subagents</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Hooks</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">MCP 协议</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月22日</span>
+                </div>
+                <a target="_blank" href="claude-code-26-features-guide.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW: Claude Code Complete Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">完整指南</span>
+                  <div class="text-xs text-gray-500 mt-1">20 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-comprehensive-guide.html">Claude Code 完全使用指南：从安装到精通（2025年最新）</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                这可能是目前最全面的 Claude Code 使用指南。从基础安装到 MCP 高级集成，从核心功能到实战技巧，帮助您完全掌握这款强大的 AI 编程助手，让开发效率提升10倍。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Claude Code</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">MCP集成</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">使用指南</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">最佳实践</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月20日</span>
+                </div>
+                <a target="_blank" href="claude-code-comprehensive-guide.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cursor vs Claude Code 深度对比 -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="comparison">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-purple-600 bg-purple-50 px-2 py-1 rounded-full">技术对比</span>
+                  <div class="text-xs text-gray-500 mt-1">15 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="cursor-vs-claude-code-comparison.html">Cursor vs Claude Code 深度对比：2025年最强AI编程助手选择指南</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                基于100小时混合编程实战经验，深度对比Cursor和Claude Code两大AI编程工具的功能特性、适用场景、价格成本和最佳实践。帮助开发者选择最适合的AI编程助手，提升开发效率。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Cursor</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Claude Code</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">AI编程工具</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">工具对比</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月19日</span>
+                </div>
+                <a target="_blank" href="cursor-vs-claude-code-comparison.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article New: GACCode Credits Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="guide">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">使用指南</span>
+                  <div class="text-xs text-gray-500 mt-1">22 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="gaccode-credits-guide.html">GACCode 积分完全指南：深入理解 Claude Code 积分系统</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                全面解析 GACCode 积分系统，包括积分计算、使用场景、优化策略、成本控制等实用指南。帮助您高效管理 Claude Code 积分，降低使用成本，提升开发效率。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">GACCode积分</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">使用指南</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">成本优化</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">积分管理</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月30日</span>
+                </div>
+                <a target="_blank" href="gaccode-credits-guide.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article -1: Claude Code 安装教程（基于 GACCode） -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">安装教程</span>
+                  <div class="text-xs text-gray-500 mt-1">8 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-install-gac-stacked.html">Claude Code 安装教程（基于 GACCode｜Windows / macOS / Linux 新手版）</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                基于 GAC 的 Claude Code 安装与使用教程：含 Windows（WSL）、macOS、Linux 全流程，一步步完成 Node.js 准备、镜像安装、登录验证、选择最优节点、VS Code 插件，以及常见故障修复。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">GACCode</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">安装教程</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Windows/macOS/Linux</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年10月08日</span>
+                </div>
+                <a target="_blank" href="claude-code-install-gac-stacked.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 0: 国内Claude Code安装使用教程 -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">安装教程</span>
+                  <div class="text-xs text-gray-500 mt-1">8 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="gaccode-subscription-simple-guide.html">国内Claude Code安装使用教程及gaccode订阅码获取指南</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                详细介绍国内如何安装和使用Claude Code，以及如何获取便宜的gaccode订阅码。包含完整安装步骤，无需魔法上网。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">gaccode订阅</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">安装教程</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Claude Code</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-xs text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4m0 4v10a1 1 0 01-1 1H9a1 1 0 01-1-1V11m0 0l4-4m-4 4v4a1 1 0 001 1h4a1 1 0 001-1v-4"></path>
+                  </svg>
+                  <span>2025年09月03日</span>
+                </div>
+                <a target="_blank" href="gaccode-subscription-simple-guide.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  阅读详情 →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 1: GAC / GACCode 全面介绍 -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">产品介绍</span>
+                  <div class="text-xs text-gray-500 mt-1">8 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-3 leading-tight">
+                <a target="_blank" href="gaccode-introduction.html">什么是 GAC？GACCode 全面介绍、安装方式与订阅指南（附免费体验）</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                全面介绍 GAC / GACCode：一体化支持 Claude Code 与 Codex，双使用方式（改版客户端 / 原版+API），积分共享、套餐与价格、安装步骤、常见问题与避坑建议。提供购买与免费体验入口。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">GACCode</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">产品介绍</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">安装指南</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">订阅与价格</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">免费体验</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">发布于 2025年09月02日</span>
+                <a target="_blank" href="gaccode-introduction.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2: Claude Code 封号解决方案 -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="solution">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">解决方案</span>
+                  <div class="text-xs text-gray-500 mt-1">8 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-ban-solution.html">Claude Code 封号怎么办？2025年最新解决方案</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                详细分析 Claude Code 封号原因及解决方案，推荐 GACCode 等稳定可靠的替代服务。涵盖封号原因分析、传统解决方案局限性、最佳替代服务对比等全面指南。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">封号解决</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">替代方案</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">GACCode</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">2025年09月02日</span>
+                <a target="_blank" href="claude-code-ban-solution.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+          
+          <!-- Article 2: GACCode Subscription Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="guide">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">订阅指南</span>
+                  <div class="text-xs text-gray-500 mt-1">18 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="/post/gaccode-subscription-guide">GACCode 订阅完全指南 - 2025年最新价格与使用攻略</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                最权威的 GACCode 订阅购买指南，包含2025年最新价格政策、套餐对比分析、使用教程和购买建议，助您高效选择合适的订阅方案。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">GACCode订阅</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">价格分析</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">购买指南</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">2025年09月02日</span>
+                <a target="_blank" href="/post/gaccode-subscription-guide" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3: GACCode Product Introduction -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">产品介绍</span>
+                  <div class="text-xs text-gray-500 mt-1">8 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="gaccode-product-introduction.html">GACCode 产品全面介绍 - 性价比之选</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                全面介绍 GACCode 产品特色、价格优势、服务支持等核心信息。了解为什么 GACCode 是性价比最高的 Claude Code API 解决方案，以及如何快速开始使用。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">产品介绍</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">价格优势</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">服务支持</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">2025年08月10日</span>
+                <a target="_blank" href="gaccode-product-introduction.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2: What is GACCode -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="tutorial">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">基础概念</span>
+                  <div class="text-xs text-gray-500 mt-1">10 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="what-is-gaccode.html">GACCode 是什么？深度解析这个 Claude Code 镜像站</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                详细解答 GACCode 是什么，了解这个 Claude Code API 代理服务的工作原理、技术特点、安全性分析和使用注意事项。客观分析 GACCode 与官方订阅的异同。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">概念解析</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">镜像站</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">代理服务</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">2025年08月07日</span>
+                <a target="_blank" href="what-is-gaccode.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3: Claude Code Proxy Sites -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="comparison">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-purple-600 bg-purple-50 px-2 py-1 rounded-full">中转站对比</span>
+                  <div class="text-xs text-gray-500 mt-1">12 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-proxy-sites.html">Claude Code 中转站全面对比分析</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深入分析市面上主流的 Claude Code 代理服务商，包括 GACCode、其他竞品的功能对比、价格分析、服务质量评估，帮助您选择最适合的代理服务。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">中转站对比</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">服务商分析</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">选择指南</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">2025年08月07日</span>
+                <a target="_blank" href="claude-code-proxy-sites.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 4: Purchase Channels -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="guide">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 3H5.5M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v4a2 2 0 01-2 2H9a2 2 0 01-2-2v-4m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">购买指南</span>
+                  <div class="text-xs text-gray-500 mt-1">7 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="gaccode-purchase-channels.html">GACCode 购买充值渠道完整指南</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                详细介绍 GACCode 的各种购买渠道、支付方式、充值流程和注意事项。包括官网购买、客服购买、批量采购等多种方式的对比和选择建议。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">购买渠道</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">支付方式</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">充值指南</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">2025年08月07日</span>
+                <a target="_blank" href="gaccode-purchase-channels.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 5: CLI Install Guide -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="guide">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-teal-600 bg-teal-50 px-2 py-1 rounded-full">配置指南</span>
+                  <div class="text-xs text-gray-500 mt-1">5 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-cli-install-guide.html">Claude Code CLI 安装配置指南</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                详细介绍如何安装和配置 Claude Code CLI 工具，包括环境变量设置、API 密钥配置、不同操作系统的安装方法等完整步骤。适合初学者快速上手。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CLI工具</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">环境配置</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">快速入门</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">2025年08月07日</span>
+                <a target="_blank" href="claude-code-cli-install-guide.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 6: Package Comparison -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="comparison">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">功能对比</span>
+                  <div class="text-xs text-gray-500 mt-1">6 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="gaccode-package-comparison.html">GACCode 套餐对比与选择建议</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                深入对比分析 GACCode 日卡和月卡套餐的特点、适用场景、性价比分析，并提供不同使用需求下的选择建议，帮助您找到最适合的方案。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">套餐对比</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">价格分析</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">选择指南</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">2025年08月07日</span>
+                <a target="_blank" href="gaccode-package-comparison.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 7: FAQ -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="faq">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">常见问题</span>
+                  <div class="text-xs text-gray-500 mt-1">8 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="gaccode-faq.html">GACCode 使用常见问题解答</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                整理了用户在使用 GACCode 过程中经常遇到的问题，提供详细的解答和解决方案。涵盖安装、配置、使用、故障排除等各个方面。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">常见问题</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">故障排除</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">解决方案</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">2025年08月07日</span>
+                <a target="_blank" href="gaccode-faq.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 8: Best Practices -->
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 article-card" data-category="best-practice">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-yellow-600 bg-yellow-50 px-2 py-1 rounded-full">最佳实践</span>
+                  <div class="text-xs text-gray-500 mt-1">12 分钟阅读</div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                <a target="_blank" href="claude-code-api-best-practices.html">Claude Code API 最佳实践指南</a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                分享使用 Claude Code API 的最佳实践，包括性能优化技巧、安全注意事项、代码质量提升方法，以及如何充分利用 AI 编程助手提高开发效率。
+              </p>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">性能优化</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">安全实践</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">效率提升</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">2025年08月07日</span>
+                <a target="_blank" href="claude-code-api-best-practices.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                  阅读详情
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Load More / Pagination Placeholder -->
+        <!-- <div class="text-center mt-12">
+          <p class="text-gray-600 mb-4">更多技术文章持续更新中...</p>
+          <a target="_blank" href="/#contact" class="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-lg font-medium transition-all duration-200">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+            建议更多文章主题
+          </a>
+        </div> -->
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold">GAC</span>
+              </div>
+              <span class="text-xl font-bold">GACCode 订阅购买</span>
+            </div>
+            <p class="text-gray-400">
+              专业的GACCode技术团队，为用户提供安全、便捷的GACCode兑换码购买服务。
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a target="_blank" href="index.html#products" class="hover:text-white transition-colors">日卡套餐</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#products" class="hover:text-white transition-colors">月卡套餐</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#how-to-use" class="hover:text-white transition-colors">使用说明</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">技术支持</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a target="_blank" href="https://claudecodeapi.com/zh" class="hover:text-white transition-colors">ClaudeCodeAPI</a>
+              </li>
+              <li>
+                <a target="_blank" href="/post" class="hover:text-white transition-colors">技术文章</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#products" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">立即购买</a>
+              </li>
+              <li>
+                <a target="_blank" href="index.html#contact" class="hover:text-white transition-colors">联系我们</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">相关链接</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a target="_blank" href="https://gaccode.com/signup?ref=19EOB4I5" target="_blank" rel="noopener" class="hover:text-white transition-colors">GACCode 官网</a>
+              </li>
+              <li>
+                <a target="_blank" href="#" class="hover:text-white transition-colors">隐私政策</a>
+              </li>
+              <li>
+                <a target="_blank" href="#" class="hover:text-white transition-colors">服务条款</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 官方邮箱 gaccode@163.com 订阅后. 保留所有权利。</p>
+          <p class="mt-2 text-sm">
+            专业的GACCode技术团队 | 网站域名：GACCode
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WeChat QR Code Modal -->
+    <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl max-w-md w-full p-8 text-center relative">
+        <button onclick="closeWechatModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">
+          扫码加我
+        </h3>
+        <p class="text-gray-600 ">扫描下方二维码，添加微信好友</p>
+        
+        <div class="bg-gray-100 rounded-lg p-6 mb-6">
+          <div class="w-48  bg-gray-200 rounded flex items-center justify-center mx-auto">
+            <img src="static/picture/qrcode_new2.webp" class="text-gray-400">
+          </div>
+        </div>
+        
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4 ">
+          <h4 class="font-semibold text-green-800 mb-2">微信号</h4>
+          <p class="text-green-700 text-lg font-mono">caicats</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu functionality
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', isOpen);
+        
+        // Update button icon
+        const icon = mobileMenuButton.querySelector('svg');
+        if (isOpen) {
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+        } else {
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+        }
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.add('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
+          const icon = mobileMenuButton.querySelector('svg');
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+        }
+      });
+
+      // 微信弹窗功能
+      function openWechatModal() {
+        const modal = document.getElementById('wechat-modal');
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeWechatModal() {
+        const modal = document.getElementById('wechat-modal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+
+      document.getElementById('wechat-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeWechatModal();
+        }
+      });
+
+      // 搜索和筛选功能
+      function filterArticles() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const categoryFilter = document.getElementById('categoryFilter').value;
+        const articles = document.querySelectorAll('.article-card');
+        
+        articles.forEach(article => {
+          const title = article.querySelector('h3').textContent.toLowerCase();
+          const content = article.querySelector('p').textContent.toLowerCase();
+          const category = article.getAttribute('data-category');
+          
+          const matchesSearch = title.includes(searchTerm) || content.includes(searchTerm);
+          const matchesCategory = categoryFilter === 'all' || category === categoryFilter;
+          
+          if (matchesSearch && matchesCategory) {
+            article.style.display = 'block';
+          } else {
+            article.style.display = 'none';
+          }
+        });
+      }
+
+      // 绑定搜索和筛选事件
+      document.getElementById('searchInput').addEventListener('input', filterArticles);
+      document.getElementById('categoryFilter').addEventListener('change', filterArticles);
+
+      // ESC键关闭弹窗
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeWechatModal();
+        }
+      });
+    </script>
+  <script defer src="static/js/v8c78df7c7c0f484497ecbca7046644da1771523124516.js" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0609a436c77044e68b7153f24036675e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

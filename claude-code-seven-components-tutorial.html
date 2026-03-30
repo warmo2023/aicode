@@ -1,0 +1,1305 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Claude Code 七大核心组件完全指南（2026版）：90%用户只用了1个！ | 官方邮箱 gaccode@163.com 订阅后
+    </title>
+    <meta name="description" content="深度解析 Claude Code 七大核心组件：CLAUDE.md、Commands、Skills、MCP、Hooks、Subagents、Plugins。从配置到实战，带你全面掌握 Claude Code 高级功能，释放 AI 编程真正潜力。">
+    <meta name="keywords" content="Claude Code组件,CLAUDE.md配置,Claude Skills,Model Context Protocol,MCP服务器,Claude Hooks,Subagents子代理,Claude Plugins,AI编程工具,GACCode">
+    <meta name="author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Claude Code 七大核心组件完全指南（2026版）：90%用户只用了1个！">
+    <meta property="og:description" content="深度解析 Claude Code 七大核心组件，从 CLAUDE.md 到 Plugins，带你全面掌握 AI 编程高级功能。">
+    <meta property="og:url" content="https://GACCode/post/claude-code-seven-components-tutorial">
+    <meta property="og:site_name" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2026-01-03T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-01-03T00:00:00+08:00">
+    <meta property="article:author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="article:section" content="教程指南">
+    <meta property="article:tag" content="Claude Code">
+    <meta property="article:tag" content="Skills">
+    <meta property="article:tag" content="MCP">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Code 七大核心组件完全指南（2026版）">
+    <meta name="twitter:description" content="深度解析 Claude Code 七大核心组件，从 CLAUDE.md 到 Plugins，带你全面掌握 AI 编程高级功能。">
+    <meta name="twitter:image" content="https://GACCode/img/claude-code-seven-components-cover.jpg">
+    <meta property="og:image" content="https://GACCode/img/claude-code-seven-components-cover.jpg">
+    <meta property="og:image:width" content="720">
+    <meta property="og:image:height" content="400">
+    <meta name="msvalidate.01" content="7F5A4F41F59B7840336A1530F6D3474E">
+    <link rel="icon" href="https://GACCode/img/logo.webp">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://GACCode/post/claude-code-seven-components-tutorial">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Claude Code 七大核心组件完全指南（2026版）：90%用户只用了1个！",
+        "description": "深度解析 Claude Code 七大核心组件：CLAUDE.md、Commands、Skills、MCP、Hooks、Subagents、Plugins。从配置到实战，带你全面掌握高级功能。",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://GACCode/img/claude-code-seven-components-cover.jpg",
+          "width": 720,
+          "height": 400
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "url": "https://GACCode"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://GACCode/img/logo.webp"
+          }
+        },
+        "datePublished": "2026-01-03T00:00:00+08:00",
+        "dateModified": "2026-01-03T00:00:00+08:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://GACCode/post/claude-code-seven-components-tutorial"
+        }
+      }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="static/js/js.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#64748b",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- 右侧分享挂件 -->
+    <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 space-y-3">
+      <div class="group relative">
+        <button onclick="openWechatModal()" class="w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+          <svg t="1754325230831" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1687" width="128" height="128">
+            <path d="M337.387283 341.82659c-17.757225 0-35.514451 11.83815-35.514451 29.595375s17.757225 29.595376 35.514451 29.595376 29.595376-11.83815 29.595376-29.595376c0-18.49711-11.83815-29.595376-29.595376-29.595375zM577.849711 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763zM501.641618 401.017341c17.757225 0 29.595376-12.578035 29.595376-29.595376 0-17.757225-11.83815-29.595376-29.595376-29.595375s-35.514451 11.83815-35.51445 29.595375 17.757225 29.595376 35.51445 29.595376zM706.589595 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763z" fill="#28C445" p-id="1688"></path>
+            <path d="M510.520231 2.959538C228.624277 2.959538 0 231.583815 0 513.479769s228.624277 510.520231 510.520231 510.520231 510.520231-228.624277 510.520231-510.520231-228.624277-510.520231-510.520231-510.520231zM413.595376 644.439306c-29.595376 0-53.271676-5.919075-81.387284-12.578034l-81.387283 41.433526 22.936416-71.768786c-58.450867-41.433526-93.965318-95.445087-93.965317-159.815029 0-113.202312 105.803468-201.988439 233.803468-201.98844 114.682081 0 216.046243 71.028902 236.023121 166.473989-7.398844-0.739884-14.797688-1.479769-22.196532-1.479769-110.982659 1.479769-198.289017 85.086705-198.289017 188.67052 0 17.017341 2.959538 33.294798 7.398844 49.572255-7.398844 0.739884-15.537572 1.479769-22.936416 1.479768z m346.265896 82.867052l17.757225 59.190752-63.630058-35.514451c-22.936416 5.919075-46.612717 11.83815-70.289017 11.83815-111.722543 0-199.768786-76.947977-199.768786-172.393063-0.739884-94.705202 87.306358-171.653179 198.289017-171.65318 105.803468 0 199.028902 77.687861 199.028902 172.393064 0 53.271676-34.774566 100.624277-81.387283 136.138728z" fill="#28C445" p-id="1689"></path>
+          </svg>
+        </button>
+        <div class="absolute right-14 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-80 text-white px-4 py-3 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div class="text-center">
+            <div class="mb-2">客服微信</div>
+            <img src="static/picture/qrcode_new2.webp" class="w-32 rounded mx-auto" alt="微信二维码">
+          </div>
+          <div class="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-black bg-opacity-80 rotate-45"></div>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">GAC</span>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-800">
+                GACCode 订阅购买
+              </div>
+            </div>
+          </a>
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <!-- 产品服务 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                产品服务
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="index.html#products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐价格</a>
+                  <a href="gaccode-package-comparison.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐对比</a>
+                  <a href="gaccode-product-introduction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">产品介绍</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 使用指南 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                使用指南
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="claude-code-cli-install-guide.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">CLI安装</a>
+                  <a href="gaccode-purchase-channels.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">购买指南</a>
+                  <a href="claude-code-api-best-practices.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">最佳实践</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 技术资源 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                技术资源
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="posts.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">所有文章</a>
+                  <a href="what-is-gaccode.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">什么是GACCode</a>
+                  <a href="claude-code-proxy-sites.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">服务对比</a>
+                  <a href="gaccode-faq.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">常见问题</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 立即购买按钮 -->
+            <a href="share.html" class="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group">
+              <span class="relative z-10">免费体验</span>
+              <svg class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <span class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></span>
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="lg:hidden">
+            <button id="mobile-menu-button" class="p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors" aria-label="打开菜单">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100">
+        <div class="container mx-auto px-4 py-4">
+          <div class="space-y-3">
+            <!-- 产品服务 -->
+            <div>
+              <div class="font-medium text-gray-900 mb-2">产品服务</div>
+              <div class="pl-4 space-y-2">
+                <a href="index.html#products" class="block text-sm text-gray-600 hover:text-blue-600">套餐价格</a>
+                <a href="gaccode-package-comparison.html" class="block text-sm text-gray-600 hover:text-blue-600">套餐对比</a>
+                <a href="gaccode-product-introduction.html" class="block text-sm text-gray-600 hover:text-blue-600">产品介绍</a>
+              </div>
+            </div>
+
+            <!-- 使用指南 -->
+            <div>
+              <div class="font-medium text-gray-900 mb-2">使用指南</div>
+              <div class="pl-4 space-y-2">
+                <a href="claude-code-cli-install-guide.html" class="block text-sm text-gray-600 hover:text-blue-600">CLI安装</a>
+                <a href="gaccode-purchase-channels.html" class="block text-sm text-gray-600 hover:text-blue-600">购买指南</a>
+                <a href="claude-code-api-best-practices.html" class="block text-sm text-gray-600 hover:text-blue-600">最佳实践</a>
+              </div>
+            </div>
+
+            <!-- 技术资源 -->
+            <div>
+              <a href="posts.html" class="font-medium text-gray-900 mb-2">技术资源</a>
+              <div class="pl-4 space-y-2">
+                <a href="what-is-gaccode.html" class="block text-sm text-gray-600 hover:text-blue-600">什么是GACCode</a>
+                <a href="claude-code-proxy-sites.html" class="block text-sm text-gray-600 hover:text-blue-600">服务对比</a>
+                <a href="gaccode-faq.html" class="block text-sm text-gray-600 hover:text-blue-600">常见问题</a>
+              </div>
+            </div>
+
+            <!-- 其他链接 -->
+            <div class="pt-3 border-t border-gray-200">
+              <a href="index.html#products" class="block py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg px-4 transition-all duration-300 shadow-md hover:shadow-lg">立即购买</a>
+              <a href="#contact" class="block py-2 text-sm text-gray-700 hover:text-blue-600">联系支持</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="text-sm breadcrumbs mb-8">
+          <div class="flex items-center text-gray-500">
+            <a href="index.html" class="hover:text-blue-600 transition-colors">首页</a>
+            <span class="mx-2">/</span>
+            <a href="posts.html" class="hover:text-blue-600 transition-colors">技术文章</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">Claude Code 七大核心组件完全指南</span>
+          </div>
+        </nav>
+
+        <!-- Article Header -->
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="px-8 py-8">
+            <header class="mb-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">教程指南</span>
+                </div>
+              </div>
+              <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                Claude Code 七大核心组件完全指南（2026版）：90%用户只用了1个！
+              </h1>
+              <div class="flex items-center text-gray-600 text-sm space-x-4 mb-4">
+                <time datetime="2026-01-03T00:00:00+08:00">发布时间:2026年01月03日</time>
+                <span>•</span>
+                <span>阅读时间:约 20 分钟</span>
+                <span>•</span>
+                <span>分类:教程指南</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Claude Code</span>
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">CLAUDE.md</span>
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Skills</span>
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">MCP</span>
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Hooks</span>
+              </div>
+            </header>
+
+            <!-- Article Body -->
+            <div class="prose prose-lg max-w-none">
+              <!-- 引言 -->
+              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-600 p-6 mb-8 rounded-r-lg">
+                <p class="text-lg text-gray-800 leading-relaxed mb-0">
+                  最近收到一位用户的反馈ß："用 Claude Code 写了3个月代码，感觉和普通 ChatGPT 没啥区别。" 问他用过 Skills 吗？用过 MCP 吗？配过 Hooks 吗？答案都是：不知道是什么。这就像买了辆特斯拉，只会踩油门刹车，自动驾驶从来没开过。Claude Code 其实是个"七件套"：CLAUDE.md、Commands、Skills、MCP、Hooks、Subagents、Plugins。本文将带你全面掌握这七大组件，释放 AI 编程的真正潜力。
+                </p>
+              </div>
+
+              <!-- 核心观点 -->
+              <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">
+                为什么90%的用户只用了1个组件？
+              </h2>
+
+              <p class="mb-4">
+                大多数 Claude Code 用户只使用了最基础的对话功能，完全没有利用到 CLAUDE.md 配置、Skills 技能系统、MCP 协议扩展等高级特性。这就导致虽然购买了完整的工具，但只发挥出了不到 10% 的能力。
+              </p>
+
+              <p class="mb-6">
+                <strong>关键事实：</strong> 根据实测数据，充分利用这七大组件后，开发效率可以提升 3-5 倍。特别是对于需要长期稳定使用 Claude Code 的开发者，通过 <a href="index.html" class="text-blue-600 hover:text-blue-800 underline font-semibold">GACCode</a> 订阅不仅能获得稳定的服务，还能充分利用所有高级功能，避免官方账户降额或封号风险。
+              </p>
+
+              <!-- 第一部分：CLAUDE.md -->
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-blue-200">
+                一、CLAUDE.md：Claude 的项目记忆系统
+              </h2>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                1.1 什么是 CLAUDE.md？
+              </h3>
+
+              <p class="mb-4">
+                CLAUDE.md 是 Claude Code 启动时自动加载的配置文件，相当于给 Claude 配备了一个项目知识库。通过这个文件，你可以让 Claude 记住项目的代码规范、技术栈、开发流程等关键信息。
+              </p>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  基础 CLAUDE.md 示例
+                </h4>
+                <pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto"><code># 我的项目
+
+这是一个 React 项目，使用 TypeScript 开发。
+
+## 代码规范
+- 组件使用函数式写法
+- 状态管理使用 Zustand
+- 样式使用 Tailwind CSS
+
+## 注意事项
+- 不要使用 class 组件
+- 提交前运行 eslint 检查</code></pre>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                1.2 CLAUDE.md 的三级配置体系
+              </h3>
+
+              <p class="mb-4">
+                Claude Code 支持三个级别的 CLAUDE.md 配置，按优先级从低到高：
+              </p>
+
+              <div class="overflow-x-auto mb-6">
+                <table class="min-w-full bg-white border border-gray-200">
+                  <thead class="bg-gray-100">
+                    <tr>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
+                        级别
+                      </th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
+                        文件路径
+                      </th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b" 适用场景></th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200">
+                    <tr>
+                      <td class="px-6 py-4 text-sm text-gray-900">
+                        全局配置
+                      </td>
+                      <td class="px-6 py-4 text-sm font-mono text-blue-600">
+                        ~/.claude/CLAUDE.md
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-700">
+                        通用代码风格、个人偏好
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 text-sm text-gray-900">
+                        项目配置
+                      </td>
+                      <td class="px-6 py-4 text-sm font-mono text-blue-600">
+                        ./CLAUDE.md
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-700">
+                        项目特定规范、团队约定
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 text-sm text-gray-900">
+                        子目录配置
+                      </td>
+                      <td class="px-6 py-4 text-sm font-mono text-blue-600">
+                        ./[子目录]/CLAUDE.md
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-700">
+                        模块特定规则
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-gray-800 mb-2">
+                  <strong>实用技巧：</strong> 在对话中按 <kbd class="bg-gray-200 px-2 py-1 rounded text-sm">#</kbd> 键可以快速创建或编辑 CLAUDE.md。Claude 会根据你的输入自动更新配置文件。
+                </p>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                1.3 使用 /init 命令自动生成
+              </h3>
+
+              <p class="mb-4">
+                Claude Code 提供了 <code class="bg-gray-200 px-2 py-1 rounded text-sm">/init</code> 命令，可以自动分析项目结构、技术栈和依赖，生成针对性的 CLAUDE.md 配置。实测显示，自动生成的配置 80% 的内容可以直接使用。
+              </p>
+
+              <!-- 第二部分：Commands -->
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-green-200">
+                二、Commands：自定义快捷指令
+              </h2>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                2.1 什么是 Commands？
+              </h3>
+
+              <p class="mb-4">
+                Commands 允许你创建自定义的快捷指令。在 <code class="bg-gray-200 px-2 py-1 rounded text-sm">.claude/commands/</code> 目录下创建 markdown 文件，就能定义专属命令。
+              </p>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  创建 Commands 示例
+                </h4>
+                <pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto"><code># 文件名：.claude/commands/write-article.md
+
+帮我写一篇技术文章，主题是：$ARGUMENTS
+
+要求：
+1. 专业技术风格
+2. 字数 2000-3000
+3. 保存到 articles 目录
+4. 包含代码示例</code></pre>
+                <p class="text-sm text-gray-600 mt-3">
+                  使用方式：<code class="bg-gray-200 px-2 py-1 rounded text-sm">/write-article Claude Code 教程</code>
+                </p>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                2.2 Commands 的局限性
+              </h3>
+
+              <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+                <p class="text-gray-800">
+                  <strong>注意：</strong> Commands 不支持条件判断和复杂逻辑。对于需要多步骤、有条件分支的任务，建议使用 Skills（下一节介绍）。
+                </p>
+              </div>
+
+              <!-- 第三部分：Skills -->
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-purple-200">
+                三、Skills：智能技能模块系统
+              </h2>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                3.1 Skills 与 Commands 的区别
+              </h3>
+
+              <p class="mb-4">
+                如果说 Commands 是简单的命令别名，那么 Skills 就是具备完整工作流程的智能模块。Skills 支持多步骤执行、工具调用权限管理、条件分支等高级特性。
+              </p>
+
+              <div class="overflow-x-auto mb-6">
+                <table class="min-w-full bg-white border border-gray-200">
+                  <thead class="bg-gray-100">
+                    <tr>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
+                        特性
+                      </th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
+                        Commands
+                      </th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
+                        Skills
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200">
+                    <tr>
+                      <td class="px-6 py-4 text-sm font-medium text-gray-900">
+                        复杂度
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-700">
+                        简单指令
+                      </td>
+                      <td class="px-6 py-4 text-sm text-green-600 font-semibold">
+                        多步骤工作流
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 text-sm font-medium text-gray-900">
+                        工具权限
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-700">
+                        无法限制
+                      </td>
+                      <td class="px-6 py-4 text-sm text-green-600 font-semibold">
+                        精确控制（allowed-tools）
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 text-sm font-medium text-gray-900">
+                        条件分支
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-700">
+                        不支持
+                      </td>
+                      <td class="px-6 py-4 text-sm text-green-600 font-semibold">
+                        完全支持
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                3.2 创建 Skills 的完整结构
+              </h3>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  Skills 目录结构
+                </h4>
+                <pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>.claude/skills/
+├── article-writer/
+│   ├── SKILL.md          # 技能定义（必须）
+│   ├── instructions/     # 详细指令
+│   ├── prompts/          # 提示词模板
+│   ├── templates/        # 代码/文档模板
+│   └── config/           # 配置文件</code></pre>
+              </div>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  SKILL.md 示例
+                </h4>
+                <pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>---
+name: article-writer
+description: 技术文章写作助手
+allowed-tools: WebSearch, Read, Write
+---
+
+# 文章写作流程
+
+## 步骤1：搜索最新资料
+使用 WebSearch 搜索主题相关的最新信息
+
+## 步骤2：读取写作规范
+Read(".claude/skills/article-writer/style-guide.md")
+
+## 步骤3：写作
+基于搜索结果和规范，写一篇 2500 字的文章
+
+## 步骤4：保存
+Write 到 articles 目录，文件名使用主题关键词</code></pre>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                3.3 Skills 的智能加载机制
+              </h3>
+
+              <p class="mb-4">
+                Claude 不会一股脑把所有 Skills 都加载进来，而是根据当前任务动态选择相关的 Skill。这种上下文驱动的加载方式既节省 token，又提高了响应速度。
+              </p>
+
+              <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-gray-800">
+                  <strong>实测经验：</strong> 一个完善的写作 Skill 可以达到 500+ 行，包含多个子步骤和条件判断。通过 allowed-tools 精确控制权限后，可以避免 Claude 调用不必要的工具，显著提升执行效率。
+                </p>
+              </div>
+
+              <!-- 第四部分：MCP -->
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-orange-200">
+                四、MCP（Model Context Protocol）：无限扩展 Claude 能力
+              </h2>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                4.1 什么是 MCP？
+              </h3>
+
+              <p class="mb-4">
+                Model Context Protocol（MCP）是 Anthropic 推出的标准化协议，允许第三方开发者为 Claude Code 开发扩展功能。通过 MCP，你可以让 Claude 调用浏览器、数据库、API 等外部工具。
+              </p>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  MCP 服务器配置示例
+                </h4>
+                <pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["@anthropic/mcp-chrome-devtools"]
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["@anthropic/mcp-postgres"],
+      "env": {
+        "DATABASE_URL": "postgresql://localhost/mydb"
+      }
+    }
+  }
+}</code></pre>
+                <p class="text-sm text-gray-600 mt-3">
+                  配置文件路径：<code class="bg-gray-200 px-2 py-1 rounded text-sm">.claude/settings.json</code>
+                </p>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                4.2 MCP 的优势与挑战
+              </h3>
+
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white border-2 border-green-300 rounded-lg p-5">
+                  <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                      <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                    <h4 class="font-semibold text-gray-900">MCP 优势</h4>
+                  </div>
+                  <ul class="text-sm text-gray-700 space-y-2">
+                    <li>✅ 能力扩展无限，Claude 做不到的都能实现</li>
+                    <li>✅ 标准化协议，一次配置到处可用</li>
+                    <li>✅ 社区资源丰富，常用功能有现成方案</li>
+                    <li>✅ 热插拔，按需启用/关闭</li>
+                  </ul>
+                </div>
+
+                <div class="bg-white border-2 border-yellow-300 rounded-lg p-5">
+                  <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+                      <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                      </svg>
+                    </div>
+                    <h4 class="font-semibold text-gray-900">注意事项</h4>
+                  </div>
+                  <ul class="text-sm text-gray-700 space-y-2">
+                    <li>⚠️ Token 消耗增加（工具列表占用）</li>
+                    <li>⚠️ 响应速度变慢（等待各服务器响应）</li>
+                    <li>⚠️ 内存问题（部分服务器有泄漏）</li>
+                    <li>⚠️ 配置门槛（需要懂 JSON 和命令行）</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+                <p class="text-gray-800">
+                  <strong>调试技巧：</strong> 使用 <code class="bg-gray-200 px-2 py-1 rounded text-sm">--mcp-debug</code> 标志启动 Claude Code，可以查看 MCP 服务器的详细日志，快速定位配置问题。
+                </p>
+              </div>
+
+              <!-- 第五部分：Hooks -->
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-red-200">
+                五、Hooks：自动化守护与流程控制
+              </h2>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                5.1 Hooks 的核心价值
+              </h3>
+
+              <p class="mb-4">
+                Hooks 允许你在 Claude Code 执行的关键节点插入自定义脚本，实现安全守护、自动化处理、质量检查等功能。这是保证 AI 编程可靠性的重要机制。
+              </p>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  Hooks 配置示例
+                </h4>
+                <pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": ["python .claude/hooks/check_before_write.py"]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": ["python .claude/hooks/backup_context.py"]
+      }
+    ]
+  }
+}</code></pre>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                5.2 常用 Hooks 类型
+              </h3>
+
+              <div class="space-y-4 mb-6">
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-900 mb-2">SessionStart</h4>
+                  <p class="text-gray-700 text-sm">
+                    会话开始时触发。用途：保存重要上下文，防止压缩丢失关键信息。
+                  </p>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-900 mb-2">PreToolUse</h4>
+                  <p class="text-gray-700 text-sm">
+                    工具调用前触发。用途：安全检查，拦截危险操作（如删除重要文件）。
+                  </p>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-purple-900 mb-2">UserPromptSubmit</h4>
+                  <p class="text-gray-700 text-sm">
+                    用户提交提示后触发。用途：自动添加项目上下文，增强 prompt 质量。
+                  </p>
+                </div>
+
+                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-orange-900 mb-2">SubagentStop</h4>
+                  <p class="text-gray-700 text-sm">
+                    子代理停止时触发。用途：整合多个子代理的结果，生成汇总报告。
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-gray-800">
+                  <strong>实战案例：</strong> 配置了一个 PreToolUse Hook 专门检查 Claude 要写的代码质量。在文件保存前自动运行 ESLint，发现问题立即拦截并提示修复，避免了低质量代码进入仓库。
+                </p>
+              </div>
+
+              <!-- 第六部分：Subagents -->
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-indigo-200">
+                六、Subagents：并行处理复杂任务
+              </h2>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                6.1 Subagents 的工作机制
+              </h3>
+
+              <p class="mb-4">
+                Subagents（子代理）允许你启动多个独立的 Claude 实例，并行处理不同的子任务。每个子代理拥有独立的上下文，互不干扰，适合处理复杂的多步骤项目。
+              </p>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  Subagents 调用示例
+                </h4>
+                <pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto"><code># 基础调用
+Task(
+  subagent_type="Explore",
+  prompt="搜索项目里所有的 API 端点"
+)
+
+# 后台运行模式
+Task(
+  subagent_type="Explore",
+  prompt="搜索所有 API 端点",
+  run_in_background=true
+)</code></pre>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                6.2 何时使用 Subagents？
+              </h3>
+
+              <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+                <p class="text-gray-800 mb-3">
+                  <strong>适合使用 Subagents 的场景：</strong>
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>需要同时搜索、分析和编写代码的复杂项目</li>
+                  <li>大型重构任务，需要并行处理多个模块</li>
+                  <li>数据处理 + 分析 + 可视化的组合任务</li>
+                  <li>需要配合 <code class="bg-gray-200 px-1 rounded">ultrathink</code> 模式进行深度思考的问题</li>
+                </ul>
+              </div>
+
+              <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+                <p class="text-gray-800 mb-3">
+                  <strong>Subagents 的使用成本：</strong>
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>⚠️ <strong>Token 爆炸：</strong> 每个子代理独立消耗 token，开3个就是3倍消耗</li>
+                  <li>⚠️ <strong>协调复杂：</strong> 多个子代理结果需要整合，可能产生冲突</li>
+                  <li>⚠️ <strong>调试困难：</strong> 出问题不知道是哪个子代理的锅</li>
+                  <li>⚠️ <strong>启动开销：</strong> 简单任务反而更慢</li>
+                </ul>
+              </div>
+
+              <p class="mb-6">
+                <strong>建议策略：</strong> 复杂任务才值得开子代理。对于需要长期大量使用 Subagents 功能的开发者，通过 <a href="index.html" class="text-blue-600 hover:text-blue-800 underline font-semibold">GACCode</a> 订阅可以获得更稳定的 token 配额和更高的并发支持，避免官方账户在高负载场景下的降额风险。
+              </p>
+
+              <!-- 第七部分：Plugins -->
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-pink-200">
+                七、Plugins：一站式扩展生态
+              </h2>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                7.1 Plugins 是什么？
+              </h3>
+
+              <p class="mb-4">
+                Plugins 是 Claude Code 的扩展插件生态，打包了 Commands、Agents、Skills、Hooks、MCP 服务器等多种组件。一个插件可以包含完整的工作流解决方案。
+              </p>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  安装 Plugins
+                </h4>
+                <pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto"><code># 安装插件
+/plugin add anthropic-agent-skills
+
+# 使用插件提供的功能
+document-skills:pdf    # 处理 PDF
+document-skills:xlsx   # 处理 Excel
+document-skills:pptx   # 处理 PPT</code></pre>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                7.2 推荐的官方 Plugins
+              </h3>
+
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white border border-blue-200 rounded-lg p-5">
+                  <h4 class="font-semibold text-blue-900 mb-3">
+                    📝 document-skills
+                  </h4>
+                  <p class="text-gray-700 text-sm mb-3">
+                    处理各类文档格式（PDF、Excel、PPT），自动提取内容、转换格式、生成摘要。
+                  </p>
+                  <p class="text-xs text-gray-600">
+                    <strong>适用场景：</strong> 文档批量处理、内容分析
+                  </p>
+                </div>
+
+                <div class="bg-white border border-green-200 rounded-lg p-5">
+                  <h4 class="font-semibold text-green-900 mb-3">
+                    🔍 code-review
+                  </h4>
+                  <p class="text-gray-700 text-sm mb-3">
+                    自动化 PR 代码审查，检查代码质量、安全漏洞、性能问题，生成详细报告。
+                  </p>
+                  <p class="text-xs text-gray-600">
+                    <strong>适用场景：</strong> 团队协作、质量保证
+                  </p>
+                </div>
+
+                <div class="bg-white border border-purple-200 rounded-lg p-5">
+                  <h4 class="font-semibold text-purple-900 mb-3">
+                    🚀 commit-commands
+                  </h4>
+                  <p class="text-gray-700 text-sm mb-3">
+                    Git 工作流自动化，一键完成提交+推送+创建 PR，自动生成符合规范的 commit message。
+                  </p>
+                  <p class="text-xs text-gray-600">
+                    <strong>适用场景：</strong> 规范化 Git 流程
+                  </p>
+                </div>
+
+                <div class="bg-white border border-orange-200 rounded-lg p-5">
+                  <h4 class="font-semibold text-orange-900 mb-3">
+                    🛡️ security-guidance
+                  </h4>
+                  <p class="text-gray-700 text-sm mb-3">
+                    安全提醒 Hook，在代码中检测潜在安全漏洞（SQL 注入、XSS 等），提供修复建议。
+                  </p>
+                  <p class="text-xs text-gray-600">
+                    <strong>适用场景：</strong> 安全敏感项目
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-gray-800">
+                  <strong>实测体验：</strong> 官方的 document-skills 插件真香！可以一键提取 PDF 表格数据，转换成 Excel 格式，省去了大量手动操作。配合 Skills 工作流，还能自动生成数据分析报告。
+                </p>
+              </div>
+
+              <!-- 总结部分 -->
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">
+                实战总结：如何组合使用七大组件？
+              </h2>
+
+              <p class="mb-4">
+                掌握了这七大组件后，你可以根据实际需求灵活组合：
+              </p>
+
+              <div class="bg-gradient-to-r from-gray-50 to-blue-50 border-l-4 border-blue-600 p-6 mb-6 rounded-r-lg">
+                <h3 class="font-bold text-gray-900 mb-4">
+                  典型工作流组合示例
+                </h3>
+                <div class="space-y-4">
+                  <div class="bg-white rounded-lg p-4 border border-gray-200">
+                    <h4 class="font-semibold text-gray-900 mb-2">
+                      📘 技术文章写作流程
+                    </h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• <strong>CLAUDE.md：</strong> 定义写作风格和SEO规范</li>
+                      <li>• <strong>Skills：</strong> 创建 article-writer 技能（搜索→写作→优化）</li>
+                      <li>• <strong>MCP：</strong> 接入 WebSearch 服务器获取最新资料</li>
+                      <li>• <strong>Hooks：</strong> PreToolUse 检查内容质量和关键词密度</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-4 border border-gray-200">
+                    <h4 class="font-semibold text-gray-900 mb-2">
+                      🔧 代码重构项目
+                    </h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• <strong>CLAUDE.md：</strong> 明确重构目标和代码规范</li>
+                      <li>• <strong>Subagents：</strong> 并行分析多个模块的重构方案</li>
+                      <li>• <strong>Plugins：</strong> 使用 code-review 插件检查重构质量</li>
+                      <li>• <strong>Commands：</strong> 自定义 /refactor 快捷命令</li>
+                      <li>• <strong>Hooks：</strong> 自动运行测试确保重构不破坏功能</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-4 border border-gray-200">
+                    <h4 class="font-semibold text-gray-900 mb-2">
+                      📊 数据分析自动化
+                    </h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• <strong>MCP：</strong> 连接 PostgreSQL 数据库</li>
+                      <li>• <strong>Skills：</strong> 创建数据清洗+分析+可视化流程</li>
+                      <li>• <strong>Plugins：</strong> document-skills 处理 Excel 报表</li>
+                      <li>• <strong>Hooks：</strong> SessionStart 自动加载数据字典</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">
+                长期稳定使用建议
+              </h2>
+
+              <p class="mb-4">
+                充分利用这七大组件需要长期稳定的 Claude Code 订阅。对于企业级用户或高频使用者，官方账户可能面临以下风险：
+              </p>
+
+              <div class="bg-red-50 border border-red-200 rounded-lg p-5 mb-6">
+                <h4 class="font-semibold text-red-900 mb-3">
+                  ⚠️ 官方订阅的潜在问题
+                </h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 text-red-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                    <span><strong>降额风险：</strong> 账户额度突然降低，大量使用 Subagents 时尤其明显</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 text-red-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                    <span><strong>地区限制：</strong> 部分地区支付和访问受限</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 text-red-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                    <span><strong>封号问题：</strong> 政策变动可能导致账户被封</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-6 mb-6">
+                <h4 class="text-xl font-semibold mb-3">
+                  💡 稳定订阅方案推荐
+                </h4>
+                <p class="text-blue-100 mb-4">
+                  对于需要长期稳定使用 Claude Code 所有高级功能的开发者，推荐通过 <a href="index.html" class="text-white underline font-semibold">GACCode</a> 订阅专业服务。
+                </p>
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                  <div class="bg-white bg-opacity-10 rounded-lg p-4">
+                    <h5 class="font-semibold mb-2">服务优势</h5>
+                    <ul class="text-sm space-y-1 text-blue-100">
+                      <li>✓ 企业级账户池，无降额风险</li>
+                      <li>✓ 稳定的 token 配额，支持高频 Subagents 使用</li>
+                      <li>✓ 支持国内支付方式</li>
+                      <li>✓ 7×24 技术支持</li>
+                    </ul>
+                  </div>
+                  <div class="bg-white bg-opacity-10 rounded-lg p-4">
+                    <h5 class="font-semibold mb-2">适用场景</h5>
+                    <ul class="text-sm space-y-1 text-blue-100">
+                      <li>✓ 企业团队长期使用</li>
+                      <li>✓ 大量使用 MCP 和 Subagents</li>
+                      <li>✓ 需要稳定的生产环境</li>
+                      <li>✓ 多项目并行开发</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="border-t border-white border-opacity-30 pt-4">
+                  <a href="index.html" class="inline-flex items-center bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    访问 GACCode 了解详情
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">
+                结语：从基础用户到高级玩家
+              </h2>
+
+              <p class="mb-4">
+                Claude Code 的七大组件构成了一个完整的 AI 编程生态系统。从最基础的 CLAUDE.md 配置，到复杂的 Skills 工作流、MCP 扩展、Hooks 自动化，每一个组件都能显著提升开发效率。
+              </p>
+
+              <p class="mb-4">
+                <strong>核心建议：</strong>
+              </p>
+
+              <ul class="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                <li>先从 CLAUDE.md 和 Commands 入手，快速提升基础体验</li>
+                <li>逐步学习 Skills 和 Hooks，建立自动化工作流</li>
+                <li>根据实际需求配置 MCP 服务器，扩展 Claude 能力边界</li>
+                <li>复杂项目才使用 Subagents，注意 token 成本控制</li>
+                <li>善用官方 Plugins，站在巨人肩膀上</li>
+              </ul>
+
+              <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+                <p class="text-gray-800">
+                  <strong>最后提醒：</strong> 想要稳定、长期地使用这些高级功能，选择可靠的订阅服务至关重要。访问 <a href="index.html" class="text-blue-600 hover:text-blue-800 underline font-semibold">GACCode</a> 获取企业级服务保障，避免官方政策变动带来的影响，让你的 AI 编程之路更加顺畅。
+                </p>
+              </div>
+
+              <!-- 相关资源 -->
+              <div class="bg-gray-50 rounded-lg p-6 mt-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                  相关资源推荐
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <a href="claude-code-best-practices.html" class="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <h4 class="font-semibold text-blue-600 mb-2">
+                      Claude Code 最佳实践完整指南
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                      深入学习 Claude Code 的使用技巧和高级特性
+                    </p>
+                  </a>
+                  <a href="claude-skills-complete-guide.html" class="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <h4 class="font-semibold text-blue-600 mb-2">
+                      Claude Skills 完全指南
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                      详解 Skills 功能、安装使用及与 MCP 对比
+                    </p>
+                  </a>
+                  <a href="gaccode-package-comparison.html" class="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <h4 class="font-semibold text-blue-600 mb-2">
+                      GACCode 套餐对比
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                      详细对比各套餐配置，选择最适合的订阅方案
+                    </p>
+                  </a>
+                  <a href="claude-code-cursor-openspec-ultimate-guide.html" class="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <h4 class="font-semibold text-blue-600 mb-2">
+                      Claude Code + Cursor + OpenSpec 铁三角实战指南
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                      完整拆解三工具组合的最佳实践和配置模板
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article Footer -->
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">文章标签</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Claude Code</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">CLAUDE.md</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Skills</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">MCP</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">GACCode</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-sm text-gray-600 mb-2">分享文章</p>
+              <div class="flex space-x-3">
+                <button class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors" onclick="shareToTwitter()">
+                  <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                  </svg>
+                </button>
+                <button class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center hover:bg-green-600 transition-colors" onclick="openWechatModal()">
+                  <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M8.5 11a1 1 0 100-2 1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold">GAC</span>
+              </div>
+              <span class="text-xl font-bold">官方邮箱 gaccode@163.com 订阅后</span>
+            </div>
+            <p class="text-gray-400">
+              专业的 Claude Code 订阅服务提供商,为开发者提供稳定可靠的 AI
+              编程助手解决方案。
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="index.html#products" class="hover:text-white transition-colors">套餐价格</a>
+              </li>
+              <li>
+                <a href="gaccode-package-comparison.html" class="hover:text-white transition-colors">套餐对比</a>
+              </li>
+              <li>
+                <a href="share.html" class="hover:text-white transition-colors text-green-400 font-medium">免费体验</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">技术资源</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="posts.html" class="hover:text-white transition-colors">所有文章</a>
+              </li>
+              <li>
+                <a href="claude-code-official-best-practices.html" class="hover:text-white transition-colors">官方最佳实践</a>
+              </li>
+              <li>
+                <a href="what-is-gaccode.html" class="hover:text-white transition-colors">什么是GACCode</a>
+              </li>
+              <li>
+                <a href="gaccode-faq.html" class="hover:text-white transition-colors">常见问题</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="index.html#contact" class="hover:text-white transition-colors">客服支持</a>
+              </li>
+              <li>
+                <a href="about.html" class="hover:text-white transition-colors">关于我们</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 官方邮箱 gaccode@163.com 订阅后. 保留所有权利。</p>
+          <p class="mt-2 text-sm">
+            专业的 Claude Code 订阅服务 | 网站域名:GACCode
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WeChat Modal -->
+    <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl max-w-md w-full p-8 text-center relative">
+        <button onclick="closeWechatModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">扫码添加客服微信</h3>
+        <p class="text-gray-600 mb-6">咨询 Claude Code 订阅服务</p>
+
+        <div class="bg-gray-100 rounded-lg p-6 mb-6">
+          <div class="w-48 bg-gray-200 rounded flex items-center justify-center mx-auto">
+            <img src="static/picture/qrcode_new2.webp" class="text-gray-400" alt="微信客服二维码">
+          </div>
+        </div>
+
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+          <h4 class="font-semibold text-green-800 mb-2">微信号</h4>
+          <p class="text-green-700 text-lg font-mono">caicats</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu functionality
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          const isOpen = !mobileMenu.classList.contains("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", isOpen);
+
+          const icon = mobileMenuButton.querySelector("svg");
+          if (isOpen) {
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+          } else {
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+          }
+        });
+
+        document.addEventListener("click", function (e) {
+          if (
+            !mobileMenuButton.contains(e.target) &&
+            !mobileMenu.contains(e.target)
+          ) {
+            mobileMenu.classList.add("hidden");
+            mobileMenuButton.setAttribute("aria-expanded", "false");
+            const icon = mobileMenuButton.querySelector("svg");
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+          }
+        });
+      }
+
+      // WeChat modal
+      function openWechatModal() {
+        const modal = document.getElementById("wechat-modal");
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeWechatModal() {
+        const modal = document.getElementById("wechat-modal");
+        modal.classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+
+      document
+        .getElementById("wechat-modal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeWechatModal();
+          }
+        });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeWechatModal();
+        }
+      });
+
+      // Share to Twitter
+      function shareToTwitter() {
+        const url = window.location.href;
+        const text = "Claude Code 七大核心组件完全指南（2026版）";
+        window.open(
+          `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+            text
+          )}&url=${encodeURIComponent(url)}`,
+          "_blank"
+        );
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+  <script defer src="static/js/v8c78df7c7c0f484497ecbca7046644da1771523124516.js" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0609a436c77044e68b7153f24036675e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

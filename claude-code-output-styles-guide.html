@@ -1,0 +1,996 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Claude Code Output Styles 完全指南：3 种编程风格如何颠覆你的开发体验 |
+      官方邮箱 gaccode@163.com 订阅后
+    </title>
+    <meta name="description" content="深度解析 Claude Code Output Styles 功能，详解 Default、Explanatory、Learning 三种输出风格的实战应用。掌握自定义 AI 编程助手风格的核心技巧，附完整配置指南和最佳实践。含 2025 年最新弃用通知及迁移建议。">
+    <meta name="keywords" content="Claude Code Output Styles,Claude Code 输出风格,Explanatory 模式,Learning 模式,AI编程助手,自定义编程风格,CLAUDE.md配置,GACCode,Claude Code Plugins,编程学习模式">
+    <meta name="author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Claude Code Output Styles 完全指南：3 种编程风格如何颠覆你的开发体验">
+    <meta property="og:description" content="深度解析 Claude Code Output Styles 功能，详解三种输出风格的实战应用和自定义技巧。">
+    <meta property="og:url" content="https://GACCode/post/claude-code-output-styles-guide">
+    <meta property="og:site_name" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2025-12-18T10:00:00+08:00">
+    <meta property="article:modified_time" content="2025-12-18T10:00:00+08:00">
+    <meta property="article:author" content="官方邮箱 gaccode@163.com 订阅后">
+    <meta property="article:section" content="功能详解">
+    <meta property="article:tag" content="Claude Code">
+    <meta property="article:tag" content="Output Styles">
+    <meta property="article:tag" content="编程风格">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Code Output Styles 完全指南：3 种编程风格如何颠覆你的开发体验">
+    <meta name="twitter:description" content="深度解析 Claude Code Output Styles 功能，详解三种输出风格的实战应用和自定义技巧。">
+    <meta name="msvalidate.01" content="7F5A4F41F59B7840336A1530F6D3474E">
+    <link rel="icon" href="https://GACCode/img/logo.webp">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://GACCode/post/claude-code-output-styles-guide">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Claude Code Output Styles 完全指南：3 种编程风格如何颠覆你的开发体验",
+        "description": "深度解析 Claude Code Output Styles 功能，详解 Default、Explanatory、Learning 三种输出风格的实战应用。掌握自定义 AI 编程助手风格的核心技巧。",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://GACCode/img/logo.webp",
+          "width": 400,
+          "height": 300
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "url": "https://GACCode"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "官方邮箱 gaccode@163.com 订阅后",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://GACCode/img/logo.webp"
+          }
+        },
+        "datePublished": "2025-12-18T10:00:00+08:00",
+        "dateModified": "2025-12-18T10:00:00+08:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://GACCode/post/claude-code-output-styles-guide"
+        }
+      }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="static/js/js.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#64748b",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- 右侧分享挂件 -->
+    <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 space-y-3">
+      <div class="group relative">
+        <button onclick="openWechatModal()" class="w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+          <svg t="1754325230831" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1687" width="128" height="128">
+            <path d="M337.387283 341.82659c-17.757225 0-35.514451 11.83815-35.514451 29.595375s17.757225 29.595376 35.514451 29.595376 29.595376-11.83815 29.595376-29.595376c0-18.49711-11.83815-29.595376-29.595376-29.595375zM577.849711 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763zM501.641618 401.017341c17.757225 0 29.595376-12.578035 29.595376-29.595376 0-17.757225-11.83815-29.595376-29.595376-29.595375s-35.514451 11.83815-35.51445 29.595375 17.757225 29.595376 35.51445 29.595376zM706.589595 513.479769c-11.83815 0-22.936416 12.578035-22.936416 23.6763 0 12.578035 11.83815 23.676301 22.936416 23.676301 17.757225 0 29.595376-11.83815 29.595376-23.676301s-11.83815-23.676301-29.595376-23.6763z" fill="#28C445" p-id="1688"></path>
+            <path d="M510.520231 2.959538C228.624277 2.959538 0 231.583815 0 513.479769s228.624277 510.520231 510.520231 510.520231 510.520231-228.624277 510.520231-510.520231-228.624277-510.520231-510.520231-510.520231zM413.595376 644.439306c-29.595376 0-53.271676-5.919075-81.387284-12.578034l-81.387283 41.433526 22.936416-71.768786c-58.450867-41.433526-93.965318-95.445087-93.965317-159.815029 0-113.202312 105.803468-201.988439 233.803468-201.98844 114.682081 0 216.046243 71.028902 236.023121 166.473989-7.398844-0.739884-14.797688-1.479769-22.196532-1.479769-110.982659 1.479769-198.289017 85.086705-198.289017 188.67052 0 17.017341 2.959538 33.294798 7.398844 49.572255-7.398844 0.739884-15.537572 1.479769-22.936416 1.479768z m346.265896 82.867052l17.757225 59.190752-63.630058-35.514451c-22.936416 5.919075-46.612717 11.83815-70.289017 11.83815-111.722543 0-199.768786-76.947977-199.768786-172.393063-0.739884-94.705202 87.306358-171.653179 198.289017-171.65318 105.803468 0 199.028902 77.687861 199.028902 172.393064 0 53.271676-34.774566 100.624277-81.387283 136.138728z" fill="#28C445" p-id="1689"></path>
+          </svg>
+        </button>
+        <div class="absolute right-14 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-80 text-white px-4 py-3 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div class="text-center">
+            <div class="mb-2">客服微信</div>
+            <img src="static/picture/qrcode_new2.webp" class="w-32 rounded mx-auto" alt="微信二维码">
+          </div>
+          <div class="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-black bg-opacity-80 rotate-45"></div>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">GAC</span>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-800">
+                GACCode 订阅购买
+              </div>
+            </div>
+          </a>
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <!-- 产品服务 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                产品服务
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="index.html#products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐价格</a>
+                  <a href="gaccode-package-comparison.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">套餐对比</a>
+                  <a href="gaccode-product-introduction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">产品介绍</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 使用指南 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                使用指南
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="claude-code-cli-install-guide.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">CLI安装</a>
+                  <a href="gaccode-purchase-channels.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">购买指南</a>
+                  <a href="claude-code-api-best-practices.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">最佳实践</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 技术资源 Dropdown -->
+            <div class="relative group">
+              <button class="px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center">
+                技术资源
+                <svg class="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                  <a href="posts.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">所有文章</a>
+                  <a href="what-is-gaccode.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">什么是GACCode</a>
+                  <a href="claude-code-proxy-sites.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">服务对比</a>
+                  <a href="gaccode-faq.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">常见问题</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 立即购买按钮 -->
+            <a href="share.html" class="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group">
+              <span class="relative z-10">免费体验</span>
+              <svg class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <span class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></span>
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="lg:hidden">
+            <button id="mobile-menu-button" class="p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors" aria-label="打开菜单">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100">
+        <div class="container mx-auto px-4 py-4">
+          <div class="space-y-3">
+            <!-- 产品服务 -->
+            <div>
+              <div class="font-medium text-gray-900 mb-2">产品服务</div>
+              <div class="pl-4 space-y-2">
+                <a href="index.html#products" class="block text-sm text-gray-600 hover:text-blue-600">套餐价格</a>
+                <a href="gaccode-package-comparison.html" class="block text-sm text-gray-600 hover:text-blue-600">套餐对比</a>
+                <a href="gaccode-product-introduction.html" class="block text-sm text-gray-600 hover:text-blue-600">产品介绍</a>
+              </div>
+            </div>
+
+            <!-- 使用指南 -->
+            <div>
+              <div class="font-medium text-gray-900 mb-2">使用指南</div>
+              <div class="pl-4 space-y-2">
+                <a href="claude-code-cli-install-guide.html" class="block text-sm text-gray-600 hover:text-blue-600">CLI安装</a>
+                <a href="gaccode-purchase-channels.html" class="block text-sm text-gray-600 hover:text-blue-600">购买指南</a>
+                <a href="claude-code-api-best-practices.html" class="block text-sm text-gray-600 hover:text-blue-600">最佳实践</a>
+              </div>
+            </div>
+
+            <!-- 技术资源 -->
+            <div>
+              <a href="posts.html" class="font-medium text-gray-900 mb-2">技术资源</a>
+              <div class="pl-4 space-y-2">
+                <a href="what-is-gaccode.html" class="block text-sm text-gray-600 hover:text-blue-600">什么是GACCode</a>
+                <a href="claude-code-proxy-sites.html" class="block text-sm text-gray-600 hover:text-blue-600">服务对比</a>
+                <a href="gaccode-faq.html" class="block text-sm text-gray-600 hover:text-blue-600">常见问题</a>
+              </div>
+            </div>
+
+            <!-- 其他链接 -->
+            <div class="pt-3 border-t border-gray-200">
+              <a href="index.html#products" class="block py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg px-4 transition-all duration-300 shadow-md hover:shadow-lg">立即购买</a>
+              <a href="#contact" class="block py-2 text-sm text-gray-700 hover:text-blue-600">联系支持</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="text-sm breadcrumbs mb-8">
+          <div class="flex items-center text-gray-500">
+            <a href="index.html" class="hover:text-blue-600 transition-colors">首页</a>
+            <span class="mx-2">/</span>
+            <a href="posts.html" class="hover:text-blue-600 transition-colors">技术文章</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">Claude Code Output Styles 完全指南</span>
+          </div>
+        </nav>
+
+        <!-- Article Header -->
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="px-8 py-8">
+            <header class="mb-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">功能详解</span>
+                </div>
+              </div>
+              <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                Claude Code Output Styles 完全指南：3 种编程风格如何颠覆你的开发体验
+              </h1>
+              <div class="flex items-center text-gray-600 text-sm space-x-4 mb-4">
+                <time datetime="2025-12-18T10:00:00+08:00">发布时间:2025年12月18日</time>
+                <span>•</span>
+                <span>阅读时间:约 15 分钟</span>
+                <span>•</span>
+                <span>分类:功能详解</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Claude Code</span>
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Output Styles</span>
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">编程风格</span>
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">自定义配置</span>
+              </div>
+            </header>
+
+            <!-- Article Body -->
+            <div class="prose prose-lg max-w-none">
+              <p class="text-lg text-gray-800 leading-relaxed mb-6">
+                Claude Code 推出了一个有点特别的功能——Output
+                Styles(输出风格)。说它特别,是因为这个功能让你可以完全改变 AI
+                助手的"说话方式"。想要它像老师一样边写代码边讲解?可以。想让它变成学习伙伴,让你自己动手写关键代码?也行。
+              </p>
+
+              <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
+                <p class="text-gray-800 mb-2">
+                  <strong>⚠️ 重要通知:</strong> Output Styles 功能将在
+                  <strong>2025 年 11 月 5 日正式弃用</strong>。Anthropic
+                  官方建议迁移到更强大的 Plugins
+                  系统。如果你还在用这个功能,建议尽早规划迁移方案。对于需要长期稳定使用
+                  Claude Code 的开发者,<a href="index.html" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800 underline font-semibold">GACCode</a>
+                  提供企业级服务保障,避免官方政策调整带来的影响。
+                </p>
+              </div>
+
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">
+                Output Styles 到底是什么?
+              </h2>
+
+              <p class="mb-4">
+                简单说,Output Styles 就是给 Claude Code 换"人格"的功能。它不会改变
+                AI
+                的核心能力(读写文件、运行脚本、管理任务这些都还在),只是改变它和你交互的方式。
+              </p>
+
+              <p class="mb-4">官方内置了三种风格:</p>
+
+              <ul class="list-disc list-inside space-y-2 mb-6">
+                <li>
+                  <strong>Default</strong>:默认模式,效率优先,直接帮你搞定任务
+                </li>
+                <li>
+                  <strong>Explanatory</strong>:解释模式,会在写代码时插入"Insights"(洞察)卡片,告诉你为什么这么写
+                </li>
+                <li>
+                  <strong>Learning</strong>:学习模式,不光解释,还会让你亲自写一些关键代码
+                </li>
+              </ul>
+
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-blue-200">
+                三种风格实战对比
+              </h2>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                1. Default 模式:快准狠的实干派
+              </h3>
+
+              <p class="mb-4">这是默认风格,也是大多数人用的。它的特点就是一个字:快。</p>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-2">适用场景:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>赶项目进度,时间紧任务重</li>
+                  <li>处理熟悉的技术栈,不需要详细解释</li>
+                  <li>批量重复性任务(比如重构、格式化代码)</li>
+                </ul>
+              </div>
+
+              <p class="mb-6">
+                <strong>实际体验:</strong> 我测下来,Default
+                模式处理常规任务速度确实快。比如让它重构一个组件,它会直接给你改好的代码,不多废话。适合老手用。
+              </p>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                2. Explanatory 模式:会讲解的编程导师
+              </h3>
+
+              <p class="mb-4">这个模式会在关键步骤插入"Insights"卡片,解释它为什么这么做。</p>
+
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <h4 class="font-semibold text-blue-900 mb-2">典型 Insight 内容:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>为什么选择这个库而不是那个</li>
+                  <li>这段代码的设计考虑(性能、可维护性等)</li>
+                  <li>潜在的坑和注意事项</li>
+                  <li>相关的最佳实践</li>
+                </ul>
+              </div>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-2">适用场景:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>学习新技术栈或框架</li>
+                  <li>接手不熟悉的项目</li>
+                  <li>想理解 AI 的决策逻辑</li>
+                  <li>团队知识传承(把 Insights 存档给新人看)</li>
+                </ul>
+              </div>
+
+              <p class="mb-6">
+                <strong>实际体验:</strong> 之前用它学 Rust 的时候,Explanatory
+                模式帮了大忙。它会解释为什么要用
+                <code class="bg-gray-200 px-2 py-1 rounded text-sm">&mut</code> 而不是
+                <code class="bg-gray-200 px-2 py-1 rounded text-sm">&</code>,ownership
+                规则为什么这么设计。比自己查文档效率高多了。
+              </p>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                3. Learning 模式:动手实践的学习伙伴
+              </h3>
+
+              <p class="mb-4">
+                这是最"教学化"的模式。它不光解释,还会故意留一些关键代码让你自己写。
+              </p>
+
+              <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                <h4 class="font-semibold text-green-900 mb-2">典型交互流程:</h4>
+                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                  <li>Claude 写一部分代码</li>
+                  <li>插入 Insight 解释设计思路</li>
+                  <li>提出问题:"现在你来实现错误处理部分,试试用 Result 类型"</li>
+                  <li>等你写完,它会 review 你的代码并给建议</li>
+                </ol>
+              </div>
+
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                <h4 class="font-semibold text-gray-900 mb-2">适用场景:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>系统学习新语言</li>
+                  <li>准备技术面试(实战演练)</li>
+                  <li>强化编程思维(不只是复制粘贴)</li>
+                  <li>导师带新人(设置好 Learning 模式,让新人边学边练)</li>
+                </ul>
+              </div>
+
+              <p class="mb-6">
+                <strong>实际体验:</strong> 这个模式有点像 pair
+                programming,但节奏你能控制。我用它刷算法题时发现,比直接看答案记得牢。缺点是慢,不适合赶工。
+              </p>
+
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-purple-200">
+                如何使用 Output Styles?
+              </h2>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                方法一:命令行切换
+              </h3>
+
+              <p class="mb-4">最直接的方式是用命令:</p>
+
+              <div class="bg-gray-900 text-gray-100 rounded-lg p-4 mb-6 overflow-x-auto">
+                <pre class="text-sm"><code># 打开风格选择菜单
+/output-style
+
+# 直接切换到指定风格
+/output-style explanatory
+/output-style learning
+/output-style default</code></pre>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                方法二:配置文件
+              </h3>
+
+              <p class="mb-4">
+                切换风格后,配置会自动保存到项目的
+                <code class="bg-gray-200 px-2 py-1 rounded text-sm">.claude/settings.local.json</code>。你也可以直接编辑这个文件:
+              </p>
+
+              <div class="bg-gray-900 text-gray-100 rounded-lg p-4 mb-6 overflow-x-auto">
+                <pre class="text-sm"><code>{
+  "outputStyle": "explanatory"
+}</code></pre>
+              </div>
+
+              <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r-lg">
+                <p class="text-gray-800">
+                  <strong>提示:</strong>
+                  配置是项目级别的,不同项目可以用不同风格。比如个人学习项目用
+                  Learning,公司项目用 Default。
+                </p>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                方法三:通过 /config 菜单
+              </h3>
+
+              <p class="mb-6">
+                运行 <code class="bg-gray-200 px-2 py-1 rounded text-sm">/config</code>
+                也能看到 Output Style 选项,点进去选就行。
+              </p>
+
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-orange-200">
+                自定义风格:打造专属 AI 助手
+              </h2>
+
+              <p class="mb-4">内置的三种风格不够用?Claude Code 支持自定义。</p>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                创建自定义风格步骤
+              </h3>
+
+              <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-700">
+                <li>
+                  在项目根目录创建
+                  <code class="bg-gray-200 px-2 py-1 rounded text-sm">.claude/output-styles/</code>
+                  文件夹
+                </li>
+                <li>
+                  新建一个
+                  <code class="bg-gray-200 px-2 py-1 rounded text-sm">.md</code>
+                  文件,比如
+                  <code class="bg-gray-200 px-2 py-1 rounded text-sm">my-style.md</code>
+                </li>
+                <li>在文件里用自然语言描述你想要的风格</li>
+              </ol>
+
+              <h4 class="text-lg font-semibold text-gray-900 mt-6 mb-3">
+                示例 1:简洁模式
+              </h4>
+
+              <div class="bg-gray-900 text-gray-100 rounded-lg p-4 mb-6 overflow-x-auto">
+                <pre class="text-sm"><code># Concise Style
+
+你是一个极简主义编程助手。
+
+## 核心原则
+- 只给代码,不要解释(除非我主动问)
+- 优先用单行命令
+- 避免多余的格式化输出
+
+## 输出格式
+- 直接给出最终代码
+- 不要说"让我帮你..."之类的客套话
+- 有问题就问,别猜</code></pre>
+              </div>
+
+              <h4 class="text-lg font-semibold text-gray-900 mt-6 mb-3">
+                示例 2:安全审查模式
+              </h4>
+
+              <div class="bg-gray-900 text-gray-100 rounded-lg p-4 mb-6 overflow-x-auto">
+                <pre class="text-sm"><code># Security Review Style
+
+你是一个安全专家助手。
+
+## 核心职责
+- 每次改代码前,先分析潜在安全风险
+- 重点检查:SQL 注入、XSS、CSRF、权限控制
+- 使用安全的库和方法
+
+## 输出格式
+- 提供代码前,先给出"安全评估"卡片
+- 标注风险等级:低/中/高
+- 给出加固建议</code></pre>
+              </div>
+
+              <h4 class="text-lg font-semibold text-gray-900 mt-6 mb-3">
+                示例 3:性能优化模式
+              </h4>
+
+              <div class="bg-gray-900 text-gray-100 rounded-lg p-4 mb-6 overflow-x-auto">
+                <pre class="text-sm"><code># Performance Focused Style
+
+你是一个性能优化专家。
+
+## 核心关注点
+- 优先考虑时间复杂度和空间复杂度
+- 每次修改都要说明性能影响
+- 主动建议缓存、批处理等优化策略
+
+## 输出格式
+- 代码注释中标注复杂度:O(n)、O(1) 等
+- 对比优化前后的性能差异
+- 提供性能测试建议</code></pre>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                使用自定义风格
+              </h3>
+
+              <p class="mb-4">创建好文件后,运行:</p>
+
+              <div class="bg-gray-900 text-gray-100 rounded-lg p-4 mb-6 overflow-x-auto">
+                <pre class="text-sm"><code>/output-style my-style</code></pre>
+              </div>
+
+              <p class="mb-6">Claude 就会加载你的自定义规则。</p>
+
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-red-200">
+                实战技巧与最佳实践
+              </h2>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                1. 不同阶段用不同风格
+              </h3>
+
+              <p class="mb-4">我的常用组合:</p>
+              <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li><strong>学习阶段</strong>:Learning 模式,深入理解原理</li>
+                <li><strong>探索阶段</strong>:Explanatory 模式,了解设计决策</li>
+                <li><strong>生产阶段</strong>:Default 模式,快速迭代</li>
+                <li><strong>优化阶段</strong>:自定义的 Performance 风格</li>
+              </ul>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                2. 团队协作中的应用
+              </h3>
+
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white border border-gray-200 rounded-lg p-5">
+                  <h4 class="font-semibold text-gray-900 mb-3">新人入职</h4>
+                  <p class="text-sm text-gray-700">
+                    给新人的项目配置 Explanatory 或 Learning
+                    风格,让他们在写代码的过程中理解团队的技术选型和设计模式。
+                  </p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5">
+                  <h4 class="font-semibold text-gray-900 mb-3">代码审查</h4>
+                  <p class="text-sm text-gray-700">
+                    创建一个 "Code Review" 自定义风格,让 Claude 模拟 PR
+                    审查的思路,指出潜在问题。
+                  </p>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                3. 避免常见误区
+              </h3>
+
+              <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+                <h4 class="font-semibold text-red-900 mb-2">
+                  误区 1:一直用 Learning 模式
+                </h4>
+                <p class="text-gray-700 mb-4">
+                  Learning 模式很慢,不适合日常开发。只在学习新东西时用。
+                </p>
+
+                <h4 class="font-semibold text-red-900 mb-2">
+                  误区 2:自定义风格写太复杂
+                </h4>
+                <p class="text-gray-700 mb-4">
+                  风格描述不用写几千字。简洁明确就行,3-5 条核心原则够了。
+                </p>
+
+                <h4 class="font-semibold text-red-900 mb-2">
+                  误区 3:频繁切换风格
+                </h4>
+                <p class="text-gray-700">
+                  每个任务切一次风格反而效率低。建议一个项目周期内保持风格稳定。
+                </p>
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                4. 与 CLAUDE.md 的配合
+              </h3>
+
+              <p class="mb-4">
+                Output Styles 和
+                <code class="bg-gray-200 px-2 py-1 rounded text-sm">CLAUDE.md</code>
+                可以一起用。简单理解:
+              </p>
+              <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li>
+                  <strong>CLAUDE.md</strong>:定义项目规则(代码风格、工作流、技术栈)
+                </li>
+                <li>
+                  <strong>Output Styles</strong>:定义交互风格(怎么说话、详细程度)
+                </li>
+              </ul>
+
+              <p class="mb-6">两者不冲突,甚至互补。</p>
+
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b-2 border-green-200">
+                2025 年后怎么办?迁移到 Plugins
+              </h2>
+
+              <p class="mb-4">
+                既然 Output Styles 要被弃用,那未来用什么?官方答案是:<strong>Plugins</strong>。
+              </p>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                为什么 Plugins 更好?
+              </h3>
+
+              <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li><strong>更灵活</strong>:不只是改风格,还能扩展功能</li>
+                <li><strong>可组合</strong>:一个项目可以同时用多个 Plugin</li>
+                <li>
+                  <strong>更强大</strong>:能调用外部工具、API,接入自定义逻辑
+                </li>
+              </ul>
+
+              <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">
+                官方迁移方案
+              </h3>
+
+              <p class="mb-4">
+                Anthropic 已经提供了一个
+                <code class="bg-gray-200 px-2 py-1 rounded text-sm">explanatory-output-style</code>
+                Plugin,复刻了 Explanatory 模式的功能。
+              </p>
+
+              <p class="mb-4">未来可以这样用:</p>
+
+              <div class="bg-gray-900 text-gray-100 rounded-lg p-4 mb-6 overflow-x-auto">
+                <pre class="text-sm"><code># 安装 Plugin(示例)
+claude-code plugin install explanatory-output-style
+
+# 启用 Plugin
+claude-code plugin enable explanatory-output-style</code></pre>
+              </div>
+
+              <p class="mb-6">
+                具体迁移步骤官方会在 2025 年 11 月前给出完整文档。建议关注
+                <a href="https://code.claude.com/docs" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800 underline">官方文档</a>
+                更新。
+              </p>
+
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">
+                总结:Output Styles 值得用吗?
+              </h2>
+
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-5">
+                  <h3 class="font-semibold text-green-900 mb-3">值得用的情况</h3>
+                  <ul class="text-sm text-gray-700 space-y-2">
+                    <li>• 你在学习新技术,需要详细解释</li>
+                    <li>• 团队有新人,需要知识传递</li>
+                    <li>• 想理解 AI 的决策逻辑</li>
+                    <li>• 正在准备技术面试或刷题</li>
+                  </ul>
+                </div>
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-5">
+                  <h3 class="font-semibold text-gray-900 mb-3">可以不用的情况</h3>
+                  <ul class="text-sm text-gray-700 space-y-2">
+                    <li>• 熟悉的技术栈,追求效率</li>
+                    <li>• 赶项目进度,没时间看解释</li>
+                    <li>• 现在已经是 2025 年下半年(功能快弃用了)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <p class="mb-6">
+                我的建议:如果你现在还有几个月用 Output Styles,试试 Explanatory
+                或自定义一个专属风格。但别投入太多精力,毕竟官方要推 Plugins 了。
+              </p>
+
+              <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-6 mb-6">
+                <h3 class="text-xl font-semibold mb-3">
+                  需要稳定的 Claude Code 服务?
+                </h3>
+                <p class="mb-4">
+                  对于需要长期稳定使用 Claude Code 的开发者,特别是团队用户,<a href="index.html" class="text-white underline hover:text-gray-200 font-semibold">GACCode</a>
+                  提供更可靠的订阅服务。支持多种支付方式,避免官方政策变动的影响,还有专业技术支持。
+                </p>
+                <a href="index.html" class="inline-flex items-center bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                  访问 GACCode 了解更多
+                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                  </svg>
+                </a>
+              </div>
+
+              <p class="mb-6">
+                想深入了解 Claude Code 其他功能?查看我们的
+                <a href="/post/claude-code-26-features-guide.html" class="text-blue-600 hover:text-blue-800 underline">26 项核心功能完全指南</a>
+                和
+                <a href="claude-code-best-practices.html" class="text-blue-600 hover:text-blue-800 underline">最佳实践总结</a>。
+              </p>
+
+              <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">
+                参考资料
+              </h2>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>
+                  <a href="https://code.claude.com/docs/en/output-styles" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800 underline">Claude Code 官方文档 - Output Styles</a>
+                </li>
+                <li>
+                  <a href="https://www.eesel.ai/blog/output-styles-claude-code" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800 underline">A practical guide to output styles in Claude Code</a>
+                </li>
+                <li>
+                  <a href="https://github.com/hesreallyhim/awesome-claude-code-output-styles-that-i-really-like" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800 underline">Awesome Claude Code Output Styles Collection</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article Footer -->
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">文章标签</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Claude Code</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Output Styles</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">编程风格</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">自定义配置</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">GACCode</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-sm text-gray-600 mb-2">分享文章</p>
+              <div class="flex space-x-3">
+                <button class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors" onclick="shareToTwitter()">
+                  <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                  </svg>
+                </button>
+                <button class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center hover:bg-green-600 transition-colors" onclick="openWechatModal()">
+                  <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M8.5 11a1 1 0 100-2 1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold">GAC</span>
+              </div>
+              <span class="text-xl font-bold">官方邮箱 gaccode@163.com 订阅后</span>
+            </div>
+            <p class="text-gray-400">
+              专业的 Claude Code 订阅服务提供商,为开发者提供稳定可靠的 AI
+              编程助手解决方案。
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="index.html#products" class="hover:text-white transition-colors">套餐价格</a>
+              </li>
+              <li>
+                <a href="gaccode-package-comparison.html" class="hover:text-white transition-colors">套餐对比</a>
+              </li>
+              <li>
+                <a href="share.html" class="hover:text-white transition-colors text-green-400 font-medium">免费体验</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">技术资源</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="posts.html" class="hover:text-white transition-colors">所有文章</a>
+              </li>
+              <li>
+                <a href="claude-code-best-practices.html" class="hover:text-white transition-colors">最佳实践</a>
+              </li>
+              <li>
+                <a href="what-is-gaccode.html" class="hover:text-white transition-colors">什么是GACCode</a>
+              </li>
+              <li>
+                <a href="gaccode-faq.html" class="hover:text-white transition-colors">常见问题</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="index.html#contact" class="hover:text-white transition-colors">客服支持</a>
+              </li>
+              <li>
+                <a href="about.html" class="hover:text-white transition-colors">关于我们</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 官方邮箱 gaccode@163.com 订阅后. 保留所有权利。</p>
+          <p class="mt-2 text-sm">
+            专业的 Claude Code 订阅服务 | 网站域名:GACCode
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WeChat Modal -->
+    <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl max-w-md w-full p-8 text-center relative">
+        <button onclick="closeWechatModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">扫码添加客服微信</h3>
+        <p class="text-gray-600 mb-6">咨询 Claude Code 订阅服务</p>
+
+        <div class="bg-gray-100 rounded-lg p-6 mb-6">
+          <div class="w-48 bg-gray-200 rounded flex items-center justify-center mx-auto">
+            <img src="static/picture/qrcode_new2.webp" class="text-gray-400" alt="微信客服二维码">
+          </div>
+        </div>
+
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+          <h4 class="font-semibold text-green-800 mb-2">微信号</h4>
+          <p class="text-green-700 text-lg font-mono">caicats</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu functionality
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          const isOpen = !mobileMenu.classList.contains("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", isOpen);
+
+          const icon = mobileMenuButton.querySelector("svg");
+          if (isOpen) {
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+          } else {
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+          }
+        });
+
+        document.addEventListener("click", function (e) {
+          if (
+            !mobileMenuButton.contains(e.target) &&
+            !mobileMenu.contains(e.target)
+          ) {
+            mobileMenu.classList.add("hidden");
+            mobileMenuButton.setAttribute("aria-expanded", "false");
+            const icon = mobileMenuButton.querySelector("svg");
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+          }
+        });
+      }
+
+      // WeChat modal
+      function openWechatModal() {
+        const modal = document.getElementById("wechat-modal");
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeWechatModal() {
+        const modal = document.getElementById("wechat-modal");
+        modal.classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+
+      document
+        .getElementById("wechat-modal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeWechatModal();
+          }
+        });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeWechatModal();
+        }
+      });
+
+      // Share to Twitter
+      function shareToTwitter() {
+        const url = window.location.href;
+        const text = "Claude Code Output Styles 完全指南：3 种编程风格如何颠覆你的开发体验";
+        window.open(
+          `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+            text
+          )}&url=${encodeURIComponent(url)}`,
+          "_blank"
+        );
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+  <script defer src="static/js/v8c78df7c7c0f484497ecbca7046644da1771523124516.js" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0609a436c77044e68b7153f24036675e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
