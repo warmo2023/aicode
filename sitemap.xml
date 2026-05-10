@@ -1,270 +1,274 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<!-- 主要页面 -->
-<url>
-<loc>https://gaccode.top</loc>
-<lastmod>2025-11-18</lastmod>
-<changefreq>daily</changefreq>
-<priority>1.0</priority>
-</url>
-<url>
-<loc>https://gaccode.top/posts</loc>
-<lastmod>2025-11-18</lastmod>
-<changefreq>daily</changefreq>
-<priority>1.0</priority>
-</url>
-<url>
-<loc>https://gaccode.top/free</loc>
-<lastmod>2025-10-08</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://gaccode.top/about</loc>
-<lastmod>2025-08-06</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://gaccode.top/share</loc>
-<lastmod>2025-08-05</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.6</priority>
-</url>
-
-<!-- 文章页面 - 按时间倒序排列 -->
-<url>
-<loc>https://gaccode.top/post/claude-code-mcp-configuration</loc>
-<lastmod>2026-01-10</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/super-claude-code-complete-guide</loc>
-<lastmod>2026-01-09</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-lsp-configuration-guide</loc>
-<lastmod>2026-01-07</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-seven-components-tutorial</loc>
-<lastmod>2026-01-03</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-review-batch-processing-tutorial</loc>
-<lastmod>2025-01-02</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-skills-complete-guide</loc>
-<lastmod>2025-12-28</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-output-styles-guide</loc>
-<lastmod>2025-12-18</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-cursor-openspec-ultimate-guide</loc>
-<lastmod>2025-01-15</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-skills</loc>
-<lastmod>2025-11-18</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-complete-features-guide-2025</loc>
-<lastmod>2025-01-15</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-best-practices-usage-tips</loc>
-<lastmod>2025-11-15</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/why-claude-code-beats-cursor-copilot-windsurf</loc>
-<lastmod>2025-11-09</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-sonnet-4-5-comprehensive-guide</loc>
-<lastmod>2025-11-05</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-productivity-guide</loc>
-<lastmod>2025-11-03</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-vs-gemini-cli-comparison</loc>
-<lastmod>2025-11-03</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-best-practices</loc>
-<lastmod>2025-11-03</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/gaccode-credits-guide</loc>
-<lastmod>2025-10-30</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-12-practical-tips</loc>
-<lastmod>2025-10-27</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-read-code-effectively</loc>
-<lastmod>2025-10-27</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-templates-guide</loc>
-<lastmod>2025-10-27</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-vs-codex-comparison</loc>
-<lastmod>2025-10-27</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-rate-limit-announcement</loc>
-<lastmod>2025-10-24</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-pitfall-guide-china</loc>
-<lastmod>2025-10-24</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-official-best-practices</loc>
-<lastmod>2025-10-22</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-26-features-guide</loc>
-<lastmod>2025-10-22</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-comprehensive-guide</loc>
-<lastmod>2025-10-20</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/cursor-vs-claude-code-comparison</loc>
-<lastmod>2025-10-19</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-install-gac-stacked</loc>
-<lastmod>2025-10-08</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/gaccode-subscription-simple-guide</loc>
-<lastmod>2025-09-03</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/gaccode-subscription-guide</loc>
-<lastmod>2025-09-02</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-ban-solution</loc>
-<lastmod>2025-09-02</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/gaccode-introduction</loc>
-<lastmod>2025-09-27</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-cli-install-guide</loc>
-<lastmod>2025-09-01</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/gaccode-package-comparison</loc>
-<lastmod>2025-09-01</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/gaccode-faq</loc>
-<lastmod>2025-09-01</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-api-best-practices</loc>
-<lastmod>2025-09-01</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/claude-code-proxy-sites</loc>
-<lastmod>2025-09-01</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/gaccode-product-introduction</loc>
-<lastmod>2025-09-01</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://gaccode.top/post/gaccode-purchase-channels</loc>
-<lastmod>2025-09-01</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
+  <url>
+    <loc>https://gaccode.top</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/about.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-12-practical-tips.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-26-features-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-api-best-practices.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-ban-solution.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-best-practices.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-best-practices-usage-tips.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-cli-install-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-complete-features-guide-2025.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-comprehensive-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-cursor-openspec-ultimate-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-install-gac-stacked.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-lsp-configuration-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-mcp-configuration.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-official-best-practices.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-output-styles-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-pitfall-guide-china.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-productivity-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-proxy-sites.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-rate-limit-announcement.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-read-code-effectively.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-review-batch-processing-tutorial.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-seven-components-tutorial.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-skills.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-templates-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-vs-codex-comparison.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-code-vs-gemini-cli-comparison.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-skills-complete-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/claude-sonnet-4-5-comprehensive-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/cursor-vs-claude-code-comparison.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/gaccode-credits-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/gaccode-faq.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/gaccode-introduction.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/gaccode-package-comparison.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/gaccode-product-introduction.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/gaccode-purchase-channels.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/gaccode-subscription-simple-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/posts.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/privacy-policy.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/share.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/super-claude-code-complete-guide.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/terms-of-service.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/what-is-gaccode.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gaccode.top/why-claude-code-beats-cursor-copilot-windsurf.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
+
