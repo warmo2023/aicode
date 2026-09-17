@@ -195,7 +195,7 @@
       ["设备码", byId("deviceInput").value.trim()],
       ["授权类型", result.licenseType],
       ["授权次数", result.licenseType.indexOf("C") === 0 ? result.licenseType.slice(1) : "—"],
-      ["授权功能", "江西农网预算批量化处理平台"]
+      ["授权功能", "预算工具授权"]
     ];
     resultMeta.innerHTML = values.map(function (entry) {
       return "<dt>" + escapeHtml(entry[0]) + "</dt><dd>" + escapeHtml(entry[1]) + "</dd>";
@@ -249,8 +249,8 @@
       '<label for="wcToolSelect">选择生成对象<span class="req">*</span></label>' +
       '<div class="select-wrap">' +
       '<select id="wcToolSelect">' +
-      '<option value="designBudget">设计 / 预算工具通用授权</option>' +
-      '<option value="budgetBatch">江西农网预算批量化处理平台</option>' +
+      '<option value="designBudget">设计工具授权</option>' +
+      '<option value="budgetBatch">预算工具授权</option>' +
       '</select>' +
       '</div>' +
       '<p class="hint">原有模式保持不变；预算工具使用专用授权格式。</p>' +
@@ -284,6 +284,56 @@
     });
   }
 
+  function copyActivationKey() {
+    var keyCode = byId("keyCode");
+    if (!keyCode || !keyCode.value.trim()) {
+      setToast("请先生成激活码");
+      return;
+    }
+
+    function selectKey() {
+      keyCode.focus({ preventScroll: true });
+      keyCode.select();
+      keyCode.setSelectionRange(0, keyCode.value.length);
+    }
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(keyCode.value).then(function () {
+        setToast("已复制激活码");
+      }).catch(function () {
+        selectKey();
+        try {
+          document.execCommand("copy");
+          setToast("已复制激活码");
+        } catch (error) {
+          setToast("复制失败，请长按或手动复制");
+        }
+      });
+      return;
+    }
+
+    selectKey();
+    try {
+      if (document.execCommand("copy")) {
+        setToast("已复制激活码");
+      } else {
+        setToast("复制失败，请长按或手动复制");
+      }
+    } catch (error) {
+      setToast("复制失败，请长按或手动复制");
+    }
+  }
+
+  function bindCopyButton() {
+    var copyBtn = byId("copyBtn");
+    if (!copyBtn || copyBtn.dataset.wcCopyBound === "1") return;
+    copyBtn.dataset.wcCopyBound = "1";
+    copyBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+      copyActivationKey();
+    });
+  }
+
   function installStyles() {
     if (byId("wcBudgetModeStyle")) return;
     var style = document.createElement("style");
@@ -302,6 +352,7 @@
     installStyles();
     addToolSelector();
     bindConfirmation();
+    bindCopyButton();
   }
 
   var timer = window.setInterval(function () {
